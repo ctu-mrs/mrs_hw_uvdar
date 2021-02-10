@@ -1,0 +1,4 @@
+uv_led_driver.c:21:6:uv_led_init	8	static
+uv_led_driver.c:78:9:uv_led_set_frequency	32	static
+uv_led_driver.c:126:9:uv_led_enable	32	static
+uv_led_driver.c:172:6:uv_led_toggle	16	static

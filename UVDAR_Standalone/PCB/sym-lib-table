@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name UVDAR_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/UVDAR_Board-rescue.lib)(options "")(descr ""))
+)

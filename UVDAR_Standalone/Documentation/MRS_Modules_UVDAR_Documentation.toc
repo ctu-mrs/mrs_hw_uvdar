@@ -1,0 +1,15 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{1}%
+\contentsline {subsection}{\numberline {1.1}Default Configuration}{2}%
+\contentsline {section}{\numberline {2}Dimensions}{3}%
+\contentsline {section}{\numberline {3}Connectors}{4}%
+\contentsline {subsection}{\numberline {3.1}Connector Placement Drawing}{4}%
+\contentsline {subsection}{\numberline {3.2}Connector Pinouts}{5}%
+\contentsline {section}{\numberline {4}MCU Firmware}{6}%
+\contentsline {subsection}{\numberline {4.1}Message Types}{6}%
+\contentsline {subsection}{\numberline {4.2}Implementation notes}{9}%
+\contentsline {subsection}{\numberline {4.3}Software PWM for UVLEDs}{10}%
+\contentsline {subsubsection}{\numberline {4.3.1}Global Enable Flag}{10}%
+\contentsline {subsection}{\numberline {4.4}USB implementation}{10}%
+\contentsline {section}{\numberline {5}Bill Of Materials and Assembly Drawings}{11}%
+\contentsline {section}{\numberline {6}Schematic}{13}%

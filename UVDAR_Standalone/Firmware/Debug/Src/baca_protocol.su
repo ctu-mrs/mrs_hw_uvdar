@@ -1,0 +1,4 @@
+baca_protocol.c:19:9:baca_protocol_encode	20	static
+baca_protocol.c:46:9:baca_protocol_encode_uint8	0	static
+baca_protocol.c:69:9:baca_protocol_encode_uint16	8	static
+baca_protocol.c:92:21:baca_protocol_decode	288	static
