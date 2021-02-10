@@ -9,8 +9,24 @@ The standalone variant can be connected to a computer directly using USB and is 
 The MRS Module variant is intended to be used along with MRS Distribution Boards, namely with F450 Distribution Board as this is so far the
 only Distribution board populated with a slot for a Big MRS Module.
 
-<img src=".fig/uvdar_standalone.png" alt="uvdar_standalone" width="200"/>
-<img src=".fig/uvdar_module.png" alt="uvdar_module" width="200"/>
+<table>
+  <tr>
+    <th>
+      UVDAR Standalone Variant
+    </th>
+    <th>
+      UVDAR Module Variant
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src=".fig/uvdar_standalone.png" alt="uvdar_standalone" width="450"/>
+    </td>
+    <td>
+      <img src=".fig/uvdar_module.png" alt="uvdar_module" width="450"/>
+    </td>
+  </tr>
+</table>
 
 ## How to use
 1) Read the documentation provided with each variant.
