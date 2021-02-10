@@ -54,7 +54,7 @@ DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USER CODE BEGIN PV */
 // extern variables from uv_led_driver.h
-extern uint16_t uv_led_counter[8];
+extern uint32_t uv_led_counter[8];
 extern uint32_t uv_led_periods_ms[8];
 extern uint8_t enable_global;
 // USART1 Buffer

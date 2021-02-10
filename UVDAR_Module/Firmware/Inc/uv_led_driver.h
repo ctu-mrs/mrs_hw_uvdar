@@ -21,7 +21,7 @@ uint8_t uv_led_enabled[8];
 GPIO_TypeDef* uv_led_ports[8];
 uint16_t uv_led_pins [8];
 
-uint16_t uv_led_counter [8];
+uint32_t uv_led_counter [8];
 
 uint8_t enable_global;
 

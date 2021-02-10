@@ -5,25 +5,25 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   000000c0  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         000047f8  080000c0  080000c0  000100c0  2**2
+  1 .text         000047f4  080000c0  080000c0  000100c0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000054  080048b8  080048b8  000148b8  2**2
+  2 .rodata       00000054  080048b4  080048b4  000148b4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800490c  0800490c  0002000c  2**0
+  3 .ARM.extab    00000000  08004908  08004908  0002000c  2**0
                   CONTENTS
-  4 .ARM          00000000  0800490c  0800490c  0002000c  2**0
+  4 .ARM          00000000  08004908  08004908  0002000c  2**0
                   CONTENTS
-  5 .preinit_array 00000000  0800490c  0800490c  0002000c  2**0
+  5 .preinit_array 00000000  08004908  08004908  0002000c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  0800490c  0800490c  0001490c  2**2
+  6 .init_array   00000004  08004908  08004908  00014908  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08004910  08004910  00014910  2**2
+  7 .fini_array   00000004  0800490c  0800490c  0001490c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000000c  20000000  08004914  00020000  2**2
+  8 .data         0000000c  20000000  08004910  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000002c4  20000010  08004920  00020010  2**3
+  9 .bss          000002d4  20000010  0800491c  00020010  2**3
                   ALLOC
- 10 ._user_heap_stack 00000604  200002d4  08004920  000202d4  2**0
+ 10 ._user_heap_stack 00000604  200002e4  0800491c  000202e4  2**0
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
@@ -65,7 +65,7 @@ Disassembly of section .text:
  80000da:	bd10      	pop	{r4, pc}
  80000dc:	20000010 	.word	0x20000010
  80000e0:	00000000 	.word	0x00000000
- 80000e4:	080048a0 	.word	0x080048a0
+ 80000e4:	0800489c 	.word	0x0800489c
 
 080000e8 <frame_dummy>:
  80000e8:	4b04      	ldr	r3, [pc, #16]	; (80000fc <frame_dummy+0x14>)
@@ -80,7 +80,7 @@ Disassembly of section .text:
  80000fa:	46c0      	nop			; (mov r8, r8)
  80000fc:	00000000 	.word	0x00000000
  8000100:	20000014 	.word	0x20000014
- 8000104:	080048a0 	.word	0x080048a0
+ 8000104:	0800489c 	.word	0x0800489c
 
 08000108 <__udivsi3>:
  8000108:	2200      	movs	r2, #0
@@ -492,7 +492,7 @@ HAL_StatusTypeDef HAL_Init(void)
 
   /* Init the low level hardware */
   HAL_MspInit();
- 800040a:	f003 feb1 	bl	8004170 <HAL_MspInit>
+ 800040a:	f003 feaf 	bl	800416c <HAL_MspInit>
 
   /* Return function status */
   return HAL_OK;
@@ -4951,7 +4951,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8001b60:	40021000 	.word	0x40021000
  8001b64:	00001388 	.word	0x00001388
  8001b68:	fffff8ff 	.word	0xfffff8ff
- 8001b6c:	080048f4 	.word	0x080048f4
+ 8001b6c:	080048f0 	.word	0x080048f0
  8001b70:	20000008 	.word	0x20000008
 
 08001b74 <HAL_RCC_GetSysClockFreq>:
@@ -5136,8 +5136,8 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
  8001c56:	b00f      	add	sp, #60	; 0x3c
  8001c58:	bd90      	pop	{r4, r7, pc}
  8001c5a:	46c0      	nop			; (mov r8, r8)
- 8001c5c:	080048b8 	.word	0x080048b8
- 8001c60:	080048c8 	.word	0x080048c8
+ 8001c5c:	080048b4 	.word	0x080048b4
+ 8001c60:	080048c4 	.word	0x080048c4
  8001c64:	40021000 	.word	0x40021000
  8001c68:	00f42400 	.word	0x00f42400
  8001c6c:	02dc6c00 	.word	0x02dc6c00
@@ -5190,7 +5190,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8001ca8:	bd80      	pop	{r7, pc}
  8001caa:	46c0      	nop			; (mov r8, r8)
  8001cac:	40021000 	.word	0x40021000
- 8001cb0:	08004904 	.word	0x08004904
+ 8001cb0:	08004900 	.word	0x08004900
 
 08001cb4 <HAL_RCCEx_PeriphCLKConfig>:
   *         the backup registers) and RCC_BDCR register are set to their reset values.
@@ -5604,7 +5604,7 @@ HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
     HAL_TIM_Base_MspInit(htim);
  8001eb6:	687b      	ldr	r3, [r7, #4]
  8001eb8:	0018      	movs	r0, r3
- 8001eba:	f002 f97d 	bl	80041b8 <HAL_TIM_Base_MspInit>
+ 8001eba:	f002 f97b 	bl	80041b4 <HAL_TIM_Base_MspInit>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
   }
 
@@ -7193,7 +7193,7 @@ HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)
     HAL_UART_MspInit(huart);
  80026c2:	687b      	ldr	r3, [r7, #4]
  80026c4:	0018      	movs	r0, r3
- 80026c6:	f001 fd9d 	bl	8004204 <HAL_UART_MspInit>
+ 80026c6:	f001 fd9b 	bl	8004200 <HAL_UART_MspInit>
 #endif /* (USE_HAL_UART_REGISTER_CALLBACKS) */
   }
 
@@ -10710,7 +10710,7 @@ struct baca_payload baca_protocol_decode(uint8_t* buffer, uint8_t buffer_size)
  8003950:	2302      	movs	r3, #2
  8003952:	33ff      	adds	r3, #255	; 0xff
  8003954:	001a      	movs	r2, r3
- 8003956:	f000 ff91 	bl	800487c <memcpy>
+ 8003956:	f000 ff8f 	bl	8004878 <memcpy>
  800395a:	e01f      	b.n	800399c <baca_protocol_decode+0x190>
 			} else
 			{
@@ -10727,7 +10727,7 @@ struct baca_payload baca_protocol_decode(uint8_t* buffer, uint8_t buffer_size)
  800396e:	2302      	movs	r3, #2
  8003970:	33ff      	adds	r3, #255	; 0xff
  8003972:	001a      	movs	r2, r3
- 8003974:	f000 ff82 	bl	800487c <memcpy>
+ 8003974:	f000 ff80 	bl	8004878 <memcpy>
  8003978:	e010      	b.n	800399c <baca_protocol_decode+0x190>
 			}
 		}
@@ -10746,7 +10746,7 @@ struct baca_payload baca_protocol_decode(uint8_t* buffer, uint8_t buffer_size)
  800398c:	2302      	movs	r3, #2
  800398e:	33ff      	adds	r3, #255	; 0xff
  8003990:	001a      	movs	r2, r3
- 8003992:	f000 ff73 	bl	800487c <memcpy>
+ 8003992:	f000 ff71 	bl	8004878 <memcpy>
  8003996:	e001      	b.n	800399c <baca_protocol_decode+0x190>
 	{
  8003998:	46c0      	nop			; (mov r8, r8)
@@ -10800,7 +10800,7 @@ int main(void)
 
   // Initialize UV LEDs - sets pins and loads values from FLASH
   uv_led_init();
- 80039c8:	f000 fd14 	bl	80043f4 <uv_led_init>
+ 80039c8:	f000 fd12 	bl	80043f0 <uv_led_init>
 
   // Start UART RX using DMA
   HAL_UART_Receive_DMA(&huart1, (uint8_t*)uart_rx_buff, BUFFER_SIZE);
@@ -10830,7 +10830,7 @@ int main(void)
   while (1)
  80039ec:	e7fe      	b.n	80039ec <main+0x40>
  80039ee:	46c0      	nop			; (mov r8, r8)
- 80039f0:	200001d4 	.word	0x200001d4
+ 80039f0:	200001e4 	.word	0x200001e4
  80039f4:	20000138 	.word	0x20000138
  80039f8:	2000009c 	.word	0x2000009c
  80039fc:	48000400 	.word	0x48000400
@@ -10852,7 +10852,7 @@ void SystemClock_Config(void)
  8003a0c:	2334      	movs	r3, #52	; 0x34
  8003a0e:	001a      	movs	r2, r3
  8003a10:	2100      	movs	r1, #0
- 8003a12:	f000 ff3c 	bl	800488e <memset>
+ 8003a12:	f000 ff3a 	bl	800488a <memset>
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  8003a16:	231c      	movs	r3, #28
  8003a18:	18fb      	adds	r3, r7, r3
@@ -10860,14 +10860,14 @@ void SystemClock_Config(void)
  8003a1c:	2310      	movs	r3, #16
  8003a1e:	001a      	movs	r2, r3
  8003a20:	2100      	movs	r1, #0
- 8003a22:	f000 ff34 	bl	800488e <memset>
+ 8003a22:	f000 ff32 	bl	800488a <memset>
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
  8003a26:	1d3b      	adds	r3, r7, #4
  8003a28:	0018      	movs	r0, r3
  8003a2a:	2318      	movs	r3, #24
  8003a2c:	001a      	movs	r2, r3
  8003a2e:	2100      	movs	r1, #0
- 8003a30:	f000 ff2d 	bl	800488e <memset>
+ 8003a30:	f000 ff2b 	bl	800488a <memset>
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -10892,7 +10892,7 @@ void SystemClock_Config(void)
  8003a50:	d001      	beq.n	8003a56 <SystemClock_Config+0x56>
   {
     Error_Handler();
- 8003a52:	f000 fb7f 	bl	8004154 <Error_Handler>
+ 8003a52:	f000 fb7d 	bl	8004150 <Error_Handler>
   }
   /** Initializes the CPU, AHB and APB buses clocks
   */
@@ -10924,7 +10924,7 @@ void SystemClock_Config(void)
  8003a7c:	d001      	beq.n	8003a82 <SystemClock_Config+0x82>
   {
     Error_Handler();
- 8003a7e:	f000 fb69 	bl	8004154 <Error_Handler>
+ 8003a7e:	f000 fb67 	bl	8004150 <Error_Handler>
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1;
  8003a82:	1d3b      	adds	r3, r7, #4
@@ -10942,7 +10942,7 @@ void SystemClock_Config(void)
  8003a98:	d001      	beq.n	8003a9e <SystemClock_Config+0x9e>
   {
     Error_Handler();
- 8003a9a:	f000 fb5b 	bl	8004154 <Error_Handler>
+ 8003a9a:	f000 fb59 	bl	8004150 <Error_Handler>
   }
 }
  8003a9e:	46c0      	nop			; (mov r8, r8)
@@ -10973,14 +10973,14 @@ static void MX_TIM3_Init(void)
  8003ab4:	2310      	movs	r3, #16
  8003ab6:	001a      	movs	r2, r3
  8003ab8:	2100      	movs	r1, #0
- 8003aba:	f000 fee8 	bl	800488e <memset>
+ 8003aba:	f000 fee6 	bl	800488a <memset>
   TIM_MasterConfigTypeDef sMasterConfig = {0};
  8003abe:	003b      	movs	r3, r7
  8003ac0:	0018      	movs	r0, r3
  8003ac2:	2308      	movs	r3, #8
  8003ac4:	001a      	movs	r2, r3
  8003ac6:	2100      	movs	r1, #0
- 8003ac8:	f000 fee1 	bl	800488e <memset>
+ 8003ac8:	f000 fedf 	bl	800488a <memset>
 
   /* USER CODE BEGIN TIM3_Init 1 */
 
@@ -11017,7 +11017,7 @@ static void MX_TIM3_Init(void)
  8003afa:	d001      	beq.n	8003b00 <MX_TIM3_Init+0x58>
   {
     Error_Handler();
- 8003afc:	f000 fb2a 	bl	8004154 <Error_Handler>
+ 8003afc:	f000 fb28 	bl	8004150 <Error_Handler>
   }
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
  8003b00:	2108      	movs	r1, #8
@@ -11035,7 +11035,7 @@ static void MX_TIM3_Init(void)
  8003b18:	d001      	beq.n	8003b1e <MX_TIM3_Init+0x76>
   {
     Error_Handler();
- 8003b1a:	f000 fb1b 	bl	8004154 <Error_Handler>
+ 8003b1a:	f000 fb19 	bl	8004150 <Error_Handler>
   }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
  8003b1e:	003b      	movs	r3, r7
@@ -11055,7 +11055,7 @@ static void MX_TIM3_Init(void)
  8003b38:	d001      	beq.n	8003b3e <MX_TIM3_Init+0x96>
   {
     Error_Handler();
- 8003b3a:	f000 fb0b 	bl	8004154 <Error_Handler>
+ 8003b3a:	f000 fb09 	bl	8004150 <Error_Handler>
   }
   /* USER CODE BEGIN TIM3_Init 2 */
 
@@ -11133,7 +11133,7 @@ static void MX_USART1_UART_Init(void)
  8003b9c:	d001      	beq.n	8003ba2 <MX_USART1_UART_Init+0x52>
   {
     Error_Handler();
- 8003b9e:	f000 fad9 	bl	8004154 <Error_Handler>
+ 8003b9e:	f000 fad7 	bl	8004150 <Error_Handler>
   }
   /* USER CODE BEGIN USART1_Init 2 */
 
@@ -11226,7 +11226,7 @@ static void MX_GPIO_Init(void)
  8003c18:	2314      	movs	r3, #20
  8003c1a:	001a      	movs	r2, r3
  8003c1c:	2100      	movs	r1, #0
- 8003c1e:	f000 fe36 	bl	800488e <memset>
+ 8003c1e:	f000 fe34 	bl	800488a <memset>
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
@@ -11489,7 +11489,7 @@ void USAR_UART_IDLECallback(UART_HandleTypeDef *huart)
  8003da6:	701a      	strb	r2, [r3, #0]
 	// Process the message
 	process_uart_message();
- 8003da8:	f000 f878 	bl	8003e9c <process_uart_message>
+ 8003da8:	f000 f876 	bl	8003e98 <process_uart_message>
 	// Clear Receiving Buffer
 	memset(uart_rx_buff, 0, uart_rx_buff_size);
  8003dac:	4b0a      	ldr	r3, [pc, #40]	; (8003dd8 <USAR_UART_IDLECallback+0x50>)
@@ -11498,7 +11498,7 @@ void USAR_UART_IDLECallback(UART_HandleTypeDef *huart)
  8003db2:	4b0a      	ldr	r3, [pc, #40]	; (8003ddc <USAR_UART_IDLECallback+0x54>)
  8003db4:	2100      	movs	r1, #0
  8003db6:	0018      	movs	r0, r3
- 8003db8:	f000 fd69 	bl	800488e <memset>
+ 8003db8:	f000 fd67 	bl	800488a <memset>
     //Restart to start DMA USART RX
     HAL_UART_Receive_DMA(&huart1, (uint8_t*)uart_rx_buff, BUFFER_SIZE);
  8003dbc:	4907      	ldr	r1, [pc, #28]	; (8003ddc <USAR_UART_IDLECallback+0x54>)
@@ -11514,7 +11514,7 @@ void USAR_UART_IDLECallback(UART_HandleTypeDef *huart)
  8003dd0:	20000138 	.word	0x20000138
  8003dd4:	200000e4 	.word	0x200000e4
  8003dd8:	2000002c 	.word	0x2000002c
- 8003ddc:	200001d4 	.word	0x200001d4
+ 8003ddc:	200001e4 	.word	0x200001e4
 
 08003de0 <HAL_GPIO_EXTI_Callback>:
 {
@@ -11572,1926 +11572,1924 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if (htim->Instance == TIM3)
  8003e1c:	687b      	ldr	r3, [r7, #4]
  8003e1e:	681b      	ldr	r3, [r3, #0]
- 8003e20:	4a1b      	ldr	r2, [pc, #108]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
+ 8003e20:	4a1a      	ldr	r2, [pc, #104]	; (8003e8c <HAL_TIM_PeriodElapsedCallback+0x78>)
  8003e22:	4293      	cmp	r3, r2
- 8003e24:	d128      	bne.n	8003e78 <HAL_TIM_PeriodElapsedCallback+0x64>
+ 8003e24:	d126      	bne.n	8003e74 <HAL_TIM_PeriodElapsedCallback+0x60>
 	{
 		// Check UVLED toggle counters
 		for (int i = 0; i < 8; i++)
  8003e26:	2300      	movs	r3, #0
  8003e28:	60fb      	str	r3, [r7, #12]
- 8003e2a:	e022      	b.n	8003e72 <HAL_TIM_PeriodElapsedCallback+0x5e>
+ 8003e2a:	e020      	b.n	8003e6e <HAL_TIM_PeriodElapsedCallback+0x5a>
 		{
 			// If toggle counter reached the max value toggle the UVLED and reset counter
 			if (uv_led_counter[i] >= uv_led_periods_ms[i])
- 8003e2c:	4b19      	ldr	r3, [pc, #100]	; (8003e94 <HAL_TIM_PeriodElapsedCallback+0x80>)
+ 8003e2c:	4b18      	ldr	r3, [pc, #96]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
  8003e2e:	68fa      	ldr	r2, [r7, #12]
- 8003e30:	0052      	lsls	r2, r2, #1
- 8003e32:	5ad3      	ldrh	r3, [r2, r3]
- 8003e34:	0019      	movs	r1, r3
- 8003e36:	4b18      	ldr	r3, [pc, #96]	; (8003e98 <HAL_TIM_PeriodElapsedCallback+0x84>)
- 8003e38:	68fa      	ldr	r2, [r7, #12]
- 8003e3a:	0092      	lsls	r2, r2, #2
- 8003e3c:	58d3      	ldr	r3, [r2, r3]
- 8003e3e:	4299      	cmp	r1, r3
- 8003e40:	d30a      	bcc.n	8003e58 <HAL_TIM_PeriodElapsedCallback+0x44>
+ 8003e30:	0092      	lsls	r2, r2, #2
+ 8003e32:	58d2      	ldr	r2, [r2, r3]
+ 8003e34:	4b17      	ldr	r3, [pc, #92]	; (8003e94 <HAL_TIM_PeriodElapsedCallback+0x80>)
+ 8003e36:	68f9      	ldr	r1, [r7, #12]
+ 8003e38:	0089      	lsls	r1, r1, #2
+ 8003e3a:	58cb      	ldr	r3, [r1, r3]
+ 8003e3c:	429a      	cmp	r2, r3
+ 8003e3e:	d30a      	bcc.n	8003e56 <HAL_TIM_PeriodElapsedCallback+0x42>
 			{
 				uv_led_toggle(i);
- 8003e42:	68fb      	ldr	r3, [r7, #12]
- 8003e44:	b2db      	uxtb	r3, r3
- 8003e46:	0018      	movs	r0, r3
- 8003e48:	f000 fc74 	bl	8004734 <uv_led_toggle>
+ 8003e40:	68fb      	ldr	r3, [r7, #12]
+ 8003e42:	b2db      	uxtb	r3, r3
+ 8003e44:	0018      	movs	r0, r3
+ 8003e46:	f000 fc73 	bl	8004730 <uv_led_toggle>
 				uv_led_counter[i] = 0;
- 8003e4c:	4b11      	ldr	r3, [pc, #68]	; (8003e94 <HAL_TIM_PeriodElapsedCallback+0x80>)
- 8003e4e:	68fa      	ldr	r2, [r7, #12]
- 8003e50:	0052      	lsls	r2, r2, #1
- 8003e52:	2100      	movs	r1, #0
- 8003e54:	52d1      	strh	r1, [r2, r3]
- 8003e56:	e009      	b.n	8003e6c <HAL_TIM_PeriodElapsedCallback+0x58>
+ 8003e4a:	4b11      	ldr	r3, [pc, #68]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
+ 8003e4c:	68fa      	ldr	r2, [r7, #12]
+ 8003e4e:	0092      	lsls	r2, r2, #2
+ 8003e50:	2100      	movs	r1, #0
+ 8003e52:	50d1      	str	r1, [r2, r3]
+ 8003e54:	e008      	b.n	8003e68 <HAL_TIM_PeriodElapsedCallback+0x54>
 			// increment counter
 			} else{
 				uv_led_counter[i]++;
- 8003e58:	4b0e      	ldr	r3, [pc, #56]	; (8003e94 <HAL_TIM_PeriodElapsedCallback+0x80>)
- 8003e5a:	68fa      	ldr	r2, [r7, #12]
- 8003e5c:	0052      	lsls	r2, r2, #1
- 8003e5e:	5ad3      	ldrh	r3, [r2, r3]
- 8003e60:	3301      	adds	r3, #1
- 8003e62:	b299      	uxth	r1, r3
- 8003e64:	4b0b      	ldr	r3, [pc, #44]	; (8003e94 <HAL_TIM_PeriodElapsedCallback+0x80>)
- 8003e66:	68fa      	ldr	r2, [r7, #12]
- 8003e68:	0052      	lsls	r2, r2, #1
- 8003e6a:	52d1      	strh	r1, [r2, r3]
+ 8003e56:	4b0e      	ldr	r3, [pc, #56]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
+ 8003e58:	68fa      	ldr	r2, [r7, #12]
+ 8003e5a:	0092      	lsls	r2, r2, #2
+ 8003e5c:	58d3      	ldr	r3, [r2, r3]
+ 8003e5e:	1c59      	adds	r1, r3, #1
+ 8003e60:	4b0b      	ldr	r3, [pc, #44]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
+ 8003e62:	68fa      	ldr	r2, [r7, #12]
+ 8003e64:	0092      	lsls	r2, r2, #2
+ 8003e66:	50d1      	str	r1, [r2, r3]
 		for (int i = 0; i < 8; i++)
- 8003e6c:	68fb      	ldr	r3, [r7, #12]
- 8003e6e:	3301      	adds	r3, #1
- 8003e70:	60fb      	str	r3, [r7, #12]
- 8003e72:	68fb      	ldr	r3, [r7, #12]
- 8003e74:	2b07      	cmp	r3, #7
- 8003e76:	ddd9      	ble.n	8003e2c <HAL_TIM_PeriodElapsedCallback+0x18>
+ 8003e68:	68fb      	ldr	r3, [r7, #12]
+ 8003e6a:	3301      	adds	r3, #1
+ 8003e6c:	60fb      	str	r3, [r7, #12]
+ 8003e6e:	68fb      	ldr	r3, [r7, #12]
+ 8003e70:	2b07      	cmp	r3, #7
+ 8003e72:	dddb      	ble.n	8003e2c <HAL_TIM_PeriodElapsedCallback+0x18>
 			}
 		}
 	}
  /* USER CODE END Callback 0 */
  if (htim->Instance == TIM3) {
- 8003e78:	687b      	ldr	r3, [r7, #4]
- 8003e7a:	681b      	ldr	r3, [r3, #0]
- 8003e7c:	4a04      	ldr	r2, [pc, #16]	; (8003e90 <HAL_TIM_PeriodElapsedCallback+0x7c>)
- 8003e7e:	4293      	cmp	r3, r2
- 8003e80:	d101      	bne.n	8003e86 <HAL_TIM_PeriodElapsedCallback+0x72>
+ 8003e74:	687b      	ldr	r3, [r7, #4]
+ 8003e76:	681b      	ldr	r3, [r3, #0]
+ 8003e78:	4a04      	ldr	r2, [pc, #16]	; (8003e8c <HAL_TIM_PeriodElapsedCallback+0x78>)
+ 8003e7a:	4293      	cmp	r3, r2
+ 8003e7c:	d101      	bne.n	8003e82 <HAL_TIM_PeriodElapsedCallback+0x6e>
    HAL_IncTick();
- 8003e82:	f7fc faff 	bl	8000484 <HAL_IncTick>
+ 8003e7e:	f7fc fb01 	bl	8000484 <HAL_IncTick>
  }
  /* USER CODE BEGIN Callback 1 */
 
  /* USER CODE END Callback 1 */
 }
- 8003e86:	46c0      	nop			; (mov r8, r8)
- 8003e88:	46bd      	mov	sp, r7
- 8003e8a:	b004      	add	sp, #16
- 8003e8c:	bd80      	pop	{r7, pc}
- 8003e8e:	46c0      	nop			; (mov r8, r8)
- 8003e90:	40000400 	.word	0x40000400
- 8003e94:	200001c4 	.word	0x200001c4
- 8003e98:	2000007c 	.word	0x2000007c
+ 8003e82:	46c0      	nop			; (mov r8, r8)
+ 8003e84:	46bd      	mov	sp, r7
+ 8003e86:	b004      	add	sp, #16
+ 8003e88:	bd80      	pop	{r7, pc}
+ 8003e8a:	46c0      	nop			; (mov r8, r8)
+ 8003e8c:	40000400 	.word	0x40000400
+ 8003e90:	200001c4 	.word	0x200001c4
+ 8003e94:	2000007c 	.word	0x2000007c
 
-08003e9c <process_uart_message>:
+08003e98 <process_uart_message>:
 
 void process_uart_message(void)
 {
- 8003e9c:	b5b0      	push	{r4, r5, r7, lr}
- 8003e9e:	b0ca      	sub	sp, #296	; 0x128
- 8003ea0:	af00      	add	r7, sp, #0
+ 8003e98:	b5b0      	push	{r4, r5, r7, lr}
+ 8003e9a:	b0ca      	sub	sp, #296	; 0x128
+ 8003e9c:	af00      	add	r7, sp, #0
 	// Decode the received message
 	struct baca_payload received_message = baca_protocol_decode(uart_rx_buff, uart_rx_buff_size);
- 8003ea2:	4ba2      	ldr	r3, [pc, #648]	; (800412c <process_uart_message+0x290>)
- 8003ea4:	781a      	ldrb	r2, [r3, #0]
- 8003ea6:	4ba2      	ldr	r3, [pc, #648]	; (8004130 <process_uart_message+0x294>)
- 8003ea8:	2194      	movs	r1, #148	; 0x94
- 8003eaa:	0049      	lsls	r1, r1, #1
- 8003eac:	468c      	mov	ip, r1
- 8003eae:	44bc      	add	ip, r7
- 8003eb0:	4463      	add	r3, ip
- 8003eb2:	49a0      	ldr	r1, [pc, #640]	; (8004134 <process_uart_message+0x298>)
- 8003eb4:	0018      	movs	r0, r3
- 8003eb6:	f7ff fca9 	bl	800380c <baca_protocol_decode>
+ 8003e9e:	4ba2      	ldr	r3, [pc, #648]	; (8004128 <process_uart_message+0x290>)
+ 8003ea0:	781a      	ldrb	r2, [r3, #0]
+ 8003ea2:	4ba2      	ldr	r3, [pc, #648]	; (800412c <process_uart_message+0x294>)
+ 8003ea4:	2194      	movs	r1, #148	; 0x94
+ 8003ea6:	0049      	lsls	r1, r1, #1
+ 8003ea8:	468c      	mov	ip, r1
+ 8003eaa:	44bc      	add	ip, r7
+ 8003eac:	4463      	add	r3, ip
+ 8003eae:	49a0      	ldr	r1, [pc, #640]	; (8004130 <process_uart_message+0x298>)
+ 8003eb0:	0018      	movs	r0, r3
+ 8003eb2:	f7ff fcab 	bl	800380c <baca_protocol_decode>
 	// if the received message is correct (is a baca protocol message)
 	if (received_message.data_correct == 1)
- 8003eba:	4b9d      	ldr	r3, [pc, #628]	; (8004130 <process_uart_message+0x294>)
- 8003ebc:	2294      	movs	r2, #148	; 0x94
- 8003ebe:	0052      	lsls	r2, r2, #1
- 8003ec0:	4694      	mov	ip, r2
- 8003ec2:	44bc      	add	ip, r7
- 8003ec4:	4463      	add	r3, ip
- 8003ec6:	781b      	ldrb	r3, [r3, #0]
- 8003ec8:	2b01      	cmp	r3, #1
- 8003eca:	d000      	beq.n	8003ece <process_uart_message+0x32>
- 8003ecc:	e11e      	b.n	800410c <process_uart_message+0x270>
+ 8003eb6:	4b9d      	ldr	r3, [pc, #628]	; (800412c <process_uart_message+0x294>)
+ 8003eb8:	2294      	movs	r2, #148	; 0x94
+ 8003eba:	0052      	lsls	r2, r2, #1
+ 8003ebc:	4694      	mov	ip, r2
+ 8003ebe:	44bc      	add	ip, r7
+ 8003ec0:	4463      	add	r3, ip
+ 8003ec2:	781b      	ldrb	r3, [r3, #0]
+ 8003ec4:	2b01      	cmp	r3, #1
+ 8003ec6:	d000      	beq.n	8003eca <process_uart_message+0x32>
+ 8003ec8:	e11e      	b.n	8004108 <process_uart_message+0x270>
 	{
 		// Get the message ID
 		uint8_t baca_id = received_message.payload[0];
- 8003ece:	2192      	movs	r1, #146	; 0x92
- 8003ed0:	0049      	lsls	r1, r1, #1
- 8003ed2:	187b      	adds	r3, r7, r1
- 8003ed4:	4a96      	ldr	r2, [pc, #600]	; (8004130 <process_uart_message+0x294>)
- 8003ed6:	2094      	movs	r0, #148	; 0x94
- 8003ed8:	0040      	lsls	r0, r0, #1
- 8003eda:	4684      	mov	ip, r0
- 8003edc:	44bc      	add	ip, r7
- 8003ede:	4462      	add	r2, ip
- 8003ee0:	7892      	ldrb	r2, [r2, #2]
- 8003ee2:	701a      	strb	r2, [r3, #0]
+ 8003eca:	2192      	movs	r1, #146	; 0x92
+ 8003ecc:	0049      	lsls	r1, r1, #1
+ 8003ece:	187b      	adds	r3, r7, r1
+ 8003ed0:	4a96      	ldr	r2, [pc, #600]	; (800412c <process_uart_message+0x294>)
+ 8003ed2:	2094      	movs	r0, #148	; 0x94
+ 8003ed4:	0040      	lsls	r0, r0, #1
+ 8003ed6:	4684      	mov	ip, r0
+ 8003ed8:	44bc      	add	ip, r7
+ 8003eda:	4462      	add	r2, ip
+ 8003edc:	7892      	ldrb	r2, [r2, #2]
+ 8003ede:	701a      	strb	r2, [r3, #0]
 		switch (baca_id)
- 8003ee4:	187b      	adds	r3, r7, r1
- 8003ee6:	781b      	ldrb	r3, [r3, #0]
- 8003ee8:	3b90      	subs	r3, #144	; 0x90
- 8003eea:	2b06      	cmp	r3, #6
- 8003eec:	d900      	bls.n	8003ef0 <process_uart_message+0x54>
- 8003eee:	e10f      	b.n	8004110 <process_uart_message+0x274>
- 8003ef0:	009a      	lsls	r2, r3, #2
- 8003ef2:	4b91      	ldr	r3, [pc, #580]	; (8004138 <process_uart_message+0x29c>)
- 8003ef4:	18d3      	adds	r3, r2, r3
- 8003ef6:	681b      	ldr	r3, [r3, #0]
- 8003ef8:	469f      	mov	pc, r3
+ 8003ee0:	187b      	adds	r3, r7, r1
+ 8003ee2:	781b      	ldrb	r3, [r3, #0]
+ 8003ee4:	3b90      	subs	r3, #144	; 0x90
+ 8003ee6:	2b06      	cmp	r3, #6
+ 8003ee8:	d900      	bls.n	8003eec <process_uart_message+0x54>
+ 8003eea:	e10f      	b.n	800410c <process_uart_message+0x274>
+ 8003eec:	009a      	lsls	r2, r3, #2
+ 8003eee:	4b91      	ldr	r3, [pc, #580]	; (8004134 <process_uart_message+0x29c>)
+ 8003ef0:	18d3      	adds	r3, r2, r3
+ 8003ef2:	681b      	ldr	r3, [r3, #0]
+ 8003ef4:	469f      	mov	pc, r3
 		{
 			// Message to toggle the global enable flag
 			case 0x90:
 				enable_global = !enable_global;
- 8003efa:	4b90      	ldr	r3, [pc, #576]	; (800413c <process_uart_message+0x2a0>)
- 8003efc:	781b      	ldrb	r3, [r3, #0]
- 8003efe:	425a      	negs	r2, r3
- 8003f00:	4153      	adcs	r3, r2
- 8003f02:	b2db      	uxtb	r3, r3
- 8003f04:	001a      	movs	r2, r3
- 8003f06:	4b8d      	ldr	r3, [pc, #564]	; (800413c <process_uart_message+0x2a0>)
- 8003f08:	701a      	strb	r2, [r3, #0]
+ 8003ef6:	4b90      	ldr	r3, [pc, #576]	; (8004138 <process_uart_message+0x2a0>)
+ 8003ef8:	781b      	ldrb	r3, [r3, #0]
+ 8003efa:	425a      	negs	r2, r3
+ 8003efc:	4153      	adcs	r3, r2
+ 8003efe:	b2db      	uxtb	r3, r3
+ 8003f00:	001a      	movs	r2, r3
+ 8003f02:	4b8d      	ldr	r3, [pc, #564]	; (8004138 <process_uart_message+0x2a0>)
+ 8003f04:	701a      	strb	r2, [r3, #0]
 				break;
- 8003f0a:	e10a      	b.n	8004122 <process_uart_message+0x286>
+ 8003f06:	e10a      	b.n	800411e <process_uart_message+0x286>
 
 			// Message to enable UVLEDs
 			case 0x91:
 				// Check if the payload has corect size (message id + 8 data bytes)
 				if (received_message.payload_size == 9)
- 8003f0c:	4b88      	ldr	r3, [pc, #544]	; (8004130 <process_uart_message+0x294>)
- 8003f0e:	2294      	movs	r2, #148	; 0x94
- 8003f10:	0052      	lsls	r2, r2, #1
- 8003f12:	4694      	mov	ip, r2
- 8003f14:	44bc      	add	ip, r7
- 8003f16:	4463      	add	r3, ip
- 8003f18:	785b      	ldrb	r3, [r3, #1]
- 8003f1a:	2b09      	cmp	r3, #9
- 8003f1c:	d000      	beq.n	8003f20 <process_uart_message+0x84>
- 8003f1e:	e0f9      	b.n	8004114 <process_uart_message+0x278>
+ 8003f08:	4b88      	ldr	r3, [pc, #544]	; (800412c <process_uart_message+0x294>)
+ 8003f0a:	2294      	movs	r2, #148	; 0x94
+ 8003f0c:	0052      	lsls	r2, r2, #1
+ 8003f0e:	4694      	mov	ip, r2
+ 8003f10:	44bc      	add	ip, r7
+ 8003f12:	4463      	add	r3, ip
+ 8003f14:	785b      	ldrb	r3, [r3, #1]
+ 8003f16:	2b09      	cmp	r3, #9
+ 8003f18:	d000      	beq.n	8003f1c <process_uart_message+0x84>
+ 8003f1a:	e0f9      	b.n	8004110 <process_uart_message+0x278>
 				{
 					for (uint8_t i = 0; i < 8; i++)
- 8003f20:	2328      	movs	r3, #40	; 0x28
- 8003f22:	33ff      	adds	r3, #255	; 0xff
- 8003f24:	18fb      	adds	r3, r7, r3
- 8003f26:	2200      	movs	r2, #0
- 8003f28:	701a      	strb	r2, [r3, #0]
- 8003f2a:	e019      	b.n	8003f60 <process_uart_message+0xc4>
+ 8003f1c:	2328      	movs	r3, #40	; 0x28
+ 8003f1e:	33ff      	adds	r3, #255	; 0xff
+ 8003f20:	18fb      	adds	r3, r7, r3
+ 8003f22:	2200      	movs	r2, #0
+ 8003f24:	701a      	strb	r2, [r3, #0]
+ 8003f26:	e019      	b.n	8003f5c <process_uart_message+0xc4>
 					{
 						uv_led_enable(i, (uint8_t) received_message.payload[i+1]);
- 8003f2c:	2128      	movs	r1, #40	; 0x28
- 8003f2e:	31ff      	adds	r1, #255	; 0xff
- 8003f30:	187b      	adds	r3, r7, r1
- 8003f32:	781b      	ldrb	r3, [r3, #0]
- 8003f34:	3301      	adds	r3, #1
- 8003f36:	4a7e      	ldr	r2, [pc, #504]	; (8004130 <process_uart_message+0x294>)
- 8003f38:	2094      	movs	r0, #148	; 0x94
- 8003f3a:	0040      	lsls	r0, r0, #1
- 8003f3c:	4684      	mov	ip, r0
- 8003f3e:	44bc      	add	ip, r7
- 8003f40:	4462      	add	r2, ip
- 8003f42:	18d3      	adds	r3, r2, r3
- 8003f44:	789a      	ldrb	r2, [r3, #2]
- 8003f46:	000c      	movs	r4, r1
- 8003f48:	187b      	adds	r3, r7, r1
- 8003f4a:	781b      	ldrb	r3, [r3, #0]
- 8003f4c:	0011      	movs	r1, r2
- 8003f4e:	0018      	movs	r0, r3
- 8003f50:	f000 fb68 	bl	8004624 <uv_led_enable>
+ 8003f28:	2128      	movs	r1, #40	; 0x28
+ 8003f2a:	31ff      	adds	r1, #255	; 0xff
+ 8003f2c:	187b      	adds	r3, r7, r1
+ 8003f2e:	781b      	ldrb	r3, [r3, #0]
+ 8003f30:	3301      	adds	r3, #1
+ 8003f32:	4a7e      	ldr	r2, [pc, #504]	; (800412c <process_uart_message+0x294>)
+ 8003f34:	2094      	movs	r0, #148	; 0x94
+ 8003f36:	0040      	lsls	r0, r0, #1
+ 8003f38:	4684      	mov	ip, r0
+ 8003f3a:	44bc      	add	ip, r7
+ 8003f3c:	4462      	add	r2, ip
+ 8003f3e:	18d3      	adds	r3, r2, r3
+ 8003f40:	789a      	ldrb	r2, [r3, #2]
+ 8003f42:	000c      	movs	r4, r1
+ 8003f44:	187b      	adds	r3, r7, r1
+ 8003f46:	781b      	ldrb	r3, [r3, #0]
+ 8003f48:	0011      	movs	r1, r2
+ 8003f4a:	0018      	movs	r0, r3
+ 8003f4c:	f000 fb68 	bl	8004620 <uv_led_enable>
 					for (uint8_t i = 0; i < 8; i++)
- 8003f54:	0021      	movs	r1, r4
+ 8003f50:	0021      	movs	r1, r4
+ 8003f52:	187b      	adds	r3, r7, r1
+ 8003f54:	781a      	ldrb	r2, [r3, #0]
  8003f56:	187b      	adds	r3, r7, r1
- 8003f58:	781a      	ldrb	r2, [r3, #0]
- 8003f5a:	187b      	adds	r3, r7, r1
- 8003f5c:	3201      	adds	r2, #1
- 8003f5e:	701a      	strb	r2, [r3, #0]
- 8003f60:	2328      	movs	r3, #40	; 0x28
- 8003f62:	33ff      	adds	r3, #255	; 0xff
- 8003f64:	18fb      	adds	r3, r7, r3
- 8003f66:	781b      	ldrb	r3, [r3, #0]
- 8003f68:	2b07      	cmp	r3, #7
- 8003f6a:	d9df      	bls.n	8003f2c <process_uart_message+0x90>
+ 8003f58:	3201      	adds	r2, #1
+ 8003f5a:	701a      	strb	r2, [r3, #0]
+ 8003f5c:	2328      	movs	r3, #40	; 0x28
+ 8003f5e:	33ff      	adds	r3, #255	; 0xff
+ 8003f60:	18fb      	adds	r3, r7, r3
+ 8003f62:	781b      	ldrb	r3, [r3, #0]
+ 8003f64:	2b07      	cmp	r3, #7
+ 8003f66:	d9df      	bls.n	8003f28 <process_uart_message+0x90>
 					}
 				}
 				break;
- 8003f6c:	e0d2      	b.n	8004114 <process_uart_message+0x278>
+ 8003f68:	e0d2      	b.n	8004110 <process_uart_message+0x278>
 			// Message to set frequencies of UVLEDs
 			case 0x92:
 				// Check if the payload has corect size (message id + 8 data bytes)
 				if (received_message.payload_size == 9)
- 8003f6e:	4b70      	ldr	r3, [pc, #448]	; (8004130 <process_uart_message+0x294>)
- 8003f70:	2294      	movs	r2, #148	; 0x94
- 8003f72:	0052      	lsls	r2, r2, #1
- 8003f74:	4694      	mov	ip, r2
- 8003f76:	44bc      	add	ip, r7
- 8003f78:	4463      	add	r3, ip
- 8003f7a:	785b      	ldrb	r3, [r3, #1]
- 8003f7c:	2b09      	cmp	r3, #9
- 8003f7e:	d000      	beq.n	8003f82 <process_uart_message+0xe6>
- 8003f80:	e0ca      	b.n	8004118 <process_uart_message+0x27c>
+ 8003f6a:	4b70      	ldr	r3, [pc, #448]	; (800412c <process_uart_message+0x294>)
+ 8003f6c:	2294      	movs	r2, #148	; 0x94
+ 8003f6e:	0052      	lsls	r2, r2, #1
+ 8003f70:	4694      	mov	ip, r2
+ 8003f72:	44bc      	add	ip, r7
+ 8003f74:	4463      	add	r3, ip
+ 8003f76:	785b      	ldrb	r3, [r3, #1]
+ 8003f78:	2b09      	cmp	r3, #9
+ 8003f7a:	d000      	beq.n	8003f7e <process_uart_message+0xe6>
+ 8003f7c:	e0ca      	b.n	8004114 <process_uart_message+0x27c>
 				{
 					for (uint8_t i = 0; i < 8; i++)
- 8003f82:	2393      	movs	r3, #147	; 0x93
- 8003f84:	005b      	lsls	r3, r3, #1
- 8003f86:	18fb      	adds	r3, r7, r3
- 8003f88:	2200      	movs	r2, #0
- 8003f8a:	701a      	strb	r2, [r3, #0]
- 8003f8c:	e027      	b.n	8003fde <process_uart_message+0x142>
+ 8003f7e:	2393      	movs	r3, #147	; 0x93
+ 8003f80:	005b      	lsls	r3, r3, #1
+ 8003f82:	18fb      	adds	r3, r7, r3
+ 8003f84:	2200      	movs	r2, #0
+ 8003f86:	701a      	strb	r2, [r3, #0]
+ 8003f88:	e027      	b.n	8003fda <process_uart_message+0x142>
 					{
 						if (received_message.payload[i] != 0)
- 8003f8e:	2393      	movs	r3, #147	; 0x93
- 8003f90:	005b      	lsls	r3, r3, #1
- 8003f92:	18fb      	adds	r3, r7, r3
- 8003f94:	781b      	ldrb	r3, [r3, #0]
- 8003f96:	4a66      	ldr	r2, [pc, #408]	; (8004130 <process_uart_message+0x294>)
- 8003f98:	2194      	movs	r1, #148	; 0x94
- 8003f9a:	0049      	lsls	r1, r1, #1
- 8003f9c:	468c      	mov	ip, r1
- 8003f9e:	44bc      	add	ip, r7
- 8003fa0:	4462      	add	r2, ip
- 8003fa2:	18d3      	adds	r3, r2, r3
- 8003fa4:	789b      	ldrb	r3, [r3, #2]
- 8003fa6:	2b00      	cmp	r3, #0
- 8003fa8:	d012      	beq.n	8003fd0 <process_uart_message+0x134>
+ 8003f8a:	2393      	movs	r3, #147	; 0x93
+ 8003f8c:	005b      	lsls	r3, r3, #1
+ 8003f8e:	18fb      	adds	r3, r7, r3
+ 8003f90:	781b      	ldrb	r3, [r3, #0]
+ 8003f92:	4a66      	ldr	r2, [pc, #408]	; (800412c <process_uart_message+0x294>)
+ 8003f94:	2194      	movs	r1, #148	; 0x94
+ 8003f96:	0049      	lsls	r1, r1, #1
+ 8003f98:	468c      	mov	ip, r1
+ 8003f9a:	44bc      	add	ip, r7
+ 8003f9c:	4462      	add	r2, ip
+ 8003f9e:	18d3      	adds	r3, r2, r3
+ 8003fa0:	789b      	ldrb	r3, [r3, #2]
+ 8003fa2:	2b00      	cmp	r3, #0
+ 8003fa4:	d012      	beq.n	8003fcc <process_uart_message+0x134>
 						{
 							uv_led_set_frequency(i, (uint32_t) received_message.payload[i+1]);
- 8003faa:	2193      	movs	r1, #147	; 0x93
- 8003fac:	0049      	lsls	r1, r1, #1
- 8003fae:	187b      	adds	r3, r7, r1
- 8003fb0:	781b      	ldrb	r3, [r3, #0]
- 8003fb2:	3301      	adds	r3, #1
- 8003fb4:	4a5e      	ldr	r2, [pc, #376]	; (8004130 <process_uart_message+0x294>)
- 8003fb6:	2094      	movs	r0, #148	; 0x94
- 8003fb8:	0040      	lsls	r0, r0, #1
- 8003fba:	4684      	mov	ip, r0
- 8003fbc:	44bc      	add	ip, r7
- 8003fbe:	4462      	add	r2, ip
- 8003fc0:	18d3      	adds	r3, r2, r3
- 8003fc2:	789a      	ldrb	r2, [r3, #2]
- 8003fc4:	187b      	adds	r3, r7, r1
- 8003fc6:	781b      	ldrb	r3, [r3, #0]
- 8003fc8:	0011      	movs	r1, r2
- 8003fca:	0018      	movs	r0, r3
- 8003fcc:	f000 faac 	bl	8004528 <uv_led_set_frequency>
+ 8003fa6:	2193      	movs	r1, #147	; 0x93
+ 8003fa8:	0049      	lsls	r1, r1, #1
+ 8003faa:	187b      	adds	r3, r7, r1
+ 8003fac:	781b      	ldrb	r3, [r3, #0]
+ 8003fae:	3301      	adds	r3, #1
+ 8003fb0:	4a5e      	ldr	r2, [pc, #376]	; (800412c <process_uart_message+0x294>)
+ 8003fb2:	2094      	movs	r0, #148	; 0x94
+ 8003fb4:	0040      	lsls	r0, r0, #1
+ 8003fb6:	4684      	mov	ip, r0
+ 8003fb8:	44bc      	add	ip, r7
+ 8003fba:	4462      	add	r2, ip
+ 8003fbc:	18d3      	adds	r3, r2, r3
+ 8003fbe:	789a      	ldrb	r2, [r3, #2]
+ 8003fc0:	187b      	adds	r3, r7, r1
+ 8003fc2:	781b      	ldrb	r3, [r3, #0]
+ 8003fc4:	0011      	movs	r1, r2
+ 8003fc6:	0018      	movs	r0, r3
+ 8003fc8:	f000 faac 	bl	8004524 <uv_led_set_frequency>
 					for (uint8_t i = 0; i < 8; i++)
- 8003fd0:	2193      	movs	r1, #147	; 0x93
- 8003fd2:	0049      	lsls	r1, r1, #1
+ 8003fcc:	2193      	movs	r1, #147	; 0x93
+ 8003fce:	0049      	lsls	r1, r1, #1
+ 8003fd0:	187b      	adds	r3, r7, r1
+ 8003fd2:	781a      	ldrb	r2, [r3, #0]
  8003fd4:	187b      	adds	r3, r7, r1
- 8003fd6:	781a      	ldrb	r2, [r3, #0]
- 8003fd8:	187b      	adds	r3, r7, r1
- 8003fda:	3201      	adds	r2, #1
- 8003fdc:	701a      	strb	r2, [r3, #0]
- 8003fde:	2393      	movs	r3, #147	; 0x93
- 8003fe0:	005b      	lsls	r3, r3, #1
- 8003fe2:	18fb      	adds	r3, r7, r3
- 8003fe4:	781b      	ldrb	r3, [r3, #0]
- 8003fe6:	2b07      	cmp	r3, #7
- 8003fe8:	d9d1      	bls.n	8003f8e <process_uart_message+0xf2>
+ 8003fd6:	3201      	adds	r2, #1
+ 8003fd8:	701a      	strb	r2, [r3, #0]
+ 8003fda:	2393      	movs	r3, #147	; 0x93
+ 8003fdc:	005b      	lsls	r3, r3, #1
+ 8003fde:	18fb      	adds	r3, r7, r3
+ 8003fe0:	781b      	ldrb	r3, [r3, #0]
+ 8003fe2:	2b07      	cmp	r3, #7
+ 8003fe4:	d9d1      	bls.n	8003f8a <process_uart_message+0xf2>
 						}
 					}
 				}
 				break;
- 8003fea:	e095      	b.n	8004118 <process_uart_message+0x27c>
+ 8003fe6:	e095      	b.n	8004114 <process_uart_message+0x27c>
 			// Message to enable an individual UVLED
 			case 0x93:
 				// Check if the payload has corect size (message id + 2 data bytes)
 				if (received_message.payload_size == 3)
- 8003fec:	4b50      	ldr	r3, [pc, #320]	; (8004130 <process_uart_message+0x294>)
- 8003fee:	2294      	movs	r2, #148	; 0x94
- 8003ff0:	0052      	lsls	r2, r2, #1
- 8003ff2:	4694      	mov	ip, r2
- 8003ff4:	44bc      	add	ip, r7
- 8003ff6:	4463      	add	r3, ip
- 8003ff8:	785b      	ldrb	r3, [r3, #1]
- 8003ffa:	2b03      	cmp	r3, #3
- 8003ffc:	d000      	beq.n	8004000 <process_uart_message+0x164>
- 8003ffe:	e08d      	b.n	800411c <process_uart_message+0x280>
+ 8003fe8:	4b50      	ldr	r3, [pc, #320]	; (800412c <process_uart_message+0x294>)
+ 8003fea:	2294      	movs	r2, #148	; 0x94
+ 8003fec:	0052      	lsls	r2, r2, #1
+ 8003fee:	4694      	mov	ip, r2
+ 8003ff0:	44bc      	add	ip, r7
+ 8003ff2:	4463      	add	r3, ip
+ 8003ff4:	785b      	ldrb	r3, [r3, #1]
+ 8003ff6:	2b03      	cmp	r3, #3
+ 8003ff8:	d000      	beq.n	8003ffc <process_uart_message+0x164>
+ 8003ffa:	e08d      	b.n	8004118 <process_uart_message+0x280>
 				{
 					uv_led_enable((uint8_t)received_message.payload[1],(uint8_t) received_message.payload[2]);
- 8004000:	4b4b      	ldr	r3, [pc, #300]	; (8004130 <process_uart_message+0x294>)
- 8004002:	2294      	movs	r2, #148	; 0x94
- 8004004:	0052      	lsls	r2, r2, #1
- 8004006:	4694      	mov	ip, r2
- 8004008:	44bc      	add	ip, r7
- 800400a:	4463      	add	r3, ip
- 800400c:	78da      	ldrb	r2, [r3, #3]
- 800400e:	4b48      	ldr	r3, [pc, #288]	; (8004130 <process_uart_message+0x294>)
- 8004010:	2194      	movs	r1, #148	; 0x94
- 8004012:	0049      	lsls	r1, r1, #1
- 8004014:	468c      	mov	ip, r1
- 8004016:	44bc      	add	ip, r7
- 8004018:	4463      	add	r3, ip
- 800401a:	791b      	ldrb	r3, [r3, #4]
- 800401c:	0019      	movs	r1, r3
- 800401e:	0010      	movs	r0, r2
- 8004020:	f000 fb00 	bl	8004624 <uv_led_enable>
+ 8003ffc:	4b4b      	ldr	r3, [pc, #300]	; (800412c <process_uart_message+0x294>)
+ 8003ffe:	2294      	movs	r2, #148	; 0x94
+ 8004000:	0052      	lsls	r2, r2, #1
+ 8004002:	4694      	mov	ip, r2
+ 8004004:	44bc      	add	ip, r7
+ 8004006:	4463      	add	r3, ip
+ 8004008:	78da      	ldrb	r2, [r3, #3]
+ 800400a:	4b48      	ldr	r3, [pc, #288]	; (800412c <process_uart_message+0x294>)
+ 800400c:	2194      	movs	r1, #148	; 0x94
+ 800400e:	0049      	lsls	r1, r1, #1
+ 8004010:	468c      	mov	ip, r1
+ 8004012:	44bc      	add	ip, r7
+ 8004014:	4463      	add	r3, ip
+ 8004016:	791b      	ldrb	r3, [r3, #4]
+ 8004018:	0019      	movs	r1, r3
+ 800401a:	0010      	movs	r0, r2
+ 800401c:	f000 fb00 	bl	8004620 <uv_led_enable>
 				}
 				break;
- 8004024:	e07a      	b.n	800411c <process_uart_message+0x280>
+ 8004020:	e07a      	b.n	8004118 <process_uart_message+0x280>
 			// Message to set frequency of an individual UVLED
 			case 0x94:
 				// Check if the payload has corect size (message id + 2 data bytes)
 				if (received_message.payload_size == 3)
- 8004026:	4b42      	ldr	r3, [pc, #264]	; (8004130 <process_uart_message+0x294>)
- 8004028:	2294      	movs	r2, #148	; 0x94
- 800402a:	0052      	lsls	r2, r2, #1
- 800402c:	4694      	mov	ip, r2
- 800402e:	44bc      	add	ip, r7
- 8004030:	4463      	add	r3, ip
- 8004032:	785b      	ldrb	r3, [r3, #1]
- 8004034:	2b03      	cmp	r3, #3
- 8004036:	d173      	bne.n	8004120 <process_uart_message+0x284>
+ 8004022:	4b42      	ldr	r3, [pc, #264]	; (800412c <process_uart_message+0x294>)
+ 8004024:	2294      	movs	r2, #148	; 0x94
+ 8004026:	0052      	lsls	r2, r2, #1
+ 8004028:	4694      	mov	ip, r2
+ 800402a:	44bc      	add	ip, r7
+ 800402c:	4463      	add	r3, ip
+ 800402e:	785b      	ldrb	r3, [r3, #1]
+ 8004030:	2b03      	cmp	r3, #3
+ 8004032:	d173      	bne.n	800411c <process_uart_message+0x284>
 				{
 					uv_led_set_frequency((uint8_t)received_message.payload[1],(uint8_t) received_message.payload[2]);
- 8004038:	4b3d      	ldr	r3, [pc, #244]	; (8004130 <process_uart_message+0x294>)
- 800403a:	2294      	movs	r2, #148	; 0x94
- 800403c:	0052      	lsls	r2, r2, #1
- 800403e:	4694      	mov	ip, r2
- 8004040:	44bc      	add	ip, r7
- 8004042:	4463      	add	r3, ip
- 8004044:	78da      	ldrb	r2, [r3, #3]
- 8004046:	4b3a      	ldr	r3, [pc, #232]	; (8004130 <process_uart_message+0x294>)
- 8004048:	2194      	movs	r1, #148	; 0x94
- 800404a:	0049      	lsls	r1, r1, #1
- 800404c:	468c      	mov	ip, r1
- 800404e:	44bc      	add	ip, r7
- 8004050:	4463      	add	r3, ip
- 8004052:	791b      	ldrb	r3, [r3, #4]
- 8004054:	0019      	movs	r1, r3
- 8004056:	0010      	movs	r0, r2
- 8004058:	f000 fa66 	bl	8004528 <uv_led_set_frequency>
+ 8004034:	4b3d      	ldr	r3, [pc, #244]	; (800412c <process_uart_message+0x294>)
+ 8004036:	2294      	movs	r2, #148	; 0x94
+ 8004038:	0052      	lsls	r2, r2, #1
+ 800403a:	4694      	mov	ip, r2
+ 800403c:	44bc      	add	ip, r7
+ 800403e:	4463      	add	r3, ip
+ 8004040:	78da      	ldrb	r2, [r3, #3]
+ 8004042:	4b3a      	ldr	r3, [pc, #232]	; (800412c <process_uart_message+0x294>)
+ 8004044:	2194      	movs	r1, #148	; 0x94
+ 8004046:	0049      	lsls	r1, r1, #1
+ 8004048:	468c      	mov	ip, r1
+ 800404a:	44bc      	add	ip, r7
+ 800404c:	4463      	add	r3, ip
+ 800404e:	791b      	ldrb	r3, [r3, #4]
+ 8004050:	0019      	movs	r1, r3
+ 8004052:	0010      	movs	r0, r2
+ 8004054:	f000 fa66 	bl	8004524 <uv_led_set_frequency>
 				}
 				break;
- 800405c:	e060      	b.n	8004120 <process_uart_message+0x284>
+ 8004058:	e060      	b.n	800411c <process_uart_message+0x284>
 			// Message to return the enable flags of UVLEDs
 			case 0x95:
 				{
 					uint8_t baca_buffer[12];
 					uint8_t baca_buffer_length = 12;
- 800405e:	2491      	movs	r4, #145	; 0x91
- 8004060:	0064      	lsls	r4, r4, #1
- 8004062:	193b      	adds	r3, r7, r4
- 8004064:	220c      	movs	r2, #12
- 8004066:	701a      	strb	r2, [r3, #0]
+ 800405a:	2491      	movs	r4, #145	; 0x91
+ 800405c:	0064      	lsls	r4, r4, #1
+ 800405e:	193b      	adds	r3, r7, r4
+ 8004060:	220c      	movs	r2, #12
+ 8004062:	701a      	strb	r2, [r3, #0]
 					// Encode the data using baca protocol
 					baca_protocol_encode(baca_buffer, uv_led_enabled, 8, 0x95);
- 8004068:	4935      	ldr	r1, [pc, #212]	; (8004140 <process_uart_message+0x2a4>)
- 800406a:	2514      	movs	r5, #20
- 800406c:	1978      	adds	r0, r7, r5
- 800406e:	2395      	movs	r3, #149	; 0x95
- 8004070:	2208      	movs	r2, #8
- 8004072:	f7ff fb55 	bl	8003720 <baca_protocol_encode>
+ 8004064:	4935      	ldr	r1, [pc, #212]	; (800413c <process_uart_message+0x2a4>)
+ 8004066:	2514      	movs	r5, #20
+ 8004068:	1978      	adds	r0, r7, r5
+ 800406a:	2395      	movs	r3, #149	; 0x95
+ 800406c:	2208      	movs	r2, #8
+ 800406e:	f7ff fb57 	bl	8003720 <baca_protocol_encode>
 					// Transmit the data
 					HAL_UART_Transmit(&huart1, baca_buffer, baca_buffer_length, 100);
- 8004076:	193b      	adds	r3, r7, r4
- 8004078:	781b      	ldrb	r3, [r3, #0]
- 800407a:	b29a      	uxth	r2, r3
- 800407c:	1979      	adds	r1, r7, r5
- 800407e:	4831      	ldr	r0, [pc, #196]	; (8004144 <process_uart_message+0x2a8>)
- 8004080:	2364      	movs	r3, #100	; 0x64
- 8004082:	f7fe fb61 	bl	8002748 <HAL_UART_Transmit>
+ 8004072:	193b      	adds	r3, r7, r4
+ 8004074:	781b      	ldrb	r3, [r3, #0]
+ 8004076:	b29a      	uxth	r2, r3
+ 8004078:	1979      	adds	r1, r7, r5
+ 800407a:	4831      	ldr	r0, [pc, #196]	; (8004140 <process_uart_message+0x2a8>)
+ 800407c:	2364      	movs	r3, #100	; 0x64
+ 800407e:	f7fe fb63 	bl	8002748 <HAL_UART_Transmit>
 				}
 				break;
- 8004086:	e04c      	b.n	8004122 <process_uart_message+0x286>
+ 8004082:	e04c      	b.n	800411e <process_uart_message+0x286>
 			// Message to return frequencies of UVLEDs
 			case 0x96:
 				{
 					uint8_t baca_buffer[12];
 					uint8_t baca_buffer_length = 12;
- 8004088:	2324      	movs	r3, #36	; 0x24
- 800408a:	33ff      	adds	r3, #255	; 0xff
- 800408c:	18fb      	adds	r3, r7, r3
- 800408e:	220c      	movs	r2, #12
- 8004090:	701a      	strb	r2, [r3, #0]
+ 8004084:	2324      	movs	r3, #36	; 0x24
+ 8004086:	33ff      	adds	r3, #255	; 0xff
+ 8004088:	18fb      	adds	r3, r7, r3
+ 800408a:	220c      	movs	r2, #12
+ 800408c:	701a      	strb	r2, [r3, #0]
 					uint8_t frequencies_to_send[8];
 					// Calculate the frequency from set ticks
 					for (uint8_t j = 0; j < 8; j++)
- 8004092:	2326      	movs	r3, #38	; 0x26
- 8004094:	33ff      	adds	r3, #255	; 0xff
- 8004096:	18fb      	adds	r3, r7, r3
- 8004098:	2200      	movs	r2, #0
- 800409a:	701a      	strb	r2, [r3, #0]
- 800409c:	e01e      	b.n	80040dc <process_uart_message+0x240>
+ 800408e:	2326      	movs	r3, #38	; 0x26
+ 8004090:	33ff      	adds	r3, #255	; 0xff
+ 8004092:	18fb      	adds	r3, r7, r3
+ 8004094:	2200      	movs	r2, #0
+ 8004096:	701a      	strb	r2, [r3, #0]
+ 8004098:	e01e      	b.n	80040d8 <process_uart_message+0x240>
 					{
 						frequencies_to_send[j] = (uint8_t)(TIMER_FREQ/(2*uv_led_periods_ms[j]));
- 800409e:	2026      	movs	r0, #38	; 0x26
- 80040a0:	30ff      	adds	r0, #255	; 0xff
- 80040a2:	0004      	movs	r4, r0
- 80040a4:	183b      	adds	r3, r7, r0
- 80040a6:	781a      	ldrb	r2, [r3, #0]
- 80040a8:	4b27      	ldr	r3, [pc, #156]	; (8004148 <process_uart_message+0x2ac>)
- 80040aa:	0092      	lsls	r2, r2, #2
- 80040ac:	58d3      	ldr	r3, [r2, r3]
- 80040ae:	005b      	lsls	r3, r3, #1
- 80040b0:	0019      	movs	r1, r3
- 80040b2:	4826      	ldr	r0, [pc, #152]	; (800414c <process_uart_message+0x2b0>)
- 80040b4:	f7fc f828 	bl	8000108 <__udivsi3>
- 80040b8:	0003      	movs	r3, r0
- 80040ba:	001a      	movs	r2, r3
- 80040bc:	0020      	movs	r0, r4
- 80040be:	183b      	adds	r3, r7, r0
- 80040c0:	781b      	ldrb	r3, [r3, #0]
- 80040c2:	b2d1      	uxtb	r1, r2
- 80040c4:	4a22      	ldr	r2, [pc, #136]	; (8004150 <process_uart_message+0x2b4>)
- 80040c6:	2494      	movs	r4, #148	; 0x94
- 80040c8:	0064      	lsls	r4, r4, #1
- 80040ca:	46a4      	mov	ip, r4
- 80040cc:	44bc      	add	ip, r7
- 80040ce:	4462      	add	r2, ip
- 80040d0:	54d1      	strb	r1, [r2, r3]
+ 800409a:	2026      	movs	r0, #38	; 0x26
+ 800409c:	30ff      	adds	r0, #255	; 0xff
+ 800409e:	0004      	movs	r4, r0
+ 80040a0:	183b      	adds	r3, r7, r0
+ 80040a2:	781a      	ldrb	r2, [r3, #0]
+ 80040a4:	4b27      	ldr	r3, [pc, #156]	; (8004144 <process_uart_message+0x2ac>)
+ 80040a6:	0092      	lsls	r2, r2, #2
+ 80040a8:	58d3      	ldr	r3, [r2, r3]
+ 80040aa:	005b      	lsls	r3, r3, #1
+ 80040ac:	0019      	movs	r1, r3
+ 80040ae:	4826      	ldr	r0, [pc, #152]	; (8004148 <process_uart_message+0x2b0>)
+ 80040b0:	f7fc f82a 	bl	8000108 <__udivsi3>
+ 80040b4:	0003      	movs	r3, r0
+ 80040b6:	001a      	movs	r2, r3
+ 80040b8:	0020      	movs	r0, r4
+ 80040ba:	183b      	adds	r3, r7, r0
+ 80040bc:	781b      	ldrb	r3, [r3, #0]
+ 80040be:	b2d1      	uxtb	r1, r2
+ 80040c0:	4a22      	ldr	r2, [pc, #136]	; (800414c <process_uart_message+0x2b4>)
+ 80040c2:	2494      	movs	r4, #148	; 0x94
+ 80040c4:	0064      	lsls	r4, r4, #1
+ 80040c6:	46a4      	mov	ip, r4
+ 80040c8:	44bc      	add	ip, r7
+ 80040ca:	4462      	add	r2, ip
+ 80040cc:	54d1      	strb	r1, [r2, r3]
 					for (uint8_t j = 0; j < 8; j++)
+ 80040ce:	183b      	adds	r3, r7, r0
+ 80040d0:	781a      	ldrb	r2, [r3, #0]
  80040d2:	183b      	adds	r3, r7, r0
- 80040d4:	781a      	ldrb	r2, [r3, #0]
- 80040d6:	183b      	adds	r3, r7, r0
- 80040d8:	3201      	adds	r2, #1
- 80040da:	701a      	strb	r2, [r3, #0]
- 80040dc:	2326      	movs	r3, #38	; 0x26
- 80040de:	33ff      	adds	r3, #255	; 0xff
- 80040e0:	18fb      	adds	r3, r7, r3
- 80040e2:	781b      	ldrb	r3, [r3, #0]
- 80040e4:	2b07      	cmp	r3, #7
- 80040e6:	d9da      	bls.n	800409e <process_uart_message+0x202>
+ 80040d4:	3201      	adds	r2, #1
+ 80040d6:	701a      	strb	r2, [r3, #0]
+ 80040d8:	2326      	movs	r3, #38	; 0x26
+ 80040da:	33ff      	adds	r3, #255	; 0xff
+ 80040dc:	18fb      	adds	r3, r7, r3
+ 80040de:	781b      	ldrb	r3, [r3, #0]
+ 80040e0:	2b07      	cmp	r3, #7
+ 80040e2:	d9da      	bls.n	800409a <process_uart_message+0x202>
 					}
 					// Encode the data using baca protocol
 					baca_protocol_encode(baca_buffer, frequencies_to_send , 8, 0x96);
- 80040e8:	0039      	movs	r1, r7
- 80040ea:	2408      	movs	r4, #8
- 80040ec:	1938      	adds	r0, r7, r4
- 80040ee:	2396      	movs	r3, #150	; 0x96
- 80040f0:	2208      	movs	r2, #8
- 80040f2:	f7ff fb15 	bl	8003720 <baca_protocol_encode>
+ 80040e4:	0039      	movs	r1, r7
+ 80040e6:	2408      	movs	r4, #8
+ 80040e8:	1938      	adds	r0, r7, r4
+ 80040ea:	2396      	movs	r3, #150	; 0x96
+ 80040ec:	2208      	movs	r2, #8
+ 80040ee:	f7ff fb17 	bl	8003720 <baca_protocol_encode>
 					// Transmit the data
 					HAL_UART_Transmit(&huart1, baca_buffer, baca_buffer_length, 100);
- 80040f6:	2324      	movs	r3, #36	; 0x24
- 80040f8:	33ff      	adds	r3, #255	; 0xff
- 80040fa:	18fb      	adds	r3, r7, r3
- 80040fc:	781b      	ldrb	r3, [r3, #0]
- 80040fe:	b29a      	uxth	r2, r3
- 8004100:	1939      	adds	r1, r7, r4
- 8004102:	4810      	ldr	r0, [pc, #64]	; (8004144 <process_uart_message+0x2a8>)
- 8004104:	2364      	movs	r3, #100	; 0x64
- 8004106:	f7fe fb1f 	bl	8002748 <HAL_UART_Transmit>
+ 80040f2:	2324      	movs	r3, #36	; 0x24
+ 80040f4:	33ff      	adds	r3, #255	; 0xff
+ 80040f6:	18fb      	adds	r3, r7, r3
+ 80040f8:	781b      	ldrb	r3, [r3, #0]
+ 80040fa:	b29a      	uxth	r2, r3
+ 80040fc:	1939      	adds	r1, r7, r4
+ 80040fe:	4810      	ldr	r0, [pc, #64]	; (8004140 <process_uart_message+0x2a8>)
+ 8004100:	2364      	movs	r3, #100	; 0x64
+ 8004102:	f7fe fb21 	bl	8002748 <HAL_UART_Transmit>
 				}
 				break;
- 800410a:	e00a      	b.n	8004122 <process_uart_message+0x286>
+ 8004106:	e00a      	b.n	800411e <process_uart_message+0x286>
 			// Something else: Do nothing
 			default:
 				break;
 		}
 	}
+ 8004108:	46c0      	nop			; (mov r8, r8)
+ 800410a:	e008      	b.n	800411e <process_uart_message+0x286>
+				break;
  800410c:	46c0      	nop			; (mov r8, r8)
- 800410e:	e008      	b.n	8004122 <process_uart_message+0x286>
+ 800410e:	e006      	b.n	800411e <process_uart_message+0x286>
 				break;
  8004110:	46c0      	nop			; (mov r8, r8)
- 8004112:	e006      	b.n	8004122 <process_uart_message+0x286>
+ 8004112:	e004      	b.n	800411e <process_uart_message+0x286>
 				break;
  8004114:	46c0      	nop			; (mov r8, r8)
- 8004116:	e004      	b.n	8004122 <process_uart_message+0x286>
+ 8004116:	e002      	b.n	800411e <process_uart_message+0x286>
 				break;
  8004118:	46c0      	nop			; (mov r8, r8)
- 800411a:	e002      	b.n	8004122 <process_uart_message+0x286>
+ 800411a:	e000      	b.n	800411e <process_uart_message+0x286>
 				break;
  800411c:	46c0      	nop			; (mov r8, r8)
- 800411e:	e000      	b.n	8004122 <process_uart_message+0x286>
-				break;
- 8004120:	46c0      	nop			; (mov r8, r8)
 }
- 8004122:	46c0      	nop			; (mov r8, r8)
- 8004124:	46bd      	mov	sp, r7
- 8004126:	b04a      	add	sp, #296	; 0x128
- 8004128:	bdb0      	pop	{r4, r5, r7, pc}
- 800412a:	46c0      	nop			; (mov r8, r8)
- 800412c:	2000002c 	.word	0x2000002c
- 8004130:	fffffef8 	.word	0xfffffef8
- 8004134:	200001d4 	.word	0x200001d4
- 8004138:	080048d8 	.word	0x080048d8
- 800413c:	20000058 	.word	0x20000058
- 8004140:	200001bc 	.word	0x200001bc
- 8004144:	20000138 	.word	0x20000138
- 8004148:	2000007c 	.word	0x2000007c
- 800414c:	00002710 	.word	0x00002710
- 8004150:	fffffed8 	.word	0xfffffed8
+ 800411e:	46c0      	nop			; (mov r8, r8)
+ 8004120:	46bd      	mov	sp, r7
+ 8004122:	b04a      	add	sp, #296	; 0x128
+ 8004124:	bdb0      	pop	{r4, r5, r7, pc}
+ 8004126:	46c0      	nop			; (mov r8, r8)
+ 8004128:	2000002c 	.word	0x2000002c
+ 800412c:	fffffef8 	.word	0xfffffef8
+ 8004130:	200001e4 	.word	0x200001e4
+ 8004134:	080048d4 	.word	0x080048d4
+ 8004138:	20000058 	.word	0x20000058
+ 800413c:	200001bc 	.word	0x200001bc
+ 8004140:	20000138 	.word	0x20000138
+ 8004144:	2000007c 	.word	0x2000007c
+ 8004148:	00002710 	.word	0x00002710
+ 800414c:	fffffed8 	.word	0xfffffed8
 
-08004154 <Error_Handler>:
+08004150 <Error_Handler>:
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None
   */
 void Error_Handler(void)
 {
- 8004154:	b580      	push	{r7, lr}
- 8004156:	af00      	add	r7, sp, #0
+ 8004150:	b580      	push	{r7, lr}
+ 8004152:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
 	// Just blink the LED
 	while (1)
 	{
 		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
- 8004158:	4b04      	ldr	r3, [pc, #16]	; (800416c <Error_Handler+0x18>)
- 800415a:	2102      	movs	r1, #2
- 800415c:	0018      	movs	r0, r3
- 800415e:	f7fd f871 	bl	8001244 <HAL_GPIO_TogglePin>
+ 8004154:	4b04      	ldr	r3, [pc, #16]	; (8004168 <Error_Handler+0x18>)
+ 8004156:	2102      	movs	r1, #2
+ 8004158:	0018      	movs	r0, r3
+ 800415a:	f7fd f873 	bl	8001244 <HAL_GPIO_TogglePin>
 		  HAL_Delay(250);
- 8004162:	20fa      	movs	r0, #250	; 0xfa
- 8004164:	f7fc f9aa 	bl	80004bc <HAL_Delay>
+ 800415e:	20fa      	movs	r0, #250	; 0xfa
+ 8004160:	f7fc f9ac 	bl	80004bc <HAL_Delay>
 		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
- 8004168:	e7f6      	b.n	8004158 <Error_Handler+0x4>
- 800416a:	46c0      	nop			; (mov r8, r8)
- 800416c:	48000400 	.word	0x48000400
+ 8004164:	e7f6      	b.n	8004154 <Error_Handler+0x4>
+ 8004166:	46c0      	nop			; (mov r8, r8)
+ 8004168:	48000400 	.word	0x48000400
 
-08004170 <HAL_MspInit>:
+0800416c <HAL_MspInit>:
 /* USER CODE END 0 */
 /**
   * Initializes the Global MSP.
   */
 void HAL_MspInit(void)
 {
- 8004170:	b580      	push	{r7, lr}
- 8004172:	b082      	sub	sp, #8
- 8004174:	af00      	add	r7, sp, #0
+ 800416c:	b580      	push	{r7, lr}
+ 800416e:	b082      	sub	sp, #8
+ 8004170:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN MspInit 0 */
 
   /* USER CODE END MspInit 0 */
 
   __HAL_RCC_SYSCFG_CLK_ENABLE();
- 8004176:	4b0f      	ldr	r3, [pc, #60]	; (80041b4 <HAL_MspInit+0x44>)
- 8004178:	699a      	ldr	r2, [r3, #24]
- 800417a:	4b0e      	ldr	r3, [pc, #56]	; (80041b4 <HAL_MspInit+0x44>)
- 800417c:	2101      	movs	r1, #1
- 800417e:	430a      	orrs	r2, r1
- 8004180:	619a      	str	r2, [r3, #24]
- 8004182:	4b0c      	ldr	r3, [pc, #48]	; (80041b4 <HAL_MspInit+0x44>)
- 8004184:	699b      	ldr	r3, [r3, #24]
- 8004186:	2201      	movs	r2, #1
- 8004188:	4013      	ands	r3, r2
- 800418a:	607b      	str	r3, [r7, #4]
- 800418c:	687b      	ldr	r3, [r7, #4]
+ 8004172:	4b0f      	ldr	r3, [pc, #60]	; (80041b0 <HAL_MspInit+0x44>)
+ 8004174:	699a      	ldr	r2, [r3, #24]
+ 8004176:	4b0e      	ldr	r3, [pc, #56]	; (80041b0 <HAL_MspInit+0x44>)
+ 8004178:	2101      	movs	r1, #1
+ 800417a:	430a      	orrs	r2, r1
+ 800417c:	619a      	str	r2, [r3, #24]
+ 800417e:	4b0c      	ldr	r3, [pc, #48]	; (80041b0 <HAL_MspInit+0x44>)
+ 8004180:	699b      	ldr	r3, [r3, #24]
+ 8004182:	2201      	movs	r2, #1
+ 8004184:	4013      	ands	r3, r2
+ 8004186:	607b      	str	r3, [r7, #4]
+ 8004188:	687b      	ldr	r3, [r7, #4]
   __HAL_RCC_PWR_CLK_ENABLE();
- 800418e:	4b09      	ldr	r3, [pc, #36]	; (80041b4 <HAL_MspInit+0x44>)
- 8004190:	69da      	ldr	r2, [r3, #28]
- 8004192:	4b08      	ldr	r3, [pc, #32]	; (80041b4 <HAL_MspInit+0x44>)
- 8004194:	2180      	movs	r1, #128	; 0x80
- 8004196:	0549      	lsls	r1, r1, #21
- 8004198:	430a      	orrs	r2, r1
- 800419a:	61da      	str	r2, [r3, #28]
- 800419c:	4b05      	ldr	r3, [pc, #20]	; (80041b4 <HAL_MspInit+0x44>)
- 800419e:	69da      	ldr	r2, [r3, #28]
- 80041a0:	2380      	movs	r3, #128	; 0x80
- 80041a2:	055b      	lsls	r3, r3, #21
- 80041a4:	4013      	ands	r3, r2
- 80041a6:	603b      	str	r3, [r7, #0]
- 80041a8:	683b      	ldr	r3, [r7, #0]
+ 800418a:	4b09      	ldr	r3, [pc, #36]	; (80041b0 <HAL_MspInit+0x44>)
+ 800418c:	69da      	ldr	r2, [r3, #28]
+ 800418e:	4b08      	ldr	r3, [pc, #32]	; (80041b0 <HAL_MspInit+0x44>)
+ 8004190:	2180      	movs	r1, #128	; 0x80
+ 8004192:	0549      	lsls	r1, r1, #21
+ 8004194:	430a      	orrs	r2, r1
+ 8004196:	61da      	str	r2, [r3, #28]
+ 8004198:	4b05      	ldr	r3, [pc, #20]	; (80041b0 <HAL_MspInit+0x44>)
+ 800419a:	69da      	ldr	r2, [r3, #28]
+ 800419c:	2380      	movs	r3, #128	; 0x80
+ 800419e:	055b      	lsls	r3, r3, #21
+ 80041a0:	4013      	ands	r3, r2
+ 80041a2:	603b      	str	r3, [r7, #0]
+ 80041a4:	683b      	ldr	r3, [r7, #0]
   /* System interrupt init*/
 
   /* USER CODE BEGIN MspInit 1 */
 
   /* USER CODE END MspInit 1 */
 }
- 80041aa:	46c0      	nop			; (mov r8, r8)
- 80041ac:	46bd      	mov	sp, r7
- 80041ae:	b002      	add	sp, #8
- 80041b0:	bd80      	pop	{r7, pc}
- 80041b2:	46c0      	nop			; (mov r8, r8)
- 80041b4:	40021000 	.word	0x40021000
+ 80041a6:	46c0      	nop			; (mov r8, r8)
+ 80041a8:	46bd      	mov	sp, r7
+ 80041aa:	b002      	add	sp, #8
+ 80041ac:	bd80      	pop	{r7, pc}
+ 80041ae:	46c0      	nop			; (mov r8, r8)
+ 80041b0:	40021000 	.word	0x40021000
 
-080041b8 <HAL_TIM_Base_MspInit>:
+080041b4 <HAL_TIM_Base_MspInit>:
 * This function configures the hardware resources used in this example
 * @param htim_base: TIM_Base handle pointer
 * @retval None
 */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 {
- 80041b8:	b580      	push	{r7, lr}
- 80041ba:	b084      	sub	sp, #16
- 80041bc:	af00      	add	r7, sp, #0
- 80041be:	6078      	str	r0, [r7, #4]
+ 80041b4:	b580      	push	{r7, lr}
+ 80041b6:	b084      	sub	sp, #16
+ 80041b8:	af00      	add	r7, sp, #0
+ 80041ba:	6078      	str	r0, [r7, #4]
   if(htim_base->Instance==TIM3)
- 80041c0:	687b      	ldr	r3, [r7, #4]
- 80041c2:	681b      	ldr	r3, [r3, #0]
- 80041c4:	4a0d      	ldr	r2, [pc, #52]	; (80041fc <HAL_TIM_Base_MspInit+0x44>)
- 80041c6:	4293      	cmp	r3, r2
- 80041c8:	d113      	bne.n	80041f2 <HAL_TIM_Base_MspInit+0x3a>
+ 80041bc:	687b      	ldr	r3, [r7, #4]
+ 80041be:	681b      	ldr	r3, [r3, #0]
+ 80041c0:	4a0d      	ldr	r2, [pc, #52]	; (80041f8 <HAL_TIM_Base_MspInit+0x44>)
+ 80041c2:	4293      	cmp	r3, r2
+ 80041c4:	d113      	bne.n	80041ee <HAL_TIM_Base_MspInit+0x3a>
   {
   /* USER CODE BEGIN TIM3_MspInit 0 */
 
   /* USER CODE END TIM3_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_TIM3_CLK_ENABLE();
- 80041ca:	4b0d      	ldr	r3, [pc, #52]	; (8004200 <HAL_TIM_Base_MspInit+0x48>)
- 80041cc:	69da      	ldr	r2, [r3, #28]
- 80041ce:	4b0c      	ldr	r3, [pc, #48]	; (8004200 <HAL_TIM_Base_MspInit+0x48>)
- 80041d0:	2102      	movs	r1, #2
- 80041d2:	430a      	orrs	r2, r1
- 80041d4:	61da      	str	r2, [r3, #28]
- 80041d6:	4b0a      	ldr	r3, [pc, #40]	; (8004200 <HAL_TIM_Base_MspInit+0x48>)
- 80041d8:	69db      	ldr	r3, [r3, #28]
- 80041da:	2202      	movs	r2, #2
- 80041dc:	4013      	ands	r3, r2
- 80041de:	60fb      	str	r3, [r7, #12]
- 80041e0:	68fb      	ldr	r3, [r7, #12]
+ 80041c6:	4b0d      	ldr	r3, [pc, #52]	; (80041fc <HAL_TIM_Base_MspInit+0x48>)
+ 80041c8:	69da      	ldr	r2, [r3, #28]
+ 80041ca:	4b0c      	ldr	r3, [pc, #48]	; (80041fc <HAL_TIM_Base_MspInit+0x48>)
+ 80041cc:	2102      	movs	r1, #2
+ 80041ce:	430a      	orrs	r2, r1
+ 80041d0:	61da      	str	r2, [r3, #28]
+ 80041d2:	4b0a      	ldr	r3, [pc, #40]	; (80041fc <HAL_TIM_Base_MspInit+0x48>)
+ 80041d4:	69db      	ldr	r3, [r3, #28]
+ 80041d6:	2202      	movs	r2, #2
+ 80041d8:	4013      	ands	r3, r2
+ 80041da:	60fb      	str	r3, [r7, #12]
+ 80041dc:	68fb      	ldr	r3, [r7, #12]
     /* TIM3 interrupt Init */
     HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
- 80041e2:	2200      	movs	r2, #0
- 80041e4:	2100      	movs	r1, #0
- 80041e6:	2010      	movs	r0, #16
- 80041e8:	f7fc fa36 	bl	8000658 <HAL_NVIC_SetPriority>
+ 80041de:	2200      	movs	r2, #0
+ 80041e0:	2100      	movs	r1, #0
+ 80041e2:	2010      	movs	r0, #16
+ 80041e4:	f7fc fa38 	bl	8000658 <HAL_NVIC_SetPriority>
     HAL_NVIC_EnableIRQ(TIM3_IRQn);
- 80041ec:	2010      	movs	r0, #16
- 80041ee:	f7fc fa48 	bl	8000682 <HAL_NVIC_EnableIRQ>
+ 80041e8:	2010      	movs	r0, #16
+ 80041ea:	f7fc fa4a 	bl	8000682 <HAL_NVIC_EnableIRQ>
   /* USER CODE BEGIN TIM3_MspInit 1 */
 
   /* USER CODE END TIM3_MspInit 1 */
   }
 
 }
- 80041f2:	46c0      	nop			; (mov r8, r8)
- 80041f4:	46bd      	mov	sp, r7
- 80041f6:	b004      	add	sp, #16
- 80041f8:	bd80      	pop	{r7, pc}
- 80041fa:	46c0      	nop			; (mov r8, r8)
- 80041fc:	40000400 	.word	0x40000400
- 8004200:	40021000 	.word	0x40021000
+ 80041ee:	46c0      	nop			; (mov r8, r8)
+ 80041f0:	46bd      	mov	sp, r7
+ 80041f2:	b004      	add	sp, #16
+ 80041f4:	bd80      	pop	{r7, pc}
+ 80041f6:	46c0      	nop			; (mov r8, r8)
+ 80041f8:	40000400 	.word	0x40000400
+ 80041fc:	40021000 	.word	0x40021000
 
-08004204 <HAL_UART_MspInit>:
+08004200 <HAL_UART_MspInit>:
 * This function configures the hardware resources used in this example
 * @param huart: UART handle pointer
 * @retval None
 */
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
- 8004204:	b580      	push	{r7, lr}
- 8004206:	b08a      	sub	sp, #40	; 0x28
- 8004208:	af00      	add	r7, sp, #0
- 800420a:	6078      	str	r0, [r7, #4]
+ 8004200:	b580      	push	{r7, lr}
+ 8004202:	b08a      	sub	sp, #40	; 0x28
+ 8004204:	af00      	add	r7, sp, #0
+ 8004206:	6078      	str	r0, [r7, #4]
   GPIO_InitTypeDef GPIO_InitStruct = {0};
- 800420c:	2314      	movs	r3, #20
- 800420e:	18fb      	adds	r3, r7, r3
- 8004210:	0018      	movs	r0, r3
- 8004212:	2314      	movs	r3, #20
- 8004214:	001a      	movs	r2, r3
- 8004216:	2100      	movs	r1, #0
- 8004218:	f000 fb39 	bl	800488e <memset>
+ 8004208:	2314      	movs	r3, #20
+ 800420a:	18fb      	adds	r3, r7, r3
+ 800420c:	0018      	movs	r0, r3
+ 800420e:	2314      	movs	r3, #20
+ 8004210:	001a      	movs	r2, r3
+ 8004212:	2100      	movs	r1, #0
+ 8004214:	f000 fb39 	bl	800488a <memset>
   if(huart->Instance==USART1)
- 800421c:	687b      	ldr	r3, [r7, #4]
- 800421e:	681b      	ldr	r3, [r3, #0]
- 8004220:	4a30      	ldr	r2, [pc, #192]	; (80042e4 <HAL_UART_MspInit+0xe0>)
- 8004222:	4293      	cmp	r3, r2
- 8004224:	d15a      	bne.n	80042dc <HAL_UART_MspInit+0xd8>
+ 8004218:	687b      	ldr	r3, [r7, #4]
+ 800421a:	681b      	ldr	r3, [r3, #0]
+ 800421c:	4a30      	ldr	r2, [pc, #192]	; (80042e0 <HAL_UART_MspInit+0xe0>)
+ 800421e:	4293      	cmp	r3, r2
+ 8004220:	d15a      	bne.n	80042d8 <HAL_UART_MspInit+0xd8>
   {
   /* USER CODE BEGIN USART1_MspInit 0 */
 
   /* USER CODE END USART1_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_USART1_CLK_ENABLE();
- 8004226:	4b30      	ldr	r3, [pc, #192]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 8004228:	699a      	ldr	r2, [r3, #24]
- 800422a:	4b2f      	ldr	r3, [pc, #188]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 800422c:	2180      	movs	r1, #128	; 0x80
- 800422e:	01c9      	lsls	r1, r1, #7
- 8004230:	430a      	orrs	r2, r1
- 8004232:	619a      	str	r2, [r3, #24]
- 8004234:	4b2c      	ldr	r3, [pc, #176]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 8004236:	699a      	ldr	r2, [r3, #24]
- 8004238:	2380      	movs	r3, #128	; 0x80
- 800423a:	01db      	lsls	r3, r3, #7
- 800423c:	4013      	ands	r3, r2
- 800423e:	613b      	str	r3, [r7, #16]
- 8004240:	693b      	ldr	r3, [r7, #16]
+ 8004222:	4b30      	ldr	r3, [pc, #192]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 8004224:	699a      	ldr	r2, [r3, #24]
+ 8004226:	4b2f      	ldr	r3, [pc, #188]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 8004228:	2180      	movs	r1, #128	; 0x80
+ 800422a:	01c9      	lsls	r1, r1, #7
+ 800422c:	430a      	orrs	r2, r1
+ 800422e:	619a      	str	r2, [r3, #24]
+ 8004230:	4b2c      	ldr	r3, [pc, #176]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 8004232:	699a      	ldr	r2, [r3, #24]
+ 8004234:	2380      	movs	r3, #128	; 0x80
+ 8004236:	01db      	lsls	r3, r3, #7
+ 8004238:	4013      	ands	r3, r2
+ 800423a:	613b      	str	r3, [r7, #16]
+ 800423c:	693b      	ldr	r3, [r7, #16]
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
- 8004242:	4b29      	ldr	r3, [pc, #164]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 8004244:	695a      	ldr	r2, [r3, #20]
- 8004246:	4b28      	ldr	r3, [pc, #160]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 8004248:	2180      	movs	r1, #128	; 0x80
- 800424a:	0289      	lsls	r1, r1, #10
- 800424c:	430a      	orrs	r2, r1
- 800424e:	615a      	str	r2, [r3, #20]
- 8004250:	4b25      	ldr	r3, [pc, #148]	; (80042e8 <HAL_UART_MspInit+0xe4>)
- 8004252:	695a      	ldr	r2, [r3, #20]
- 8004254:	2380      	movs	r3, #128	; 0x80
- 8004256:	029b      	lsls	r3, r3, #10
- 8004258:	4013      	ands	r3, r2
- 800425a:	60fb      	str	r3, [r7, #12]
- 800425c:	68fb      	ldr	r3, [r7, #12]
+ 800423e:	4b29      	ldr	r3, [pc, #164]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 8004240:	695a      	ldr	r2, [r3, #20]
+ 8004242:	4b28      	ldr	r3, [pc, #160]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 8004244:	2180      	movs	r1, #128	; 0x80
+ 8004246:	0289      	lsls	r1, r1, #10
+ 8004248:	430a      	orrs	r2, r1
+ 800424a:	615a      	str	r2, [r3, #20]
+ 800424c:	4b25      	ldr	r3, [pc, #148]	; (80042e4 <HAL_UART_MspInit+0xe4>)
+ 800424e:	695a      	ldr	r2, [r3, #20]
+ 8004250:	2380      	movs	r3, #128	; 0x80
+ 8004252:	029b      	lsls	r3, r3, #10
+ 8004254:	4013      	ands	r3, r2
+ 8004256:	60fb      	str	r3, [r7, #12]
+ 8004258:	68fb      	ldr	r3, [r7, #12]
     /**USART1 GPIO Configuration
     PA9     ------> USART1_TX
     PA10     ------> USART1_RX
     */
     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
- 800425e:	2114      	movs	r1, #20
- 8004260:	187b      	adds	r3, r7, r1
- 8004262:	22c0      	movs	r2, #192	; 0xc0
- 8004264:	00d2      	lsls	r2, r2, #3
- 8004266:	601a      	str	r2, [r3, #0]
+ 800425a:	2114      	movs	r1, #20
+ 800425c:	187b      	adds	r3, r7, r1
+ 800425e:	22c0      	movs	r2, #192	; 0xc0
+ 8004260:	00d2      	lsls	r2, r2, #3
+ 8004262:	601a      	str	r2, [r3, #0]
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
- 8004268:	187b      	adds	r3, r7, r1
- 800426a:	2202      	movs	r2, #2
- 800426c:	605a      	str	r2, [r3, #4]
+ 8004264:	187b      	adds	r3, r7, r1
+ 8004266:	2202      	movs	r2, #2
+ 8004268:	605a      	str	r2, [r3, #4]
     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 800426e:	187b      	adds	r3, r7, r1
- 8004270:	2200      	movs	r2, #0
- 8004272:	609a      	str	r2, [r3, #8]
+ 800426a:	187b      	adds	r3, r7, r1
+ 800426c:	2200      	movs	r2, #0
+ 800426e:	609a      	str	r2, [r3, #8]
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
- 8004274:	187b      	adds	r3, r7, r1
- 8004276:	2203      	movs	r2, #3
- 8004278:	60da      	str	r2, [r3, #12]
+ 8004270:	187b      	adds	r3, r7, r1
+ 8004272:	2203      	movs	r2, #3
+ 8004274:	60da      	str	r2, [r3, #12]
     GPIO_InitStruct.Alternate = GPIO_AF1_USART1;
- 800427a:	187b      	adds	r3, r7, r1
- 800427c:	2201      	movs	r2, #1
- 800427e:	611a      	str	r2, [r3, #16]
+ 8004276:	187b      	adds	r3, r7, r1
+ 8004278:	2201      	movs	r2, #1
+ 800427a:	611a      	str	r2, [r3, #16]
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 8004280:	187a      	adds	r2, r7, r1
- 8004282:	2390      	movs	r3, #144	; 0x90
- 8004284:	05db      	lsls	r3, r3, #23
- 8004286:	0011      	movs	r1, r2
- 8004288:	0018      	movs	r0, r3
- 800428a:	f7fc fe39 	bl	8000f00 <HAL_GPIO_Init>
+ 800427c:	187a      	adds	r2, r7, r1
+ 800427e:	2390      	movs	r3, #144	; 0x90
+ 8004280:	05db      	lsls	r3, r3, #23
+ 8004282:	0011      	movs	r1, r2
+ 8004284:	0018      	movs	r0, r3
+ 8004286:	f7fc fe3b 	bl	8000f00 <HAL_GPIO_Init>
 
     /* USART1 DMA Init */
     /* USART1_RX Init */
     hdma_usart1_rx.Instance = DMA1_Channel3;
- 800428e:	4b17      	ldr	r3, [pc, #92]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 8004290:	4a17      	ldr	r2, [pc, #92]	; (80042f0 <HAL_UART_MspInit+0xec>)
- 8004292:	601a      	str	r2, [r3, #0]
+ 800428a:	4b17      	ldr	r3, [pc, #92]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 800428c:	4a17      	ldr	r2, [pc, #92]	; (80042ec <HAL_UART_MspInit+0xec>)
+ 800428e:	601a      	str	r2, [r3, #0]
     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
- 8004294:	4b15      	ldr	r3, [pc, #84]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 8004296:	2200      	movs	r2, #0
- 8004298:	605a      	str	r2, [r3, #4]
+ 8004290:	4b15      	ldr	r3, [pc, #84]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 8004292:	2200      	movs	r2, #0
+ 8004294:	605a      	str	r2, [r3, #4]
     hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
- 800429a:	4b14      	ldr	r3, [pc, #80]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 800429c:	2200      	movs	r2, #0
- 800429e:	609a      	str	r2, [r3, #8]
+ 8004296:	4b14      	ldr	r3, [pc, #80]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 8004298:	2200      	movs	r2, #0
+ 800429a:	609a      	str	r2, [r3, #8]
     hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
- 80042a0:	4b12      	ldr	r3, [pc, #72]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042a2:	2280      	movs	r2, #128	; 0x80
- 80042a4:	60da      	str	r2, [r3, #12]
+ 800429c:	4b12      	ldr	r3, [pc, #72]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 800429e:	2280      	movs	r2, #128	; 0x80
+ 80042a0:	60da      	str	r2, [r3, #12]
     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
- 80042a6:	4b11      	ldr	r3, [pc, #68]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042a8:	2200      	movs	r2, #0
- 80042aa:	611a      	str	r2, [r3, #16]
+ 80042a2:	4b11      	ldr	r3, [pc, #68]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042a4:	2200      	movs	r2, #0
+ 80042a6:	611a      	str	r2, [r3, #16]
     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
- 80042ac:	4b0f      	ldr	r3, [pc, #60]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042ae:	2200      	movs	r2, #0
- 80042b0:	615a      	str	r2, [r3, #20]
+ 80042a8:	4b0f      	ldr	r3, [pc, #60]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042aa:	2200      	movs	r2, #0
+ 80042ac:	615a      	str	r2, [r3, #20]
     hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
- 80042b2:	4b0e      	ldr	r3, [pc, #56]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042b4:	2220      	movs	r2, #32
- 80042b6:	619a      	str	r2, [r3, #24]
+ 80042ae:	4b0e      	ldr	r3, [pc, #56]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042b0:	2220      	movs	r2, #32
+ 80042b2:	619a      	str	r2, [r3, #24]
     hdma_usart1_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
- 80042b8:	4b0c      	ldr	r3, [pc, #48]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042ba:	2280      	movs	r2, #128	; 0x80
- 80042bc:	0152      	lsls	r2, r2, #5
- 80042be:	61da      	str	r2, [r3, #28]
+ 80042b4:	4b0c      	ldr	r3, [pc, #48]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042b6:	2280      	movs	r2, #128	; 0x80
+ 80042b8:	0152      	lsls	r2, r2, #5
+ 80042ba:	61da      	str	r2, [r3, #28]
     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
- 80042c0:	4b0a      	ldr	r3, [pc, #40]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042c2:	0018      	movs	r0, r3
- 80042c4:	f7fc f9fa 	bl	80006bc <HAL_DMA_Init>
- 80042c8:	1e03      	subs	r3, r0, #0
- 80042ca:	d001      	beq.n	80042d0 <HAL_UART_MspInit+0xcc>
+ 80042bc:	4b0a      	ldr	r3, [pc, #40]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042be:	0018      	movs	r0, r3
+ 80042c0:	f7fc f9fc 	bl	80006bc <HAL_DMA_Init>
+ 80042c4:	1e03      	subs	r3, r0, #0
+ 80042c6:	d001      	beq.n	80042cc <HAL_UART_MspInit+0xcc>
     {
       Error_Handler();
- 80042cc:	f7ff ff42 	bl	8004154 <Error_Handler>
+ 80042c8:	f7ff ff42 	bl	8004150 <Error_Handler>
     }
 
     __HAL_LINKDMA(huart,hdmarx,hdma_usart1_rx);
- 80042d0:	687b      	ldr	r3, [r7, #4]
- 80042d2:	4a06      	ldr	r2, [pc, #24]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042d4:	671a      	str	r2, [r3, #112]	; 0x70
- 80042d6:	4b05      	ldr	r3, [pc, #20]	; (80042ec <HAL_UART_MspInit+0xe8>)
- 80042d8:	687a      	ldr	r2, [r7, #4]
- 80042da:	625a      	str	r2, [r3, #36]	; 0x24
+ 80042cc:	687b      	ldr	r3, [r7, #4]
+ 80042ce:	4a06      	ldr	r2, [pc, #24]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042d0:	671a      	str	r2, [r3, #112]	; 0x70
+ 80042d2:	4b05      	ldr	r3, [pc, #20]	; (80042e8 <HAL_UART_MspInit+0xe8>)
+ 80042d4:	687a      	ldr	r2, [r7, #4]
+ 80042d6:	625a      	str	r2, [r3, #36]	; 0x24
   /* USER CODE BEGIN USART1_MspInit 1 */
 
   /* USER CODE END USART1_MspInit 1 */
   }
 
 }
- 80042dc:	46c0      	nop			; (mov r8, r8)
- 80042de:	46bd      	mov	sp, r7
- 80042e0:	b00a      	add	sp, #40	; 0x28
- 80042e2:	bd80      	pop	{r7, pc}
- 80042e4:	40013800 	.word	0x40013800
- 80042e8:	40021000 	.word	0x40021000
- 80042ec:	200000e4 	.word	0x200000e4
- 80042f0:	40020030 	.word	0x40020030
+ 80042d8:	46c0      	nop			; (mov r8, r8)
+ 80042da:	46bd      	mov	sp, r7
+ 80042dc:	b00a      	add	sp, #40	; 0x28
+ 80042de:	bd80      	pop	{r7, pc}
+ 80042e0:	40013800 	.word	0x40013800
+ 80042e4:	40021000 	.word	0x40021000
+ 80042e8:	200000e4 	.word	0x200000e4
+ 80042ec:	40020030 	.word	0x40020030
 
-080042f4 <NMI_Handler>:
+080042f0 <NMI_Handler>:
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
   */
 void NMI_Handler(void)
 {
- 80042f4:	b580      	push	{r7, lr}
- 80042f6:	af00      	add	r7, sp, #0
+ 80042f0:	b580      	push	{r7, lr}
+ 80042f2:	af00      	add	r7, sp, #0
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
- 80042f8:	46c0      	nop			; (mov r8, r8)
- 80042fa:	46bd      	mov	sp, r7
- 80042fc:	bd80      	pop	{r7, pc}
+ 80042f4:	46c0      	nop			; (mov r8, r8)
+ 80042f6:	46bd      	mov	sp, r7
+ 80042f8:	bd80      	pop	{r7, pc}
 
-080042fe <HardFault_Handler>:
+080042fa <HardFault_Handler>:
 
 /**
   * @brief This function handles Hard fault interrupt.
   */
 void HardFault_Handler(void)
 {
- 80042fe:	b580      	push	{r7, lr}
- 8004300:	af00      	add	r7, sp, #0
+ 80042fa:	b580      	push	{r7, lr}
+ 80042fc:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN HardFault_IRQn 0 */
 
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
- 8004302:	e7fe      	b.n	8004302 <HardFault_Handler+0x4>
+ 80042fe:	e7fe      	b.n	80042fe <HardFault_Handler+0x4>
 
-08004304 <SVC_Handler>:
+08004300 <SVC_Handler>:
 
 /**
   * @brief This function handles System service call via SWI instruction.
   */
 void SVC_Handler(void)
 {
- 8004304:	b580      	push	{r7, lr}
- 8004306:	af00      	add	r7, sp, #0
+ 8004300:	b580      	push	{r7, lr}
+ 8004302:	af00      	add	r7, sp, #0
 
   /* USER CODE END SVC_IRQn 0 */
   /* USER CODE BEGIN SVC_IRQn 1 */
 
   /* USER CODE END SVC_IRQn 1 */
 }
- 8004308:	46c0      	nop			; (mov r8, r8)
- 800430a:	46bd      	mov	sp, r7
- 800430c:	bd80      	pop	{r7, pc}
+ 8004304:	46c0      	nop			; (mov r8, r8)
+ 8004306:	46bd      	mov	sp, r7
+ 8004308:	bd80      	pop	{r7, pc}
 
-0800430e <PendSV_Handler>:
+0800430a <PendSV_Handler>:
 
 /**
   * @brief This function handles Pendable request for system service.
   */
 void PendSV_Handler(void)
 {
- 800430e:	b580      	push	{r7, lr}
- 8004310:	af00      	add	r7, sp, #0
+ 800430a:	b580      	push	{r7, lr}
+ 800430c:	af00      	add	r7, sp, #0
 
   /* USER CODE END PendSV_IRQn 0 */
   /* USER CODE BEGIN PendSV_IRQn 1 */
 
   /* USER CODE END PendSV_IRQn 1 */
 }
- 8004312:	46c0      	nop			; (mov r8, r8)
- 8004314:	46bd      	mov	sp, r7
- 8004316:	bd80      	pop	{r7, pc}
+ 800430e:	46c0      	nop			; (mov r8, r8)
+ 8004310:	46bd      	mov	sp, r7
+ 8004312:	bd80      	pop	{r7, pc}
 
-08004318 <SysTick_Handler>:
+08004314 <SysTick_Handler>:
 
 /**
   * @brief This function handles System tick timer.
   */
 void SysTick_Handler(void)
 {
- 8004318:	b580      	push	{r7, lr}
- 800431a:	af00      	add	r7, sp, #0
+ 8004314:	b580      	push	{r7, lr}
+ 8004316:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
- 800431c:	f7fc f8b2 	bl	8000484 <HAL_IncTick>
+ 8004318:	f7fc f8b4 	bl	8000484 <HAL_IncTick>
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
 }
- 8004320:	46c0      	nop			; (mov r8, r8)
- 8004322:	46bd      	mov	sp, r7
- 8004324:	bd80      	pop	{r7, pc}
+ 800431c:	46c0      	nop			; (mov r8, r8)
+ 800431e:	46bd      	mov	sp, r7
+ 8004320:	bd80      	pop	{r7, pc}
 
-08004326 <EXTI4_15_IRQHandler>:
+08004322 <EXTI4_15_IRQHandler>:
 
 /**
   * @brief This function handles EXTI line 4 to 15 interrupts.
   */
 void EXTI4_15_IRQHandler(void)
 {
- 8004326:	b580      	push	{r7, lr}
- 8004328:	af00      	add	r7, sp, #0
+ 8004322:	b580      	push	{r7, lr}
+ 8004324:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN EXTI4_15_IRQn 0 */
 
   /* USER CODE END EXTI4_15_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
- 800432a:	2380      	movs	r3, #128	; 0x80
- 800432c:	005b      	lsls	r3, r3, #1
- 800432e:	0018      	movs	r0, r3
- 8004330:	f7fc ffa4 	bl	800127c <HAL_GPIO_EXTI_IRQHandler>
+ 8004326:	2380      	movs	r3, #128	; 0x80
+ 8004328:	005b      	lsls	r3, r3, #1
+ 800432a:	0018      	movs	r0, r3
+ 800432c:	f7fc ffa6 	bl	800127c <HAL_GPIO_EXTI_IRQHandler>
   /* USER CODE BEGIN EXTI4_15_IRQn 1 */
 
   /* USER CODE END EXTI4_15_IRQn 1 */
 }
- 8004334:	46c0      	nop			; (mov r8, r8)
- 8004336:	46bd      	mov	sp, r7
- 8004338:	bd80      	pop	{r7, pc}
+ 8004330:	46c0      	nop			; (mov r8, r8)
+ 8004332:	46bd      	mov	sp, r7
+ 8004334:	bd80      	pop	{r7, pc}
 	...
 
-0800433c <DMA1_Channel2_3_IRQHandler>:
+08004338 <DMA1_Channel2_3_IRQHandler>:
 
 /**
   * @brief This function handles DMA1 channel 2 and 3 interrupts.
   */
 void DMA1_Channel2_3_IRQHandler(void)
 {
- 800433c:	b580      	push	{r7, lr}
- 800433e:	af00      	add	r7, sp, #0
+ 8004338:	b580      	push	{r7, lr}
+ 800433a:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN DMA1_Channel2_3_IRQn 0 */
 
   /* USER CODE END DMA1_Channel2_3_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_usart1_rx);
- 8004340:	4b03      	ldr	r3, [pc, #12]	; (8004350 <DMA1_Channel2_3_IRQHandler+0x14>)
- 8004342:	0018      	movs	r0, r3
- 8004344:	f7fc fae6 	bl	8000914 <HAL_DMA_IRQHandler>
+ 800433c:	4b03      	ldr	r3, [pc, #12]	; (800434c <DMA1_Channel2_3_IRQHandler+0x14>)
+ 800433e:	0018      	movs	r0, r3
+ 8004340:	f7fc fae8 	bl	8000914 <HAL_DMA_IRQHandler>
   /* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
 
   /* USER CODE END DMA1_Channel2_3_IRQn 1 */
 }
- 8004348:	46c0      	nop			; (mov r8, r8)
- 800434a:	46bd      	mov	sp, r7
- 800434c:	bd80      	pop	{r7, pc}
- 800434e:	46c0      	nop			; (mov r8, r8)
- 8004350:	200000e4 	.word	0x200000e4
+ 8004344:	46c0      	nop			; (mov r8, r8)
+ 8004346:	46bd      	mov	sp, r7
+ 8004348:	bd80      	pop	{r7, pc}
+ 800434a:	46c0      	nop			; (mov r8, r8)
+ 800434c:	200000e4 	.word	0x200000e4
 
-08004354 <TIM3_IRQHandler>:
+08004350 <TIM3_IRQHandler>:
 
 /**
   * @brief This function handles TIM3 global interrupt.
   */
 void TIM3_IRQHandler(void)
 {
- 8004354:	b580      	push	{r7, lr}
- 8004356:	af00      	add	r7, sp, #0
+ 8004350:	b580      	push	{r7, lr}
+ 8004352:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN TIM3_IRQn 0 */
 
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
- 8004358:	4b03      	ldr	r3, [pc, #12]	; (8004368 <TIM3_IRQHandler+0x14>)
- 800435a:	0018      	movs	r0, r3
- 800435c:	f7fd fe34 	bl	8001fc8 <HAL_TIM_IRQHandler>
+ 8004354:	4b03      	ldr	r3, [pc, #12]	; (8004364 <TIM3_IRQHandler+0x14>)
+ 8004356:	0018      	movs	r0, r3
+ 8004358:	f7fd fe36 	bl	8001fc8 <HAL_TIM_IRQHandler>
   /* USER CODE BEGIN TIM3_IRQn 1 */
 
   /* USER CODE END TIM3_IRQn 1 */
 }
- 8004360:	46c0      	nop			; (mov r8, r8)
- 8004362:	46bd      	mov	sp, r7
- 8004364:	bd80      	pop	{r7, pc}
- 8004366:	46c0      	nop			; (mov r8, r8)
- 8004368:	2000009c 	.word	0x2000009c
+ 800435c:	46c0      	nop			; (mov r8, r8)
+ 800435e:	46bd      	mov	sp, r7
+ 8004360:	bd80      	pop	{r7, pc}
+ 8004362:	46c0      	nop			; (mov r8, r8)
+ 8004364:	2000009c 	.word	0x2000009c
 
-0800436c <SystemInit>:
+08004368 <SystemInit>:
   *         Initialize the default HSI clock source, vector table location and the PLL configuration is reset.
   * @param  None
   * @retval None
   */
 void SystemInit(void)
 {
- 800436c:	b580      	push	{r7, lr}
- 800436e:	af00      	add	r7, sp, #0
+ 8004368:	b580      	push	{r7, lr}
+ 800436a:	af00      	add	r7, sp, #0
   /* Reset the RCC clock configuration to the default reset state ------------*/
   /* Set HSION bit */
   RCC->CR |= (uint32_t)0x00000001U;
- 8004370:	4b1a      	ldr	r3, [pc, #104]	; (80043dc <SystemInit+0x70>)
- 8004372:	681a      	ldr	r2, [r3, #0]
- 8004374:	4b19      	ldr	r3, [pc, #100]	; (80043dc <SystemInit+0x70>)
- 8004376:	2101      	movs	r1, #1
- 8004378:	430a      	orrs	r2, r1
- 800437a:	601a      	str	r2, [r3, #0]
+ 800436c:	4b1a      	ldr	r3, [pc, #104]	; (80043d8 <SystemInit+0x70>)
+ 800436e:	681a      	ldr	r2, [r3, #0]
+ 8004370:	4b19      	ldr	r3, [pc, #100]	; (80043d8 <SystemInit+0x70>)
+ 8004372:	2101      	movs	r1, #1
+ 8004374:	430a      	orrs	r2, r1
+ 8004376:	601a      	str	r2, [r3, #0]
 #if defined (STM32F051x8) || defined (STM32F058x8)
   /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE and MCOSEL[2:0] bits */
   RCC->CFGR &= (uint32_t)0xF8FFB80CU;
 #else
   /* Reset SW[1:0], HPRE[3:0], PPRE[2:0], ADCPRE, MCOSEL[2:0], MCOPRE[2:0] and PLLNODIV bits */
   RCC->CFGR &= (uint32_t)0x08FFB80CU;
- 800437c:	4b17      	ldr	r3, [pc, #92]	; (80043dc <SystemInit+0x70>)
- 800437e:	685a      	ldr	r2, [r3, #4]
- 8004380:	4b16      	ldr	r3, [pc, #88]	; (80043dc <SystemInit+0x70>)
- 8004382:	4917      	ldr	r1, [pc, #92]	; (80043e0 <SystemInit+0x74>)
- 8004384:	400a      	ands	r2, r1
- 8004386:	605a      	str	r2, [r3, #4]
+ 8004378:	4b17      	ldr	r3, [pc, #92]	; (80043d8 <SystemInit+0x70>)
+ 800437a:	685a      	ldr	r2, [r3, #4]
+ 800437c:	4b16      	ldr	r3, [pc, #88]	; (80043d8 <SystemInit+0x70>)
+ 800437e:	4917      	ldr	r1, [pc, #92]	; (80043dc <SystemInit+0x74>)
+ 8004380:	400a      	ands	r2, r1
+ 8004382:	605a      	str	r2, [r3, #4]
 #endif /* STM32F051x8 or STM32F058x8 */
   
   /* Reset HSEON, CSSON and PLLON bits */
   RCC->CR &= (uint32_t)0xFEF6FFFFU;
- 8004388:	4b14      	ldr	r3, [pc, #80]	; (80043dc <SystemInit+0x70>)
- 800438a:	681a      	ldr	r2, [r3, #0]
- 800438c:	4b13      	ldr	r3, [pc, #76]	; (80043dc <SystemInit+0x70>)
- 800438e:	4915      	ldr	r1, [pc, #84]	; (80043e4 <SystemInit+0x78>)
- 8004390:	400a      	ands	r2, r1
- 8004392:	601a      	str	r2, [r3, #0]
+ 8004384:	4b14      	ldr	r3, [pc, #80]	; (80043d8 <SystemInit+0x70>)
+ 8004386:	681a      	ldr	r2, [r3, #0]
+ 8004388:	4b13      	ldr	r3, [pc, #76]	; (80043d8 <SystemInit+0x70>)
+ 800438a:	4915      	ldr	r1, [pc, #84]	; (80043e0 <SystemInit+0x78>)
+ 800438c:	400a      	ands	r2, r1
+ 800438e:	601a      	str	r2, [r3, #0]
 
   /* Reset HSEBYP bit */
   RCC->CR &= (uint32_t)0xFFFBFFFFU;
- 8004394:	4b11      	ldr	r3, [pc, #68]	; (80043dc <SystemInit+0x70>)
- 8004396:	681a      	ldr	r2, [r3, #0]
- 8004398:	4b10      	ldr	r3, [pc, #64]	; (80043dc <SystemInit+0x70>)
- 800439a:	4913      	ldr	r1, [pc, #76]	; (80043e8 <SystemInit+0x7c>)
- 800439c:	400a      	ands	r2, r1
- 800439e:	601a      	str	r2, [r3, #0]
+ 8004390:	4b11      	ldr	r3, [pc, #68]	; (80043d8 <SystemInit+0x70>)
+ 8004392:	681a      	ldr	r2, [r3, #0]
+ 8004394:	4b10      	ldr	r3, [pc, #64]	; (80043d8 <SystemInit+0x70>)
+ 8004396:	4913      	ldr	r1, [pc, #76]	; (80043e4 <SystemInit+0x7c>)
+ 8004398:	400a      	ands	r2, r1
+ 800439a:	601a      	str	r2, [r3, #0]
 
   /* Reset PLLSRC, PLLXTPRE and PLLMUL[3:0] bits */
   RCC->CFGR &= (uint32_t)0xFFC0FFFFU;
- 80043a0:	4b0e      	ldr	r3, [pc, #56]	; (80043dc <SystemInit+0x70>)
- 80043a2:	685a      	ldr	r2, [r3, #4]
- 80043a4:	4b0d      	ldr	r3, [pc, #52]	; (80043dc <SystemInit+0x70>)
- 80043a6:	4911      	ldr	r1, [pc, #68]	; (80043ec <SystemInit+0x80>)
- 80043a8:	400a      	ands	r2, r1
- 80043aa:	605a      	str	r2, [r3, #4]
+ 800439c:	4b0e      	ldr	r3, [pc, #56]	; (80043d8 <SystemInit+0x70>)
+ 800439e:	685a      	ldr	r2, [r3, #4]
+ 80043a0:	4b0d      	ldr	r3, [pc, #52]	; (80043d8 <SystemInit+0x70>)
+ 80043a2:	4911      	ldr	r1, [pc, #68]	; (80043e8 <SystemInit+0x80>)
+ 80043a4:	400a      	ands	r2, r1
+ 80043a6:	605a      	str	r2, [r3, #4]
 
   /* Reset PREDIV[3:0] bits */
   RCC->CFGR2 &= (uint32_t)0xFFFFFFF0U;
- 80043ac:	4b0b      	ldr	r3, [pc, #44]	; (80043dc <SystemInit+0x70>)
- 80043ae:	6ada      	ldr	r2, [r3, #44]	; 0x2c
- 80043b0:	4b0a      	ldr	r3, [pc, #40]	; (80043dc <SystemInit+0x70>)
- 80043b2:	210f      	movs	r1, #15
- 80043b4:	438a      	bics	r2, r1
- 80043b6:	62da      	str	r2, [r3, #44]	; 0x2c
+ 80043a8:	4b0b      	ldr	r3, [pc, #44]	; (80043d8 <SystemInit+0x70>)
+ 80043aa:	6ada      	ldr	r2, [r3, #44]	; 0x2c
+ 80043ac:	4b0a      	ldr	r3, [pc, #40]	; (80043d8 <SystemInit+0x70>)
+ 80043ae:	210f      	movs	r1, #15
+ 80043b0:	438a      	bics	r2, r1
+ 80043b2:	62da      	str	r2, [r3, #44]	; 0x2c
 #elif defined (STM32F051x8) || defined (STM32F058xx)
   /* Reset USART1SW[1:0], I2C1SW, CECSW and ADCSW bits */
   RCC->CFGR3 &= (uint32_t)0xFFFFFEACU;
 #elif defined (STM32F042x6) || defined (STM32F048xx)
   /* Reset USART1SW[1:0], I2C1SW, CECSW, USBSW and ADCSW bits */
   RCC->CFGR3 &= (uint32_t)0xFFFFFE2CU;
- 80043b8:	4b08      	ldr	r3, [pc, #32]	; (80043dc <SystemInit+0x70>)
- 80043ba:	6b1a      	ldr	r2, [r3, #48]	; 0x30
- 80043bc:	4b07      	ldr	r3, [pc, #28]	; (80043dc <SystemInit+0x70>)
- 80043be:	490c      	ldr	r1, [pc, #48]	; (80043f0 <SystemInit+0x84>)
- 80043c0:	400a      	ands	r2, r1
- 80043c2:	631a      	str	r2, [r3, #48]	; 0x30
+ 80043b4:	4b08      	ldr	r3, [pc, #32]	; (80043d8 <SystemInit+0x70>)
+ 80043b6:	6b1a      	ldr	r2, [r3, #48]	; 0x30
+ 80043b8:	4b07      	ldr	r3, [pc, #28]	; (80043d8 <SystemInit+0x70>)
+ 80043ba:	490c      	ldr	r1, [pc, #48]	; (80043ec <SystemInit+0x84>)
+ 80043bc:	400a      	ands	r2, r1
+ 80043be:	631a      	str	r2, [r3, #48]	; 0x30
 #else
  #warning "No target selected"
 #endif
 
   /* Reset HSI14 bit */
   RCC->CR2 &= (uint32_t)0xFFFFFFFEU;
- 80043c4:	4b05      	ldr	r3, [pc, #20]	; (80043dc <SystemInit+0x70>)
- 80043c6:	6b5a      	ldr	r2, [r3, #52]	; 0x34
- 80043c8:	4b04      	ldr	r3, [pc, #16]	; (80043dc <SystemInit+0x70>)
- 80043ca:	2101      	movs	r1, #1
- 80043cc:	438a      	bics	r2, r1
- 80043ce:	635a      	str	r2, [r3, #52]	; 0x34
+ 80043c0:	4b05      	ldr	r3, [pc, #20]	; (80043d8 <SystemInit+0x70>)
+ 80043c2:	6b5a      	ldr	r2, [r3, #52]	; 0x34
+ 80043c4:	4b04      	ldr	r3, [pc, #16]	; (80043d8 <SystemInit+0x70>)
+ 80043c6:	2101      	movs	r1, #1
+ 80043c8:	438a      	bics	r2, r1
+ 80043ca:	635a      	str	r2, [r3, #52]	; 0x34
 
   /* Disable all interrupts */
   RCC->CIR = 0x00000000U;
- 80043d0:	4b02      	ldr	r3, [pc, #8]	; (80043dc <SystemInit+0x70>)
- 80043d2:	2200      	movs	r2, #0
- 80043d4:	609a      	str	r2, [r3, #8]
+ 80043cc:	4b02      	ldr	r3, [pc, #8]	; (80043d8 <SystemInit+0x70>)
+ 80043ce:	2200      	movs	r2, #0
+ 80043d0:	609a      	str	r2, [r3, #8]
 
 }
- 80043d6:	46c0      	nop			; (mov r8, r8)
- 80043d8:	46bd      	mov	sp, r7
- 80043da:	bd80      	pop	{r7, pc}
- 80043dc:	40021000 	.word	0x40021000
- 80043e0:	08ffb80c 	.word	0x08ffb80c
- 80043e4:	fef6ffff 	.word	0xfef6ffff
- 80043e8:	fffbffff 	.word	0xfffbffff
- 80043ec:	ffc0ffff 	.word	0xffc0ffff
- 80043f0:	fffffe2c 	.word	0xfffffe2c
+ 80043d2:	46c0      	nop			; (mov r8, r8)
+ 80043d4:	46bd      	mov	sp, r7
+ 80043d6:	bd80      	pop	{r7, pc}
+ 80043d8:	40021000 	.word	0x40021000
+ 80043dc:	08ffb80c 	.word	0x08ffb80c
+ 80043e0:	fef6ffff 	.word	0xfef6ffff
+ 80043e4:	fffbffff 	.word	0xfffbffff
+ 80043e8:	ffc0ffff 	.word	0xffc0ffff
+ 80043ec:	fffffe2c 	.word	0xfffffe2c
 
-080043f4 <uv_led_init>:
+080043f0 <uv_led_init>:
  *
  * @param Void
  * @ return Void
  */
 void uv_led_init( void )
 {
- 80043f4:	b580      	push	{r7, lr}
- 80043f6:	b084      	sub	sp, #16
- 80043f8:	af00      	add	r7, sp, #0
+ 80043f0:	b580      	push	{r7, lr}
+ 80043f2:	b084      	sub	sp, #16
+ 80043f4:	af00      	add	r7, sp, #0
 	// bind the ports and pins to the arrays
 	uv_led_ports[0] = UV_LED_0_GPIO_Port;
- 80043fa:	4b43      	ldr	r3, [pc, #268]	; (8004508 <uv_led_init+0x114>)
- 80043fc:	2290      	movs	r2, #144	; 0x90
- 80043fe:	05d2      	lsls	r2, r2, #23
- 8004400:	601a      	str	r2, [r3, #0]
+ 80043f6:	4b43      	ldr	r3, [pc, #268]	; (8004504 <uv_led_init+0x114>)
+ 80043f8:	2290      	movs	r2, #144	; 0x90
+ 80043fa:	05d2      	lsls	r2, r2, #23
+ 80043fc:	601a      	str	r2, [r3, #0]
 	uv_led_ports[1] = UV_LED_1_GPIO_Port;
- 8004402:	4b41      	ldr	r3, [pc, #260]	; (8004508 <uv_led_init+0x114>)
- 8004404:	2290      	movs	r2, #144	; 0x90
- 8004406:	05d2      	lsls	r2, r2, #23
- 8004408:	605a      	str	r2, [r3, #4]
+ 80043fe:	4b41      	ldr	r3, [pc, #260]	; (8004504 <uv_led_init+0x114>)
+ 8004400:	2290      	movs	r2, #144	; 0x90
+ 8004402:	05d2      	lsls	r2, r2, #23
+ 8004404:	605a      	str	r2, [r3, #4]
 	uv_led_ports[2] = UV_LED_2_GPIO_Port;
- 800440a:	4b3f      	ldr	r3, [pc, #252]	; (8004508 <uv_led_init+0x114>)
- 800440c:	2290      	movs	r2, #144	; 0x90
- 800440e:	05d2      	lsls	r2, r2, #23
- 8004410:	609a      	str	r2, [r3, #8]
+ 8004406:	4b3f      	ldr	r3, [pc, #252]	; (8004504 <uv_led_init+0x114>)
+ 8004408:	2290      	movs	r2, #144	; 0x90
+ 800440a:	05d2      	lsls	r2, r2, #23
+ 800440c:	609a      	str	r2, [r3, #8]
 	uv_led_ports[3] = UV_LED_3_GPIO_Port;
- 8004412:	4b3d      	ldr	r3, [pc, #244]	; (8004508 <uv_led_init+0x114>)
- 8004414:	2290      	movs	r2, #144	; 0x90
- 8004416:	05d2      	lsls	r2, r2, #23
- 8004418:	60da      	str	r2, [r3, #12]
+ 800440e:	4b3d      	ldr	r3, [pc, #244]	; (8004504 <uv_led_init+0x114>)
+ 8004410:	2290      	movs	r2, #144	; 0x90
+ 8004412:	05d2      	lsls	r2, r2, #23
+ 8004414:	60da      	str	r2, [r3, #12]
 	uv_led_ports[4] = UV_LED_4_GPIO_Port;
- 800441a:	4b3b      	ldr	r3, [pc, #236]	; (8004508 <uv_led_init+0x114>)
- 800441c:	2290      	movs	r2, #144	; 0x90
- 800441e:	05d2      	lsls	r2, r2, #23
- 8004420:	611a      	str	r2, [r3, #16]
+ 8004416:	4b3b      	ldr	r3, [pc, #236]	; (8004504 <uv_led_init+0x114>)
+ 8004418:	2290      	movs	r2, #144	; 0x90
+ 800441a:	05d2      	lsls	r2, r2, #23
+ 800441c:	611a      	str	r2, [r3, #16]
 	uv_led_ports[5] = UV_LED_5_GPIO_Port;
- 8004422:	4b39      	ldr	r3, [pc, #228]	; (8004508 <uv_led_init+0x114>)
- 8004424:	2290      	movs	r2, #144	; 0x90
- 8004426:	05d2      	lsls	r2, r2, #23
- 8004428:	615a      	str	r2, [r3, #20]
+ 800441e:	4b39      	ldr	r3, [pc, #228]	; (8004504 <uv_led_init+0x114>)
+ 8004420:	2290      	movs	r2, #144	; 0x90
+ 8004422:	05d2      	lsls	r2, r2, #23
+ 8004424:	615a      	str	r2, [r3, #20]
 	uv_led_ports[6] = UV_LED_6_GPIO_Port;
- 800442a:	4b37      	ldr	r3, [pc, #220]	; (8004508 <uv_led_init+0x114>)
- 800442c:	2290      	movs	r2, #144	; 0x90
- 800442e:	05d2      	lsls	r2, r2, #23
- 8004430:	619a      	str	r2, [r3, #24]
+ 8004426:	4b37      	ldr	r3, [pc, #220]	; (8004504 <uv_led_init+0x114>)
+ 8004428:	2290      	movs	r2, #144	; 0x90
+ 800442a:	05d2      	lsls	r2, r2, #23
+ 800442c:	619a      	str	r2, [r3, #24]
 	uv_led_ports[7] = UV_LED_7_GPIO_Port;
- 8004432:	4b35      	ldr	r3, [pc, #212]	; (8004508 <uv_led_init+0x114>)
- 8004434:	2290      	movs	r2, #144	; 0x90
- 8004436:	05d2      	lsls	r2, r2, #23
- 8004438:	61da      	str	r2, [r3, #28]
+ 800442e:	4b35      	ldr	r3, [pc, #212]	; (8004504 <uv_led_init+0x114>)
+ 8004430:	2290      	movs	r2, #144	; 0x90
+ 8004432:	05d2      	lsls	r2, r2, #23
+ 8004434:	61da      	str	r2, [r3, #28]
 
 	uv_led_pins[0] = UV_LED_0_Pin;
- 800443a:	4b34      	ldr	r3, [pc, #208]	; (800450c <uv_led_init+0x118>)
- 800443c:	2201      	movs	r2, #1
- 800443e:	801a      	strh	r2, [r3, #0]
+ 8004436:	4b34      	ldr	r3, [pc, #208]	; (8004508 <uv_led_init+0x118>)
+ 8004438:	2201      	movs	r2, #1
+ 800443a:	801a      	strh	r2, [r3, #0]
 	uv_led_pins[1] = UV_LED_1_Pin;
- 8004440:	4b32      	ldr	r3, [pc, #200]	; (800450c <uv_led_init+0x118>)
- 8004442:	2202      	movs	r2, #2
- 8004444:	805a      	strh	r2, [r3, #2]
+ 800443c:	4b32      	ldr	r3, [pc, #200]	; (8004508 <uv_led_init+0x118>)
+ 800443e:	2202      	movs	r2, #2
+ 8004440:	805a      	strh	r2, [r3, #2]
 	uv_led_pins[2] = UV_LED_2_Pin;
- 8004446:	4b31      	ldr	r3, [pc, #196]	; (800450c <uv_led_init+0x118>)
- 8004448:	2204      	movs	r2, #4
- 800444a:	809a      	strh	r2, [r3, #4]
+ 8004442:	4b31      	ldr	r3, [pc, #196]	; (8004508 <uv_led_init+0x118>)
+ 8004444:	2204      	movs	r2, #4
+ 8004446:	809a      	strh	r2, [r3, #4]
 	uv_led_pins[3] = UV_LED_3_Pin;
- 800444c:	4b2f      	ldr	r3, [pc, #188]	; (800450c <uv_led_init+0x118>)
- 800444e:	2208      	movs	r2, #8
- 8004450:	80da      	strh	r2, [r3, #6]
+ 8004448:	4b2f      	ldr	r3, [pc, #188]	; (8004508 <uv_led_init+0x118>)
+ 800444a:	2208      	movs	r2, #8
+ 800444c:	80da      	strh	r2, [r3, #6]
 	uv_led_pins[4] = UV_LED_4_Pin;
- 8004452:	4b2e      	ldr	r3, [pc, #184]	; (800450c <uv_led_init+0x118>)
- 8004454:	2210      	movs	r2, #16
- 8004456:	811a      	strh	r2, [r3, #8]
+ 800444e:	4b2e      	ldr	r3, [pc, #184]	; (8004508 <uv_led_init+0x118>)
+ 8004450:	2210      	movs	r2, #16
+ 8004452:	811a      	strh	r2, [r3, #8]
 	uv_led_pins[5] = UV_LED_5_Pin;
- 8004458:	4b2c      	ldr	r3, [pc, #176]	; (800450c <uv_led_init+0x118>)
- 800445a:	2220      	movs	r2, #32
- 800445c:	815a      	strh	r2, [r3, #10]
+ 8004454:	4b2c      	ldr	r3, [pc, #176]	; (8004508 <uv_led_init+0x118>)
+ 8004456:	2220      	movs	r2, #32
+ 8004458:	815a      	strh	r2, [r3, #10]
 	uv_led_pins[6] = UV_LED_6_Pin;
- 800445e:	4b2b      	ldr	r3, [pc, #172]	; (800450c <uv_led_init+0x118>)
- 8004460:	2240      	movs	r2, #64	; 0x40
- 8004462:	819a      	strh	r2, [r3, #12]
+ 800445a:	4b2b      	ldr	r3, [pc, #172]	; (8004508 <uv_led_init+0x118>)
+ 800445c:	2240      	movs	r2, #64	; 0x40
+ 800445e:	819a      	strh	r2, [r3, #12]
 	uv_led_pins[7] = UV_LED_7_Pin;
- 8004464:	4b29      	ldr	r3, [pc, #164]	; (800450c <uv_led_init+0x118>)
- 8004466:	2280      	movs	r2, #128	; 0x80
- 8004468:	81da      	strh	r2, [r3, #14]
+ 8004460:	4b29      	ldr	r3, [pc, #164]	; (8004508 <uv_led_init+0x118>)
+ 8004462:	2280      	movs	r2, #128	; 0x80
+ 8004464:	81da      	strh	r2, [r3, #14]
 
 	// UVLEDs global enable flag is disabled by default
 	enable_global = 0;
- 800446a:	4b29      	ldr	r3, [pc, #164]	; (8004510 <uv_led_init+0x11c>)
- 800446c:	2200      	movs	r2, #0
- 800446e:	701a      	strb	r2, [r3, #0]
+ 8004466:	4b29      	ldr	r3, [pc, #164]	; (800450c <uv_led_init+0x11c>)
+ 8004468:	2200      	movs	r2, #0
+ 800446a:	701a      	strb	r2, [r3, #0]
 
 	// Read setup from FLASH
 	// Load uv_led_enabled values from FLASH
 	uint32_t flash_address_enabled = FLASH_UVLEDS_ENABLED_ADDR;
- 8004470:	4b28      	ldr	r3, [pc, #160]	; (8004514 <uv_led_init+0x120>)
- 8004472:	60fb      	str	r3, [r7, #12]
+ 800446c:	4b28      	ldr	r3, [pc, #160]	; (8004510 <uv_led_init+0x120>)
+ 800446e:	60fb      	str	r3, [r7, #12]
 
 	for(uint8_t i = 0; i < 8; i++)
- 8004474:	230b      	movs	r3, #11
- 8004476:	18fb      	adds	r3, r7, r3
- 8004478:	2200      	movs	r2, #0
- 800447a:	701a      	strb	r2, [r3, #0]
- 800447c:	e00f      	b.n	800449e <uv_led_init+0xaa>
+ 8004470:	230b      	movs	r3, #11
+ 8004472:	18fb      	adds	r3, r7, r3
+ 8004474:	2200      	movs	r2, #0
+ 8004476:	701a      	strb	r2, [r3, #0]
+ 8004478:	e00f      	b.n	800449a <uv_led_init+0xaa>
 	{
 		uv_led_enabled[i] = *(uint16_t *)flash_address_enabled;
- 800447e:	68fb      	ldr	r3, [r7, #12]
- 8004480:	881a      	ldrh	r2, [r3, #0]
- 8004482:	200b      	movs	r0, #11
- 8004484:	183b      	adds	r3, r7, r0
- 8004486:	781b      	ldrb	r3, [r3, #0]
- 8004488:	b2d1      	uxtb	r1, r2
- 800448a:	4a23      	ldr	r2, [pc, #140]	; (8004518 <uv_led_init+0x124>)
- 800448c:	54d1      	strb	r1, [r2, r3]
+ 800447a:	68fb      	ldr	r3, [r7, #12]
+ 800447c:	881a      	ldrh	r2, [r3, #0]
+ 800447e:	200b      	movs	r0, #11
+ 8004480:	183b      	adds	r3, r7, r0
+ 8004482:	781b      	ldrb	r3, [r3, #0]
+ 8004484:	b2d1      	uxtb	r1, r2
+ 8004486:	4a23      	ldr	r2, [pc, #140]	; (8004514 <uv_led_init+0x124>)
+ 8004488:	54d1      	strb	r1, [r2, r3]
 		flash_address_enabled += 2;
- 800448e:	68fb      	ldr	r3, [r7, #12]
- 8004490:	3302      	adds	r3, #2
- 8004492:	60fb      	str	r3, [r7, #12]
+ 800448a:	68fb      	ldr	r3, [r7, #12]
+ 800448c:	3302      	adds	r3, #2
+ 800448e:	60fb      	str	r3, [r7, #12]
 	for(uint8_t i = 0; i < 8; i++)
+ 8004490:	183b      	adds	r3, r7, r0
+ 8004492:	781a      	ldrb	r2, [r3, #0]
  8004494:	183b      	adds	r3, r7, r0
- 8004496:	781a      	ldrb	r2, [r3, #0]
- 8004498:	183b      	adds	r3, r7, r0
- 800449a:	3201      	adds	r2, #1
- 800449c:	701a      	strb	r2, [r3, #0]
- 800449e:	230b      	movs	r3, #11
- 80044a0:	18fb      	adds	r3, r7, r3
- 80044a2:	781b      	ldrb	r3, [r3, #0]
- 80044a4:	2b07      	cmp	r3, #7
- 80044a6:	d9ea      	bls.n	800447e <uv_led_init+0x8a>
+ 8004496:	3201      	adds	r2, #1
+ 8004498:	701a      	strb	r2, [r3, #0]
+ 800449a:	230b      	movs	r3, #11
+ 800449c:	18fb      	adds	r3, r7, r3
+ 800449e:	781b      	ldrb	r3, [r3, #0]
+ 80044a0:	2b07      	cmp	r3, #7
+ 80044a2:	d9ea      	bls.n	800447a <uv_led_init+0x8a>
 	}
 
 	// Load uv_led_periods_ms values from FLASH
 	uint32_t flash_address_periods = FLASH_UVLEDS_PERIODS_ADDR;
- 80044a8:	4b1c      	ldr	r3, [pc, #112]	; (800451c <uv_led_init+0x128>)
- 80044aa:	607b      	str	r3, [r7, #4]
+ 80044a4:	4b1c      	ldr	r3, [pc, #112]	; (8004518 <uv_led_init+0x128>)
+ 80044a6:	607b      	str	r3, [r7, #4]
 
 	for(uint8_t i = 0; i < 8; i++)
- 80044ac:	1cfb      	adds	r3, r7, #3
- 80044ae:	2200      	movs	r2, #0
- 80044b0:	701a      	strb	r2, [r3, #0]
- 80044b2:	e00e      	b.n	80044d2 <uv_led_init+0xde>
+ 80044a8:	1cfb      	adds	r3, r7, #3
+ 80044aa:	2200      	movs	r2, #0
+ 80044ac:	701a      	strb	r2, [r3, #0]
+ 80044ae:	e00e      	b.n	80044ce <uv_led_init+0xde>
 	{
 		uv_led_periods_ms[i] = *(uint16_t *)flash_address_periods;
- 80044b4:	687b      	ldr	r3, [r7, #4]
- 80044b6:	8819      	ldrh	r1, [r3, #0]
- 80044b8:	1cfb      	adds	r3, r7, #3
- 80044ba:	781a      	ldrb	r2, [r3, #0]
- 80044bc:	4b18      	ldr	r3, [pc, #96]	; (8004520 <uv_led_init+0x12c>)
- 80044be:	0092      	lsls	r2, r2, #2
- 80044c0:	50d1      	str	r1, [r2, r3]
+ 80044b0:	687b      	ldr	r3, [r7, #4]
+ 80044b2:	8819      	ldrh	r1, [r3, #0]
+ 80044b4:	1cfb      	adds	r3, r7, #3
+ 80044b6:	781a      	ldrb	r2, [r3, #0]
+ 80044b8:	4b18      	ldr	r3, [pc, #96]	; (800451c <uv_led_init+0x12c>)
+ 80044ba:	0092      	lsls	r2, r2, #2
+ 80044bc:	50d1      	str	r1, [r2, r3]
 		flash_address_periods += 4;
- 80044c2:	687b      	ldr	r3, [r7, #4]
- 80044c4:	3304      	adds	r3, #4
- 80044c6:	607b      	str	r3, [r7, #4]
+ 80044be:	687b      	ldr	r3, [r7, #4]
+ 80044c0:	3304      	adds	r3, #4
+ 80044c2:	607b      	str	r3, [r7, #4]
 	for(uint8_t i = 0; i < 8; i++)
+ 80044c4:	1cfb      	adds	r3, r7, #3
+ 80044c6:	781a      	ldrb	r2, [r3, #0]
  80044c8:	1cfb      	adds	r3, r7, #3
- 80044ca:	781a      	ldrb	r2, [r3, #0]
- 80044cc:	1cfb      	adds	r3, r7, #3
- 80044ce:	3201      	adds	r2, #1
- 80044d0:	701a      	strb	r2, [r3, #0]
- 80044d2:	1cfb      	adds	r3, r7, #3
- 80044d4:	781b      	ldrb	r3, [r3, #0]
- 80044d6:	2b07      	cmp	r3, #7
- 80044d8:	d9ec      	bls.n	80044b4 <uv_led_init+0xc0>
+ 80044ca:	3201      	adds	r2, #1
+ 80044cc:	701a      	strb	r2, [r3, #0]
+ 80044ce:	1cfb      	adds	r3, r7, #3
+ 80044d0:	781b      	ldrb	r3, [r3, #0]
+ 80044d2:	2b07      	cmp	r3, #7
+ 80044d4:	d9ec      	bls.n	80044b0 <uv_led_init+0xc0>
 	}
 
 	// Reset the counters
 	for (uint8_t i = 0; i < 8; i++)
- 80044da:	1cbb      	adds	r3, r7, #2
- 80044dc:	2200      	movs	r2, #0
- 80044de:	701a      	strb	r2, [r3, #0]
- 80044e0:	e00a      	b.n	80044f8 <uv_led_init+0x104>
+ 80044d6:	1cbb      	adds	r3, r7, #2
+ 80044d8:	2200      	movs	r2, #0
+ 80044da:	701a      	strb	r2, [r3, #0]
+ 80044dc:	e00a      	b.n	80044f4 <uv_led_init+0x104>
 	{
 		uv_led_counter[i] = 0;
- 80044e2:	1cbb      	adds	r3, r7, #2
- 80044e4:	781a      	ldrb	r2, [r3, #0]
- 80044e6:	4b0f      	ldr	r3, [pc, #60]	; (8004524 <uv_led_init+0x130>)
- 80044e8:	0052      	lsls	r2, r2, #1
- 80044ea:	2100      	movs	r1, #0
- 80044ec:	52d1      	strh	r1, [r2, r3]
+ 80044de:	1cbb      	adds	r3, r7, #2
+ 80044e0:	781a      	ldrb	r2, [r3, #0]
+ 80044e2:	4b0f      	ldr	r3, [pc, #60]	; (8004520 <uv_led_init+0x130>)
+ 80044e4:	0092      	lsls	r2, r2, #2
+ 80044e6:	2100      	movs	r1, #0
+ 80044e8:	50d1      	str	r1, [r2, r3]
 	for (uint8_t i = 0; i < 8; i++)
+ 80044ea:	1cbb      	adds	r3, r7, #2
+ 80044ec:	781a      	ldrb	r2, [r3, #0]
  80044ee:	1cbb      	adds	r3, r7, #2
- 80044f0:	781a      	ldrb	r2, [r3, #0]
- 80044f2:	1cbb      	adds	r3, r7, #2
- 80044f4:	3201      	adds	r2, #1
- 80044f6:	701a      	strb	r2, [r3, #0]
- 80044f8:	1cbb      	adds	r3, r7, #2
- 80044fa:	781b      	ldrb	r3, [r3, #0]
- 80044fc:	2b07      	cmp	r3, #7
- 80044fe:	d9f0      	bls.n	80044e2 <uv_led_init+0xee>
+ 80044f0:	3201      	adds	r2, #1
+ 80044f2:	701a      	strb	r2, [r3, #0]
+ 80044f4:	1cbb      	adds	r3, r7, #2
+ 80044f6:	781b      	ldrb	r3, [r3, #0]
+ 80044f8:	2b07      	cmp	r3, #7
+ 80044fa:	d9f0      	bls.n	80044de <uv_led_init+0xee>
 	}
 }
- 8004500:	46c0      	nop			; (mov r8, r8)
- 8004502:	46bd      	mov	sp, r7
- 8004504:	b004      	add	sp, #16
- 8004506:	bd80      	pop	{r7, pc}
- 8004508:	2000005c 	.word	0x2000005c
- 800450c:	20000128 	.word	0x20000128
- 8004510:	20000058 	.word	0x20000058
- 8004514:	08007000 	.word	0x08007000
- 8004518:	200001bc 	.word	0x200001bc
- 800451c:	08007400 	.word	0x08007400
- 8004520:	2000007c 	.word	0x2000007c
- 8004524:	200001c4 	.word	0x200001c4
+ 80044fc:	46c0      	nop			; (mov r8, r8)
+ 80044fe:	46bd      	mov	sp, r7
+ 8004500:	b004      	add	sp, #16
+ 8004502:	bd80      	pop	{r7, pc}
+ 8004504:	2000005c 	.word	0x2000005c
+ 8004508:	20000128 	.word	0x20000128
+ 800450c:	20000058 	.word	0x20000058
+ 8004510:	08007000 	.word	0x08007000
+ 8004514:	200001bc 	.word	0x200001bc
+ 8004518:	08007400 	.word	0x08007400
+ 800451c:	2000007c 	.word	0x2000007c
+ 8004520:	200001c4 	.word	0x200001c4
 
-08004528 <uv_led_set_frequency>:
+08004524 <uv_led_set_frequency>:
  * @param led_id ID of the LED (0-7)
  * @param frequency frequency of the UV LED
  * @return 1 if success, otherwise 0
  */
 uint8_t uv_led_set_frequency( uint8_t led_id, uint8_t frequency)
 {
- 8004528:	b5b0      	push	{r4, r5, r7, lr}
- 800452a:	b08a      	sub	sp, #40	; 0x28
- 800452c:	af00      	add	r7, sp, #0
- 800452e:	0002      	movs	r2, r0
- 8004530:	1dfb      	adds	r3, r7, #7
- 8004532:	701a      	strb	r2, [r3, #0]
- 8004534:	1dbb      	adds	r3, r7, #6
- 8004536:	1c0a      	adds	r2, r1, #0
- 8004538:	701a      	strb	r2, [r3, #0]
+ 8004524:	b5b0      	push	{r4, r5, r7, lr}
+ 8004526:	b08a      	sub	sp, #40	; 0x28
+ 8004528:	af00      	add	r7, sp, #0
+ 800452a:	0002      	movs	r2, r0
+ 800452c:	1dfb      	adds	r3, r7, #7
+ 800452e:	701a      	strb	r2, [r3, #0]
+ 8004530:	1dbb      	adds	r3, r7, #6
+ 8004532:	1c0a      	adds	r2, r1, #0
+ 8004534:	701a      	strb	r2, [r3, #0]
 	// Check if the UVLED ID is valid
 	if ((0 <= led_id) && (led_id < 8))
- 800453a:	1dfb      	adds	r3, r7, #7
- 800453c:	781b      	ldrb	r3, [r3, #0]
- 800453e:	2b07      	cmp	r3, #7
- 8004540:	d861      	bhi.n	8004606 <uv_led_set_frequency+0xde>
+ 8004536:	1dfb      	adds	r3, r7, #7
+ 8004538:	781b      	ldrb	r3, [r3, #0]
+ 800453a:	2b07      	cmp	r3, #7
+ 800453c:	d861      	bhi.n	8004602 <uv_led_set_frequency+0xde>
 	{
 		// Check if the frequency to be set is from valid range
 		if ((UV_LED_FREQ_MIN <= frequency) && (frequency <= UV_LED_FREQ_MAX)) {
- 8004542:	1dbb      	adds	r3, r7, #6
- 8004544:	781b      	ldrb	r3, [r3, #0]
- 8004546:	2b00      	cmp	r3, #0
- 8004548:	d05b      	beq.n	8004602 <uv_led_set_frequency+0xda>
- 800454a:	1dbb      	adds	r3, r7, #6
- 800454c:	781b      	ldrb	r3, [r3, #0]
- 800454e:	2b3c      	cmp	r3, #60	; 0x3c
- 8004550:	d857      	bhi.n	8004602 <uv_led_set_frequency+0xda>
+ 800453e:	1dbb      	adds	r3, r7, #6
+ 8004540:	781b      	ldrb	r3, [r3, #0]
+ 8004542:	2b00      	cmp	r3, #0
+ 8004544:	d05b      	beq.n	80045fe <uv_led_set_frequency+0xda>
+ 8004546:	1dbb      	adds	r3, r7, #6
+ 8004548:	781b      	ldrb	r3, [r3, #0]
+ 800454a:	2b3c      	cmp	r3, #60	; 0x3c
+ 800454c:	d857      	bhi.n	80045fe <uv_led_set_frequency+0xda>
 			// calculate the number of ticks needed to toggle the LED
 			uint32_t period = (TIMER_FREQ/frequency)/2;
- 8004552:	1dbb      	adds	r3, r7, #6
- 8004554:	781b      	ldrb	r3, [r3, #0]
- 8004556:	0019      	movs	r1, r3
- 8004558:	482d      	ldr	r0, [pc, #180]	; (8004610 <uv_led_set_frequency+0xe8>)
- 800455a:	f7fb fe5f 	bl	800021c <__divsi3>
- 800455e:	0003      	movs	r3, r0
- 8004560:	61fb      	str	r3, [r7, #28]
+ 800454e:	1dbb      	adds	r3, r7, #6
+ 8004550:	781b      	ldrb	r3, [r3, #0]
+ 8004552:	0019      	movs	r1, r3
+ 8004554:	482d      	ldr	r0, [pc, #180]	; (800460c <uv_led_set_frequency+0xe8>)
+ 8004556:	f7fb fe61 	bl	800021c <__divsi3>
+ 800455a:	0003      	movs	r3, r0
+ 800455c:	61fb      	str	r3, [r7, #28]
 			uv_led_periods_ms[(uint8_t)led_id] = (uint32_t)period;
- 8004562:	1dfb      	adds	r3, r7, #7
- 8004564:	781a      	ldrb	r2, [r3, #0]
- 8004566:	4b2b      	ldr	r3, [pc, #172]	; (8004614 <uv_led_set_frequency+0xec>)
- 8004568:	0092      	lsls	r2, r2, #2
- 800456a:	69f9      	ldr	r1, [r7, #28]
- 800456c:	50d1      	str	r1, [r2, r3]
+ 800455e:	1dfb      	adds	r3, r7, #7
+ 8004560:	781a      	ldrb	r2, [r3, #0]
+ 8004562:	4b2b      	ldr	r3, [pc, #172]	; (8004610 <uv_led_set_frequency+0xec>)
+ 8004564:	0092      	lsls	r2, r2, #2
+ 8004566:	69f9      	ldr	r1, [r7, #28]
+ 8004568:	50d1      	str	r1, [r2, r3]
 			uv_led_counter [(uint8_t)led_id] = 0;
- 800456e:	1dfb      	adds	r3, r7, #7
- 8004570:	781a      	ldrb	r2, [r3, #0]
- 8004572:	4b29      	ldr	r3, [pc, #164]	; (8004618 <uv_led_set_frequency+0xf0>)
- 8004574:	0052      	lsls	r2, r2, #1
- 8004576:	2100      	movs	r1, #0
- 8004578:	52d1      	strh	r1, [r2, r3]
+ 800456a:	1dfb      	adds	r3, r7, #7
+ 800456c:	781a      	ldrb	r2, [r3, #0]
+ 800456e:	4b29      	ldr	r3, [pc, #164]	; (8004614 <uv_led_set_frequency+0xf0>)
+ 8004570:	0092      	lsls	r2, r2, #2
+ 8004572:	2100      	movs	r1, #0
+ 8004574:	50d1      	str	r1, [r2, r3]
 
 			// Write the setup to the FLASH
 			// Erase the FLASH Page with the periods
 			HAL_FLASH_Unlock();
- 800457a:	f7fc fb55 	bl	8000c28 <HAL_FLASH_Unlock>
+ 8004576:	f7fc fb57 	bl	8000c28 <HAL_FLASH_Unlock>
 			FLASH_EraseInitTypeDef EraseInitStruct;
 			uint32_t PAGEError = 0;
- 800457e:	2300      	movs	r3, #0
- 8004580:	60fb      	str	r3, [r7, #12]
+ 800457a:	2300      	movs	r3, #0
+ 800457c:	60fb      	str	r3, [r7, #12]
 			EraseInitStruct.TypeErase   = FLASH_TYPEERASE_PAGES;
- 8004582:	2110      	movs	r1, #16
- 8004584:	187b      	adds	r3, r7, r1
- 8004586:	2200      	movs	r2, #0
- 8004588:	601a      	str	r2, [r3, #0]
+ 800457e:	2110      	movs	r1, #16
+ 8004580:	187b      	adds	r3, r7, r1
+ 8004582:	2200      	movs	r2, #0
+ 8004584:	601a      	str	r2, [r3, #0]
 			EraseInitStruct.PageAddress = FLASH_UVLEDS_PERIODS_ADDR;
- 800458a:	187b      	adds	r3, r7, r1
- 800458c:	4a23      	ldr	r2, [pc, #140]	; (800461c <uv_led_set_frequency+0xf4>)
- 800458e:	605a      	str	r2, [r3, #4]
+ 8004586:	187b      	adds	r3, r7, r1
+ 8004588:	4a23      	ldr	r2, [pc, #140]	; (8004618 <uv_led_set_frequency+0xf4>)
+ 800458a:	605a      	str	r2, [r3, #4]
 			EraseInitStruct.NbPages     = 1;
- 8004590:	187b      	adds	r3, r7, r1
- 8004592:	2201      	movs	r2, #1
- 8004594:	609a      	str	r2, [r3, #8]
+ 800458c:	187b      	adds	r3, r7, r1
+ 800458e:	2201      	movs	r2, #1
+ 8004590:	609a      	str	r2, [r3, #8]
 			HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError);
- 8004596:	230c      	movs	r3, #12
- 8004598:	18fa      	adds	r2, r7, r3
- 800459a:	187b      	adds	r3, r7, r1
- 800459c:	0011      	movs	r1, r2
- 800459e:	0018      	movs	r0, r3
- 80045a0:	f7fc fc02 	bl	8000da8 <HAL_FLASHEx_Erase>
+ 8004592:	230c      	movs	r3, #12
+ 8004594:	18fa      	adds	r2, r7, r3
+ 8004596:	187b      	adds	r3, r7, r1
+ 8004598:	0011      	movs	r1, r2
+ 800459a:	0018      	movs	r0, r3
+ 800459c:	f7fc fc04 	bl	8000da8 <HAL_FLASHEx_Erase>
 			CLEAR_BIT (FLASH->CR, (FLASH_CR_PER));
- 80045a4:	4b1e      	ldr	r3, [pc, #120]	; (8004620 <uv_led_set_frequency+0xf8>)
- 80045a6:	691a      	ldr	r2, [r3, #16]
- 80045a8:	4b1d      	ldr	r3, [pc, #116]	; (8004620 <uv_led_set_frequency+0xf8>)
- 80045aa:	2102      	movs	r1, #2
- 80045ac:	438a      	bics	r2, r1
- 80045ae:	611a      	str	r2, [r3, #16]
+ 80045a0:	4b1e      	ldr	r3, [pc, #120]	; (800461c <uv_led_set_frequency+0xf8>)
+ 80045a2:	691a      	ldr	r2, [r3, #16]
+ 80045a4:	4b1d      	ldr	r3, [pc, #116]	; (800461c <uv_led_set_frequency+0xf8>)
+ 80045a6:	2102      	movs	r1, #2
+ 80045a8:	438a      	bics	r2, r1
+ 80045aa:	611a      	str	r2, [r3, #16]
 			HAL_FLASH_Lock();
- 80045b0:	f7fc fb60 	bl	8000c74 <HAL_FLASH_Lock>
+ 80045ac:	f7fc fb62 	bl	8000c74 <HAL_FLASH_Lock>
 
 			// Write to the USER FLASH
 			HAL_FLASH_Unlock();
- 80045b4:	f7fc fb38 	bl	8000c28 <HAL_FLASH_Unlock>
+ 80045b0:	f7fc fb3a 	bl	8000c28 <HAL_FLASH_Unlock>
 			uint32_t flashAddress = FLASH_UVLEDS_PERIODS_ADDR;
- 80045b8:	4b18      	ldr	r3, [pc, #96]	; (800461c <uv_led_set_frequency+0xf4>)
- 80045ba:	627b      	str	r3, [r7, #36]	; 0x24
+ 80045b4:	4b18      	ldr	r3, [pc, #96]	; (8004618 <uv_led_set_frequency+0xf4>)
+ 80045b6:	627b      	str	r3, [r7, #36]	; 0x24
 			for(int i = 0; i <8; i++)
- 80045bc:	2300      	movs	r3, #0
- 80045be:	623b      	str	r3, [r7, #32]
- 80045c0:	e012      	b.n	80045e8 <uv_led_set_frequency+0xc0>
+ 80045b8:	2300      	movs	r3, #0
+ 80045ba:	623b      	str	r3, [r7, #32]
+ 80045bc:	e012      	b.n	80045e4 <uv_led_set_frequency+0xc0>
 			{
 				HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, flashAddress, uv_led_periods_ms[i]);
- 80045c2:	4b14      	ldr	r3, [pc, #80]	; (8004614 <uv_led_set_frequency+0xec>)
- 80045c4:	6a3a      	ldr	r2, [r7, #32]
- 80045c6:	0092      	lsls	r2, r2, #2
- 80045c8:	58d3      	ldr	r3, [r2, r3]
- 80045ca:	001c      	movs	r4, r3
- 80045cc:	2300      	movs	r3, #0
- 80045ce:	001d      	movs	r5, r3
- 80045d0:	6a79      	ldr	r1, [r7, #36]	; 0x24
- 80045d2:	0022      	movs	r2, r4
- 80045d4:	002b      	movs	r3, r5
- 80045d6:	2002      	movs	r0, #2
- 80045d8:	f7fc fa90 	bl	8000afc <HAL_FLASH_Program>
+ 80045be:	4b14      	ldr	r3, [pc, #80]	; (8004610 <uv_led_set_frequency+0xec>)
+ 80045c0:	6a3a      	ldr	r2, [r7, #32]
+ 80045c2:	0092      	lsls	r2, r2, #2
+ 80045c4:	58d3      	ldr	r3, [r2, r3]
+ 80045c6:	001c      	movs	r4, r3
+ 80045c8:	2300      	movs	r3, #0
+ 80045ca:	001d      	movs	r5, r3
+ 80045cc:	6a79      	ldr	r1, [r7, #36]	; 0x24
+ 80045ce:	0022      	movs	r2, r4
+ 80045d0:	002b      	movs	r3, r5
+ 80045d2:	2002      	movs	r0, #2
+ 80045d4:	f7fc fa92 	bl	8000afc <HAL_FLASH_Program>
 				flashAddress += 4;
- 80045dc:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 80045de:	3304      	adds	r3, #4
- 80045e0:	627b      	str	r3, [r7, #36]	; 0x24
+ 80045d8:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 80045da:	3304      	adds	r3, #4
+ 80045dc:	627b      	str	r3, [r7, #36]	; 0x24
 			for(int i = 0; i <8; i++)
- 80045e2:	6a3b      	ldr	r3, [r7, #32]
- 80045e4:	3301      	adds	r3, #1
- 80045e6:	623b      	str	r3, [r7, #32]
- 80045e8:	6a3b      	ldr	r3, [r7, #32]
- 80045ea:	2b07      	cmp	r3, #7
- 80045ec:	dde9      	ble.n	80045c2 <uv_led_set_frequency+0x9a>
+ 80045de:	6a3b      	ldr	r3, [r7, #32]
+ 80045e0:	3301      	adds	r3, #1
+ 80045e2:	623b      	str	r3, [r7, #32]
+ 80045e4:	6a3b      	ldr	r3, [r7, #32]
+ 80045e6:	2b07      	cmp	r3, #7
+ 80045e8:	dde9      	ble.n	80045be <uv_led_set_frequency+0x9a>
 			}
 			CLEAR_BIT (FLASH->CR, (FLASH_CR_PG));
- 80045ee:	4b0c      	ldr	r3, [pc, #48]	; (8004620 <uv_led_set_frequency+0xf8>)
- 80045f0:	691a      	ldr	r2, [r3, #16]
- 80045f2:	4b0b      	ldr	r3, [pc, #44]	; (8004620 <uv_led_set_frequency+0xf8>)
- 80045f4:	2101      	movs	r1, #1
- 80045f6:	438a      	bics	r2, r1
- 80045f8:	611a      	str	r2, [r3, #16]
+ 80045ea:	4b0c      	ldr	r3, [pc, #48]	; (800461c <uv_led_set_frequency+0xf8>)
+ 80045ec:	691a      	ldr	r2, [r3, #16]
+ 80045ee:	4b0b      	ldr	r3, [pc, #44]	; (800461c <uv_led_set_frequency+0xf8>)
+ 80045f0:	2101      	movs	r1, #1
+ 80045f2:	438a      	bics	r2, r1
+ 80045f4:	611a      	str	r2, [r3, #16]
 			HAL_FLASH_Lock();
- 80045fa:	f7fc fb3b 	bl	8000c74 <HAL_FLASH_Lock>
+ 80045f6:	f7fc fb3d 	bl	8000c74 <HAL_FLASH_Lock>
 			return 1;
- 80045fe:	2301      	movs	r3, #1
- 8004600:	e002      	b.n	8004608 <uv_led_set_frequency+0xe0>
+ 80045fa:	2301      	movs	r3, #1
+ 80045fc:	e002      	b.n	8004604 <uv_led_set_frequency+0xe0>
 		}
 		return 0;
- 8004602:	2300      	movs	r3, #0
- 8004604:	e000      	b.n	8004608 <uv_led_set_frequency+0xe0>
+ 80045fe:	2300      	movs	r3, #0
+ 8004600:	e000      	b.n	8004604 <uv_led_set_frequency+0xe0>
 	}
 	return 0;
- 8004606:	2300      	movs	r3, #0
+ 8004602:	2300      	movs	r3, #0
 }
- 8004608:	0018      	movs	r0, r3
- 800460a:	46bd      	mov	sp, r7
- 800460c:	b00a      	add	sp, #40	; 0x28
- 800460e:	bdb0      	pop	{r4, r5, r7, pc}
- 8004610:	00001388 	.word	0x00001388
- 8004614:	2000007c 	.word	0x2000007c
- 8004618:	200001c4 	.word	0x200001c4
- 800461c:	08007400 	.word	0x08007400
- 8004620:	40022000 	.word	0x40022000
+ 8004604:	0018      	movs	r0, r3
+ 8004606:	46bd      	mov	sp, r7
+ 8004608:	b00a      	add	sp, #40	; 0x28
+ 800460a:	bdb0      	pop	{r4, r5, r7, pc}
+ 800460c:	00001388 	.word	0x00001388
+ 8004610:	2000007c 	.word	0x2000007c
+ 8004614:	200001c4 	.word	0x200001c4
+ 8004618:	08007400 	.word	0x08007400
+ 800461c:	40022000 	.word	0x40022000
 
-08004624 <uv_led_enable>:
+08004620 <uv_led_enable>:
  * @param led_id ID of the LED (0-7)
  * @param enable 1 if the LED is enables, otherwise 0
  * @return 1 if success, otherwise 0
  */
 uint8_t uv_led_enable(uint8_t led_id, uint8_t enable)
 {
- 8004624:	b5b0      	push	{r4, r5, r7, lr}
- 8004626:	b088      	sub	sp, #32
- 8004628:	af00      	add	r7, sp, #0
- 800462a:	0002      	movs	r2, r0
- 800462c:	1dfb      	adds	r3, r7, #7
- 800462e:	701a      	strb	r2, [r3, #0]
- 8004630:	1dbb      	adds	r3, r7, #6
- 8004632:	1c0a      	adds	r2, r1, #0
- 8004634:	701a      	strb	r2, [r3, #0]
+ 8004620:	b5b0      	push	{r4, r5, r7, lr}
+ 8004622:	b088      	sub	sp, #32
+ 8004624:	af00      	add	r7, sp, #0
+ 8004626:	0002      	movs	r2, r0
+ 8004628:	1dfb      	adds	r3, r7, #7
+ 800462a:	701a      	strb	r2, [r3, #0]
+ 800462c:	1dbb      	adds	r3, r7, #6
+ 800462e:	1c0a      	adds	r2, r1, #0
+ 8004630:	701a      	strb	r2, [r3, #0]
 	// Check if the UVLED ID is valid
 	if ((0 <= led_id) && (led_id < 8))
- 8004636:	1dfb      	adds	r3, r7, #7
- 8004638:	781b      	ldrb	r3, [r3, #0]
- 800463a:	2b07      	cmp	r3, #7
- 800463c:	d868      	bhi.n	8004710 <uv_led_enable+0xec>
+ 8004632:	1dfb      	adds	r3, r7, #7
+ 8004634:	781b      	ldrb	r3, [r3, #0]
+ 8004636:	2b07      	cmp	r3, #7
+ 8004638:	d868      	bhi.n	800470c <uv_led_enable+0xec>
 	{
 		// Check if the value is valid
 		if ((enable == 0) || (enable == 1))
- 800463e:	1dbb      	adds	r3, r7, #6
- 8004640:	781b      	ldrb	r3, [r3, #0]
- 8004642:	2b00      	cmp	r3, #0
- 8004644:	d003      	beq.n	800464e <uv_led_enable+0x2a>
- 8004646:	1dbb      	adds	r3, r7, #6
- 8004648:	781b      	ldrb	r3, [r3, #0]
- 800464a:	2b01      	cmp	r3, #1
- 800464c:	d15e      	bne.n	800470c <uv_led_enable+0xe8>
+ 800463a:	1dbb      	adds	r3, r7, #6
+ 800463c:	781b      	ldrb	r3, [r3, #0]
+ 800463e:	2b00      	cmp	r3, #0
+ 8004640:	d003      	beq.n	800464a <uv_led_enable+0x2a>
+ 8004642:	1dbb      	adds	r3, r7, #6
+ 8004644:	781b      	ldrb	r3, [r3, #0]
+ 8004646:	2b01      	cmp	r3, #1
+ 8004648:	d15e      	bne.n	8004708 <uv_led_enable+0xe8>
 		{
 			uv_led_enabled[led_id] = enable;
- 800464e:	1dfb      	adds	r3, r7, #7
- 8004650:	781b      	ldrb	r3, [r3, #0]
- 8004652:	4a32      	ldr	r2, [pc, #200]	; (800471c <uv_led_enable+0xf8>)
- 8004654:	1db9      	adds	r1, r7, #6
- 8004656:	7809      	ldrb	r1, [r1, #0]
- 8004658:	54d1      	strb	r1, [r2, r3]
+ 800464a:	1dfb      	adds	r3, r7, #7
+ 800464c:	781b      	ldrb	r3, [r3, #0]
+ 800464e:	4a32      	ldr	r2, [pc, #200]	; (8004718 <uv_led_enable+0xf8>)
+ 8004650:	1db9      	adds	r1, r7, #6
+ 8004652:	7809      	ldrb	r1, [r1, #0]
+ 8004654:	54d1      	strb	r1, [r2, r3]
 			uv_led_counter [(uint8_t)led_id] = 0;
- 800465a:	1dfb      	adds	r3, r7, #7
- 800465c:	781a      	ldrb	r2, [r3, #0]
- 800465e:	4b30      	ldr	r3, [pc, #192]	; (8004720 <uv_led_enable+0xfc>)
- 8004660:	0052      	lsls	r2, r2, #1
- 8004662:	2100      	movs	r1, #0
- 8004664:	52d1      	strh	r1, [r2, r3]
+ 8004656:	1dfb      	adds	r3, r7, #7
+ 8004658:	781a      	ldrb	r2, [r3, #0]
+ 800465a:	4b30      	ldr	r3, [pc, #192]	; (800471c <uv_led_enable+0xfc>)
+ 800465c:	0092      	lsls	r2, r2, #2
+ 800465e:	2100      	movs	r1, #0
+ 8004660:	50d1      	str	r1, [r2, r3]
 			HAL_GPIO_WritePin(uv_led_ports[led_id], uv_led_pins[led_id], enable);
- 8004666:	1dfb      	adds	r3, r7, #7
- 8004668:	781a      	ldrb	r2, [r3, #0]
- 800466a:	4b2e      	ldr	r3, [pc, #184]	; (8004724 <uv_led_enable+0x100>)
- 800466c:	0092      	lsls	r2, r2, #2
- 800466e:	58d0      	ldr	r0, [r2, r3]
- 8004670:	1dfb      	adds	r3, r7, #7
- 8004672:	781a      	ldrb	r2, [r3, #0]
- 8004674:	4b2c      	ldr	r3, [pc, #176]	; (8004728 <uv_led_enable+0x104>)
- 8004676:	0052      	lsls	r2, r2, #1
- 8004678:	5ad1      	ldrh	r1, [r2, r3]
- 800467a:	1dbb      	adds	r3, r7, #6
- 800467c:	781b      	ldrb	r3, [r3, #0]
- 800467e:	001a      	movs	r2, r3
- 8004680:	f7fc fdc3 	bl	800120a <HAL_GPIO_WritePin>
+ 8004662:	1dfb      	adds	r3, r7, #7
+ 8004664:	781a      	ldrb	r2, [r3, #0]
+ 8004666:	4b2e      	ldr	r3, [pc, #184]	; (8004720 <uv_led_enable+0x100>)
+ 8004668:	0092      	lsls	r2, r2, #2
+ 800466a:	58d0      	ldr	r0, [r2, r3]
+ 800466c:	1dfb      	adds	r3, r7, #7
+ 800466e:	781a      	ldrb	r2, [r3, #0]
+ 8004670:	4b2c      	ldr	r3, [pc, #176]	; (8004724 <uv_led_enable+0x104>)
+ 8004672:	0052      	lsls	r2, r2, #1
+ 8004674:	5ad1      	ldrh	r1, [r2, r3]
+ 8004676:	1dbb      	adds	r3, r7, #6
+ 8004678:	781b      	ldrb	r3, [r3, #0]
+ 800467a:	001a      	movs	r2, r3
+ 800467c:	f7fc fdc5 	bl	800120a <HAL_GPIO_WritePin>
 
 			// Erase the USER FLASH
 			HAL_FLASH_Unlock();
- 8004684:	f7fc fad0 	bl	8000c28 <HAL_FLASH_Unlock>
+ 8004680:	f7fc fad2 	bl	8000c28 <HAL_FLASH_Unlock>
 			FLASH_EraseInitTypeDef EraseInitStruct;
 			uint32_t PAGEError = 0;
- 8004688:	2300      	movs	r3, #0
- 800468a:	60bb      	str	r3, [r7, #8]
+ 8004684:	2300      	movs	r3, #0
+ 8004686:	60bb      	str	r3, [r7, #8]
 			EraseInitStruct.TypeErase   = FLASH_TYPEERASE_PAGES;
- 800468c:	210c      	movs	r1, #12
- 800468e:	187b      	adds	r3, r7, r1
- 8004690:	2200      	movs	r2, #0
- 8004692:	601a      	str	r2, [r3, #0]
+ 8004688:	210c      	movs	r1, #12
+ 800468a:	187b      	adds	r3, r7, r1
+ 800468c:	2200      	movs	r2, #0
+ 800468e:	601a      	str	r2, [r3, #0]
 			EraseInitStruct.PageAddress = FLASH_UVLEDS_ENABLED_ADDR;
- 8004694:	187b      	adds	r3, r7, r1
- 8004696:	4a25      	ldr	r2, [pc, #148]	; (800472c <uv_led_enable+0x108>)
- 8004698:	605a      	str	r2, [r3, #4]
+ 8004690:	187b      	adds	r3, r7, r1
+ 8004692:	4a25      	ldr	r2, [pc, #148]	; (8004728 <uv_led_enable+0x108>)
+ 8004694:	605a      	str	r2, [r3, #4]
 			EraseInitStruct.NbPages     = 1;
- 800469a:	187b      	adds	r3, r7, r1
- 800469c:	2201      	movs	r2, #1
- 800469e:	609a      	str	r2, [r3, #8]
+ 8004696:	187b      	adds	r3, r7, r1
+ 8004698:	2201      	movs	r2, #1
+ 800469a:	609a      	str	r2, [r3, #8]
 			HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError);
- 80046a0:	2308      	movs	r3, #8
- 80046a2:	18fa      	adds	r2, r7, r3
- 80046a4:	187b      	adds	r3, r7, r1
- 80046a6:	0011      	movs	r1, r2
- 80046a8:	0018      	movs	r0, r3
- 80046aa:	f7fc fb7d 	bl	8000da8 <HAL_FLASHEx_Erase>
+ 800469c:	2308      	movs	r3, #8
+ 800469e:	18fa      	adds	r2, r7, r3
+ 80046a0:	187b      	adds	r3, r7, r1
+ 80046a2:	0011      	movs	r1, r2
+ 80046a4:	0018      	movs	r0, r3
+ 80046a6:	f7fc fb7f 	bl	8000da8 <HAL_FLASHEx_Erase>
 			CLEAR_BIT (FLASH->CR, (FLASH_CR_PER));
- 80046ae:	4b20      	ldr	r3, [pc, #128]	; (8004730 <uv_led_enable+0x10c>)
- 80046b0:	691a      	ldr	r2, [r3, #16]
- 80046b2:	4b1f      	ldr	r3, [pc, #124]	; (8004730 <uv_led_enable+0x10c>)
- 80046b4:	2102      	movs	r1, #2
- 80046b6:	438a      	bics	r2, r1
- 80046b8:	611a      	str	r2, [r3, #16]
+ 80046aa:	4b20      	ldr	r3, [pc, #128]	; (800472c <uv_led_enable+0x10c>)
+ 80046ac:	691a      	ldr	r2, [r3, #16]
+ 80046ae:	4b1f      	ldr	r3, [pc, #124]	; (800472c <uv_led_enable+0x10c>)
+ 80046b0:	2102      	movs	r1, #2
+ 80046b2:	438a      	bics	r2, r1
+ 80046b4:	611a      	str	r2, [r3, #16]
 			HAL_FLASH_Lock();
- 80046ba:	f7fc fadb 	bl	8000c74 <HAL_FLASH_Lock>
+ 80046b6:	f7fc fadd 	bl	8000c74 <HAL_FLASH_Lock>
 
 			// Write to the USER FLASH
 			HAL_FLASH_Unlock();
- 80046be:	f7fc fab3 	bl	8000c28 <HAL_FLASH_Unlock>
+ 80046ba:	f7fc fab5 	bl	8000c28 <HAL_FLASH_Unlock>
 			uint32_t flashAddress = FLASH_UVLEDS_ENABLED_ADDR;
- 80046c2:	4b1a      	ldr	r3, [pc, #104]	; (800472c <uv_led_enable+0x108>)
- 80046c4:	61fb      	str	r3, [r7, #28]
+ 80046be:	4b1a      	ldr	r3, [pc, #104]	; (8004728 <uv_led_enable+0x108>)
+ 80046c0:	61fb      	str	r3, [r7, #28]
 			for(int i = 0; i <8; i++)
- 80046c6:	2300      	movs	r3, #0
- 80046c8:	61bb      	str	r3, [r7, #24]
- 80046ca:	e012      	b.n	80046f2 <uv_led_enable+0xce>
+ 80046c2:	2300      	movs	r3, #0
+ 80046c4:	61bb      	str	r3, [r7, #24]
+ 80046c6:	e012      	b.n	80046ee <uv_led_enable+0xce>
 			{
 				HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD, flashAddress, uv_led_enabled[i]);
- 80046cc:	4a13      	ldr	r2, [pc, #76]	; (800471c <uv_led_enable+0xf8>)
- 80046ce:	69bb      	ldr	r3, [r7, #24]
- 80046d0:	18d3      	adds	r3, r2, r3
- 80046d2:	781b      	ldrb	r3, [r3, #0]
- 80046d4:	001c      	movs	r4, r3
- 80046d6:	2300      	movs	r3, #0
- 80046d8:	001d      	movs	r5, r3
- 80046da:	69f9      	ldr	r1, [r7, #28]
- 80046dc:	0022      	movs	r2, r4
- 80046de:	002b      	movs	r3, r5
- 80046e0:	2001      	movs	r0, #1
- 80046e2:	f7fc fa0b 	bl	8000afc <HAL_FLASH_Program>
+ 80046c8:	4a13      	ldr	r2, [pc, #76]	; (8004718 <uv_led_enable+0xf8>)
+ 80046ca:	69bb      	ldr	r3, [r7, #24]
+ 80046cc:	18d3      	adds	r3, r2, r3
+ 80046ce:	781b      	ldrb	r3, [r3, #0]
+ 80046d0:	001c      	movs	r4, r3
+ 80046d2:	2300      	movs	r3, #0
+ 80046d4:	001d      	movs	r5, r3
+ 80046d6:	69f9      	ldr	r1, [r7, #28]
+ 80046d8:	0022      	movs	r2, r4
+ 80046da:	002b      	movs	r3, r5
+ 80046dc:	2001      	movs	r0, #1
+ 80046de:	f7fc fa0d 	bl	8000afc <HAL_FLASH_Program>
 				flashAddress += 2;
- 80046e6:	69fb      	ldr	r3, [r7, #28]
- 80046e8:	3302      	adds	r3, #2
- 80046ea:	61fb      	str	r3, [r7, #28]
+ 80046e2:	69fb      	ldr	r3, [r7, #28]
+ 80046e4:	3302      	adds	r3, #2
+ 80046e6:	61fb      	str	r3, [r7, #28]
 			for(int i = 0; i <8; i++)
- 80046ec:	69bb      	ldr	r3, [r7, #24]
- 80046ee:	3301      	adds	r3, #1
- 80046f0:	61bb      	str	r3, [r7, #24]
- 80046f2:	69bb      	ldr	r3, [r7, #24]
- 80046f4:	2b07      	cmp	r3, #7
- 80046f6:	dde9      	ble.n	80046cc <uv_led_enable+0xa8>
+ 80046e8:	69bb      	ldr	r3, [r7, #24]
+ 80046ea:	3301      	adds	r3, #1
+ 80046ec:	61bb      	str	r3, [r7, #24]
+ 80046ee:	69bb      	ldr	r3, [r7, #24]
+ 80046f0:	2b07      	cmp	r3, #7
+ 80046f2:	dde9      	ble.n	80046c8 <uv_led_enable+0xa8>
 			}
 			CLEAR_BIT (FLASH->CR, (FLASH_CR_PG));
- 80046f8:	4b0d      	ldr	r3, [pc, #52]	; (8004730 <uv_led_enable+0x10c>)
- 80046fa:	691a      	ldr	r2, [r3, #16]
- 80046fc:	4b0c      	ldr	r3, [pc, #48]	; (8004730 <uv_led_enable+0x10c>)
- 80046fe:	2101      	movs	r1, #1
- 8004700:	438a      	bics	r2, r1
- 8004702:	611a      	str	r2, [r3, #16]
+ 80046f4:	4b0d      	ldr	r3, [pc, #52]	; (800472c <uv_led_enable+0x10c>)
+ 80046f6:	691a      	ldr	r2, [r3, #16]
+ 80046f8:	4b0c      	ldr	r3, [pc, #48]	; (800472c <uv_led_enable+0x10c>)
+ 80046fa:	2101      	movs	r1, #1
+ 80046fc:	438a      	bics	r2, r1
+ 80046fe:	611a      	str	r2, [r3, #16]
 			HAL_FLASH_Lock();
- 8004704:	f7fc fab6 	bl	8000c74 <HAL_FLASH_Lock>
+ 8004700:	f7fc fab8 	bl	8000c74 <HAL_FLASH_Lock>
 			return 1;
- 8004708:	2301      	movs	r3, #1
- 800470a:	e002      	b.n	8004712 <uv_led_enable+0xee>
+ 8004704:	2301      	movs	r3, #1
+ 8004706:	e002      	b.n	800470e <uv_led_enable+0xee>
 		}
 		return 0;
- 800470c:	2300      	movs	r3, #0
- 800470e:	e000      	b.n	8004712 <uv_led_enable+0xee>
+ 8004708:	2300      	movs	r3, #0
+ 800470a:	e000      	b.n	800470e <uv_led_enable+0xee>
 	}
 	return 0;
- 8004710:	2300      	movs	r3, #0
+ 800470c:	2300      	movs	r3, #0
 }
- 8004712:	0018      	movs	r0, r3
- 8004714:	46bd      	mov	sp, r7
- 8004716:	b008      	add	sp, #32
- 8004718:	bdb0      	pop	{r4, r5, r7, pc}
- 800471a:	46c0      	nop			; (mov r8, r8)
- 800471c:	200001bc 	.word	0x200001bc
- 8004720:	200001c4 	.word	0x200001c4
- 8004724:	2000005c 	.word	0x2000005c
- 8004728:	20000128 	.word	0x20000128
- 800472c:	08007000 	.word	0x08007000
- 8004730:	40022000 	.word	0x40022000
+ 800470e:	0018      	movs	r0, r3
+ 8004710:	46bd      	mov	sp, r7
+ 8004712:	b008      	add	sp, #32
+ 8004714:	bdb0      	pop	{r4, r5, r7, pc}
+ 8004716:	46c0      	nop			; (mov r8, r8)
+ 8004718:	200001bc 	.word	0x200001bc
+ 800471c:	200001c4 	.word	0x200001c4
+ 8004720:	2000005c 	.word	0x2000005c
+ 8004724:	20000128 	.word	0x20000128
+ 8004728:	08007000 	.word	0x08007000
+ 800472c:	40022000 	.word	0x40022000
 
-08004734 <uv_led_toggle>:
+08004730 <uv_led_toggle>:
  *
  * 	@param led_id ID of the LED to be toggled
  * 	@return Void
  */
 void uv_led_toggle(uint8_t led_id)
 {
- 8004734:	b5b0      	push	{r4, r5, r7, lr}
- 8004736:	b082      	sub	sp, #8
- 8004738:	af00      	add	r7, sp, #0
- 800473a:	0002      	movs	r2, r0
- 800473c:	1dfb      	adds	r3, r7, #7
- 800473e:	701a      	strb	r2, [r3, #0]
+ 8004730:	b5b0      	push	{r4, r5, r7, lr}
+ 8004732:	b082      	sub	sp, #8
+ 8004734:	af00      	add	r7, sp, #0
+ 8004736:	0002      	movs	r2, r0
+ 8004738:	1dfb      	adds	r3, r7, #7
+ 800473a:	701a      	strb	r2, [r3, #0]
 		if ((uv_led_enabled[led_id]))
- 8004740:	1dfb      	adds	r3, r7, #7
- 8004742:	781b      	ldrb	r3, [r3, #0]
- 8004744:	4a16      	ldr	r2, [pc, #88]	; (80047a0 <uv_led_toggle+0x6c>)
- 8004746:	5cd3      	ldrb	r3, [r2, r3]
- 8004748:	2b00      	cmp	r3, #0
- 800474a:	d025      	beq.n	8004798 <uv_led_toggle+0x64>
+ 800473c:	1dfb      	adds	r3, r7, #7
+ 800473e:	781b      	ldrb	r3, [r3, #0]
+ 8004740:	4a16      	ldr	r2, [pc, #88]	; (800479c <uv_led_toggle+0x6c>)
+ 8004742:	5cd3      	ldrb	r3, [r2, r3]
+ 8004744:	2b00      	cmp	r3, #0
+ 8004746:	d025      	beq.n	8004794 <uv_led_toggle+0x64>
 		{
 			HAL_GPIO_WritePin(uv_led_ports[led_id], uv_led_pins[led_id], !HAL_GPIO_ReadPin(uv_led_ports[led_id], uv_led_pins[led_id]) && enable_global);
- 800474c:	1dfb      	adds	r3, r7, #7
- 800474e:	781a      	ldrb	r2, [r3, #0]
- 8004750:	4b14      	ldr	r3, [pc, #80]	; (80047a4 <uv_led_toggle+0x70>)
- 8004752:	0092      	lsls	r2, r2, #2
- 8004754:	58d4      	ldr	r4, [r2, r3]
- 8004756:	1dfb      	adds	r3, r7, #7
- 8004758:	781a      	ldrb	r2, [r3, #0]
- 800475a:	4b13      	ldr	r3, [pc, #76]	; (80047a8 <uv_led_toggle+0x74>)
- 800475c:	0052      	lsls	r2, r2, #1
- 800475e:	5ad5      	ldrh	r5, [r2, r3]
- 8004760:	1dfb      	adds	r3, r7, #7
- 8004762:	781a      	ldrb	r2, [r3, #0]
- 8004764:	4b0f      	ldr	r3, [pc, #60]	; (80047a4 <uv_led_toggle+0x70>)
- 8004766:	0092      	lsls	r2, r2, #2
- 8004768:	58d0      	ldr	r0, [r2, r3]
- 800476a:	1dfb      	adds	r3, r7, #7
- 800476c:	781a      	ldrb	r2, [r3, #0]
- 800476e:	4b0e      	ldr	r3, [pc, #56]	; (80047a8 <uv_led_toggle+0x74>)
- 8004770:	0052      	lsls	r2, r2, #1
- 8004772:	5ad3      	ldrh	r3, [r2, r3]
- 8004774:	0019      	movs	r1, r3
- 8004776:	f7fc fd2b 	bl	80011d0 <HAL_GPIO_ReadPin>
- 800477a:	1e03      	subs	r3, r0, #0
- 800477c:	d105      	bne.n	800478a <uv_led_toggle+0x56>
- 800477e:	4b0b      	ldr	r3, [pc, #44]	; (80047ac <uv_led_toggle+0x78>)
- 8004780:	781b      	ldrb	r3, [r3, #0]
- 8004782:	2b00      	cmp	r3, #0
- 8004784:	d001      	beq.n	800478a <uv_led_toggle+0x56>
- 8004786:	2301      	movs	r3, #1
- 8004788:	e000      	b.n	800478c <uv_led_toggle+0x58>
- 800478a:	2300      	movs	r3, #0
- 800478c:	b2db      	uxtb	r3, r3
- 800478e:	001a      	movs	r2, r3
- 8004790:	0029      	movs	r1, r5
- 8004792:	0020      	movs	r0, r4
- 8004794:	f7fc fd39 	bl	800120a <HAL_GPIO_WritePin>
+ 8004748:	1dfb      	adds	r3, r7, #7
+ 800474a:	781a      	ldrb	r2, [r3, #0]
+ 800474c:	4b14      	ldr	r3, [pc, #80]	; (80047a0 <uv_led_toggle+0x70>)
+ 800474e:	0092      	lsls	r2, r2, #2
+ 8004750:	58d4      	ldr	r4, [r2, r3]
+ 8004752:	1dfb      	adds	r3, r7, #7
+ 8004754:	781a      	ldrb	r2, [r3, #0]
+ 8004756:	4b13      	ldr	r3, [pc, #76]	; (80047a4 <uv_led_toggle+0x74>)
+ 8004758:	0052      	lsls	r2, r2, #1
+ 800475a:	5ad5      	ldrh	r5, [r2, r3]
+ 800475c:	1dfb      	adds	r3, r7, #7
+ 800475e:	781a      	ldrb	r2, [r3, #0]
+ 8004760:	4b0f      	ldr	r3, [pc, #60]	; (80047a0 <uv_led_toggle+0x70>)
+ 8004762:	0092      	lsls	r2, r2, #2
+ 8004764:	58d0      	ldr	r0, [r2, r3]
+ 8004766:	1dfb      	adds	r3, r7, #7
+ 8004768:	781a      	ldrb	r2, [r3, #0]
+ 800476a:	4b0e      	ldr	r3, [pc, #56]	; (80047a4 <uv_led_toggle+0x74>)
+ 800476c:	0052      	lsls	r2, r2, #1
+ 800476e:	5ad3      	ldrh	r3, [r2, r3]
+ 8004770:	0019      	movs	r1, r3
+ 8004772:	f7fc fd2d 	bl	80011d0 <HAL_GPIO_ReadPin>
+ 8004776:	1e03      	subs	r3, r0, #0
+ 8004778:	d105      	bne.n	8004786 <uv_led_toggle+0x56>
+ 800477a:	4b0b      	ldr	r3, [pc, #44]	; (80047a8 <uv_led_toggle+0x78>)
+ 800477c:	781b      	ldrb	r3, [r3, #0]
+ 800477e:	2b00      	cmp	r3, #0
+ 8004780:	d001      	beq.n	8004786 <uv_led_toggle+0x56>
+ 8004782:	2301      	movs	r3, #1
+ 8004784:	e000      	b.n	8004788 <uv_led_toggle+0x58>
+ 8004786:	2300      	movs	r3, #0
+ 8004788:	b2db      	uxtb	r3, r3
+ 800478a:	001a      	movs	r2, r3
+ 800478c:	0029      	movs	r1, r5
+ 800478e:	0020      	movs	r0, r4
+ 8004790:	f7fc fd3b 	bl	800120a <HAL_GPIO_WritePin>
 		}
 }
- 8004798:	46c0      	nop			; (mov r8, r8)
- 800479a:	46bd      	mov	sp, r7
- 800479c:	b002      	add	sp, #8
- 800479e:	bdb0      	pop	{r4, r5, r7, pc}
- 80047a0:	200001bc 	.word	0x200001bc
- 80047a4:	2000005c 	.word	0x2000005c
- 80047a8:	20000128 	.word	0x20000128
- 80047ac:	20000058 	.word	0x20000058
+ 8004794:	46c0      	nop			; (mov r8, r8)
+ 8004796:	46bd      	mov	sp, r7
+ 8004798:	b002      	add	sp, #8
+ 800479a:	bdb0      	pop	{r4, r5, r7, pc}
+ 800479c:	200001bc 	.word	0x200001bc
+ 80047a0:	2000005c 	.word	0x2000005c
+ 80047a4:	20000128 	.word	0x20000128
+ 80047a8:	20000058 	.word	0x20000058
 
-080047b0 <Reset_Handler>:
+080047ac <Reset_Handler>:
 
   .section .text.Reset_Handler
   .weak Reset_Handler
   .type Reset_Handler, %function
 Reset_Handler:
   ldr   r0, =_estack
- 80047b0:	4813      	ldr	r0, [pc, #76]	; (8004800 <LoopForever+0x2>)
+ 80047ac:	4813      	ldr	r0, [pc, #76]	; (80047fc <LoopForever+0x2>)
   mov   sp, r0          /* set stack pointer */
- 80047b2:	4685      	mov	sp, r0
+ 80047ae:	4685      	mov	sp, r0
 
 /*Check if boot space corresponds to test memory*/
  
     LDR R0,=0x00000004
- 80047b4:	4813      	ldr	r0, [pc, #76]	; (8004804 <LoopForever+0x6>)
+ 80047b0:	4813      	ldr	r0, [pc, #76]	; (8004800 <LoopForever+0x6>)
     LDR R1, [R0]
- 80047b6:	6801      	ldr	r1, [r0, #0]
+ 80047b2:	6801      	ldr	r1, [r0, #0]
     LSRS R1, R1, #24
- 80047b8:	0e09      	lsrs	r1, r1, #24
+ 80047b4:	0e09      	lsrs	r1, r1, #24
     LDR R2,=0x1F
- 80047ba:	4a13      	ldr	r2, [pc, #76]	; (8004808 <LoopForever+0xa>)
+ 80047b6:	4a13      	ldr	r2, [pc, #76]	; (8004804 <LoopForever+0xa>)
     CMP R1, R2
- 80047bc:	4291      	cmp	r1, r2
+ 80047b8:	4291      	cmp	r1, r2
     BNE ApplicationStart
- 80047be:	d105      	bne.n	80047cc <ApplicationStart>
+ 80047ba:	d105      	bne.n	80047c8 <ApplicationStart>
 
  /*SYSCFG clock enable*/
 
     LDR R0,=0x40021018
- 80047c0:	4812      	ldr	r0, [pc, #72]	; (800480c <LoopForever+0xe>)
+ 80047bc:	4812      	ldr	r0, [pc, #72]	; (8004808 <LoopForever+0xe>)
     LDR R1,=0x00000001
- 80047c2:	4913      	ldr	r1, [pc, #76]	; (8004810 <LoopForever+0x12>)
+ 80047be:	4913      	ldr	r1, [pc, #76]	; (800480c <LoopForever+0x12>)
     STR R1, [R0]
- 80047c4:	6001      	str	r1, [r0, #0]
+ 80047c0:	6001      	str	r1, [r0, #0]
 
 /*Set CFGR1 register with flash memory remap at address 0*/
     LDR R0,=0x40010000
- 80047c6:	4813      	ldr	r0, [pc, #76]	; (8004814 <LoopForever+0x16>)
+ 80047c2:	4813      	ldr	r0, [pc, #76]	; (8004810 <LoopForever+0x16>)
     LDR R1,=0x00000000
- 80047c8:	4913      	ldr	r1, [pc, #76]	; (8004818 <LoopForever+0x1a>)
+ 80047c4:	4913      	ldr	r1, [pc, #76]	; (8004814 <LoopForever+0x1a>)
     STR R1, [R0]
- 80047ca:	6001      	str	r1, [r0, #0]
+ 80047c6:	6001      	str	r1, [r0, #0]
 
-080047cc <ApplicationStart>:
+080047c8 <ApplicationStart>:
 
 ApplicationStart:
 /* Copy the data segment initializers from flash to SRAM */
   ldr r0, =_sdata
- 80047cc:	4813      	ldr	r0, [pc, #76]	; (800481c <LoopForever+0x1e>)
+ 80047c8:	4813      	ldr	r0, [pc, #76]	; (8004818 <LoopForever+0x1e>)
   ldr r1, =_edata
- 80047ce:	4914      	ldr	r1, [pc, #80]	; (8004820 <LoopForever+0x22>)
+ 80047ca:	4914      	ldr	r1, [pc, #80]	; (800481c <LoopForever+0x22>)
   ldr r2, =_sidata
- 80047d0:	4a14      	ldr	r2, [pc, #80]	; (8004824 <LoopForever+0x26>)
+ 80047cc:	4a14      	ldr	r2, [pc, #80]	; (8004820 <LoopForever+0x26>)
   movs r3, #0
- 80047d2:	2300      	movs	r3, #0
+ 80047ce:	2300      	movs	r3, #0
   b LoopCopyDataInit
- 80047d4:	e002      	b.n	80047dc <LoopCopyDataInit>
+ 80047d0:	e002      	b.n	80047d8 <LoopCopyDataInit>
 
-080047d6 <CopyDataInit>:
+080047d2 <CopyDataInit>:
 
 CopyDataInit:
   ldr r4, [r2, r3]
- 80047d6:	58d4      	ldr	r4, [r2, r3]
+ 80047d2:	58d4      	ldr	r4, [r2, r3]
   str r4, [r0, r3]
- 80047d8:	50c4      	str	r4, [r0, r3]
+ 80047d4:	50c4      	str	r4, [r0, r3]
   adds r3, r3, #4
- 80047da:	3304      	adds	r3, #4
+ 80047d6:	3304      	adds	r3, #4
 
-080047dc <LoopCopyDataInit>:
+080047d8 <LoopCopyDataInit>:
 
 LoopCopyDataInit:
   adds r4, r0, r3
- 80047dc:	18c4      	adds	r4, r0, r3
+ 80047d8:	18c4      	adds	r4, r0, r3
   cmp r4, r1
- 80047de:	428c      	cmp	r4, r1
+ 80047da:	428c      	cmp	r4, r1
   bcc CopyDataInit
- 80047e0:	d3f9      	bcc.n	80047d6 <CopyDataInit>
+ 80047dc:	d3f9      	bcc.n	80047d2 <CopyDataInit>
   
 /* Zero fill the bss segment. */
   ldr r2, =_sbss
- 80047e2:	4a11      	ldr	r2, [pc, #68]	; (8004828 <LoopForever+0x2a>)
+ 80047de:	4a11      	ldr	r2, [pc, #68]	; (8004824 <LoopForever+0x2a>)
   ldr r4, =_ebss
- 80047e4:	4c11      	ldr	r4, [pc, #68]	; (800482c <LoopForever+0x2e>)
+ 80047e0:	4c11      	ldr	r4, [pc, #68]	; (8004828 <LoopForever+0x2e>)
   movs r3, #0
- 80047e6:	2300      	movs	r3, #0
+ 80047e2:	2300      	movs	r3, #0
   b LoopFillZerobss
- 80047e8:	e001      	b.n	80047ee <LoopFillZerobss>
+ 80047e4:	e001      	b.n	80047ea <LoopFillZerobss>
 
-080047ea <FillZerobss>:
+080047e6 <FillZerobss>:
 
 FillZerobss:
   str  r3, [r2]
- 80047ea:	6013      	str	r3, [r2, #0]
+ 80047e6:	6013      	str	r3, [r2, #0]
   adds r2, r2, #4
- 80047ec:	3204      	adds	r2, #4
+ 80047e8:	3204      	adds	r2, #4
 
-080047ee <LoopFillZerobss>:
+080047ea <LoopFillZerobss>:
 
 LoopFillZerobss:
   cmp r2, r4
- 80047ee:	42a2      	cmp	r2, r4
+ 80047ea:	42a2      	cmp	r2, r4
   bcc FillZerobss
- 80047f0:	d3fb      	bcc.n	80047ea <FillZerobss>
+ 80047ec:	d3fb      	bcc.n	80047e6 <FillZerobss>
 
 /* Call the clock system intitialization function.*/
   bl  SystemInit
- 80047f2:	f7ff fdbb 	bl	800436c <SystemInit>
+ 80047ee:	f7ff fdbb 	bl	8004368 <SystemInit>
 /* Call static constructors */
   bl __libc_init_array
- 80047f6:	f000 f81d 	bl	8004834 <__libc_init_array>
+ 80047f2:	f000 f81d 	bl	8004830 <__libc_init_array>
 /* Call the application's entry point.*/
   bl main
- 80047fa:	f7ff f8d7 	bl	80039ac <main>
+ 80047f6:	f7ff f8d9 	bl	80039ac <main>
 
-080047fe <LoopForever>:
+080047fa <LoopForever>:
 
 LoopForever:
     b LoopForever
- 80047fe:	e7fe      	b.n	80047fe <LoopForever>
+ 80047fa:	e7fe      	b.n	80047fa <LoopForever>
   ldr   r0, =_estack
- 8004800:	200017ff 	.word	0x200017ff
+ 80047fc:	200017ff 	.word	0x200017ff
     LDR R0,=0x00000004
- 8004804:	00000004 	.word	0x00000004
+ 8004800:	00000004 	.word	0x00000004
     LDR R2,=0x1F
- 8004808:	0000001f 	.word	0x0000001f
+ 8004804:	0000001f 	.word	0x0000001f
     LDR R0,=0x40021018
- 800480c:	40021018 	.word	0x40021018
+ 8004808:	40021018 	.word	0x40021018
     LDR R1,=0x00000001
- 8004810:	00000001 	.word	0x00000001
+ 800480c:	00000001 	.word	0x00000001
     LDR R0,=0x40010000
- 8004814:	40010000 	.word	0x40010000
+ 8004810:	40010000 	.word	0x40010000
     LDR R1,=0x00000000
- 8004818:	00000000 	.word	0x00000000
+ 8004814:	00000000 	.word	0x00000000
   ldr r0, =_sdata
- 800481c:	20000000 	.word	0x20000000
+ 8004818:	20000000 	.word	0x20000000
   ldr r1, =_edata
- 8004820:	2000000c 	.word	0x2000000c
+ 800481c:	2000000c 	.word	0x2000000c
   ldr r2, =_sidata
- 8004824:	08004914 	.word	0x08004914
+ 8004820:	08004910 	.word	0x08004910
   ldr r2, =_sbss
- 8004828:	20000010 	.word	0x20000010
+ 8004824:	20000010 	.word	0x20000010
   ldr r4, =_ebss
- 800482c:	200002d4 	.word	0x200002d4
+ 8004828:	200002e4 	.word	0x200002e4
 
-08004830 <ADC1_IRQHandler>:
+0800482c <ADC1_IRQHandler>:
  * @retval : None
 */
     .section .text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
   b Infinite_Loop
- 8004830:	e7fe      	b.n	8004830 <ADC1_IRQHandler>
+ 800482c:	e7fe      	b.n	800482c <ADC1_IRQHandler>
 	...
 
-08004834 <__libc_init_array>:
- 8004834:	b570      	push	{r4, r5, r6, lr}
- 8004836:	2600      	movs	r6, #0
- 8004838:	4d0c      	ldr	r5, [pc, #48]	; (800486c <__libc_init_array+0x38>)
- 800483a:	4c0d      	ldr	r4, [pc, #52]	; (8004870 <__libc_init_array+0x3c>)
- 800483c:	1b64      	subs	r4, r4, r5
- 800483e:	10a4      	asrs	r4, r4, #2
- 8004840:	42a6      	cmp	r6, r4
- 8004842:	d109      	bne.n	8004858 <__libc_init_array+0x24>
- 8004844:	2600      	movs	r6, #0
- 8004846:	f000 f82b 	bl	80048a0 <_init>
- 800484a:	4d0a      	ldr	r5, [pc, #40]	; (8004874 <__libc_init_array+0x40>)
- 800484c:	4c0a      	ldr	r4, [pc, #40]	; (8004878 <__libc_init_array+0x44>)
- 800484e:	1b64      	subs	r4, r4, r5
- 8004850:	10a4      	asrs	r4, r4, #2
- 8004852:	42a6      	cmp	r6, r4
- 8004854:	d105      	bne.n	8004862 <__libc_init_array+0x2e>
- 8004856:	bd70      	pop	{r4, r5, r6, pc}
- 8004858:	00b3      	lsls	r3, r6, #2
- 800485a:	58eb      	ldr	r3, [r5, r3]
- 800485c:	4798      	blx	r3
- 800485e:	3601      	adds	r6, #1
- 8004860:	e7ee      	b.n	8004840 <__libc_init_array+0xc>
- 8004862:	00b3      	lsls	r3, r6, #2
- 8004864:	58eb      	ldr	r3, [r5, r3]
- 8004866:	4798      	blx	r3
- 8004868:	3601      	adds	r6, #1
- 800486a:	e7f2      	b.n	8004852 <__libc_init_array+0x1e>
- 800486c:	0800490c 	.word	0x0800490c
- 8004870:	0800490c 	.word	0x0800490c
+08004830 <__libc_init_array>:
+ 8004830:	b570      	push	{r4, r5, r6, lr}
+ 8004832:	2600      	movs	r6, #0
+ 8004834:	4d0c      	ldr	r5, [pc, #48]	; (8004868 <__libc_init_array+0x38>)
+ 8004836:	4c0d      	ldr	r4, [pc, #52]	; (800486c <__libc_init_array+0x3c>)
+ 8004838:	1b64      	subs	r4, r4, r5
+ 800483a:	10a4      	asrs	r4, r4, #2
+ 800483c:	42a6      	cmp	r6, r4
+ 800483e:	d109      	bne.n	8004854 <__libc_init_array+0x24>
+ 8004840:	2600      	movs	r6, #0
+ 8004842:	f000 f82b 	bl	800489c <_init>
+ 8004846:	4d0a      	ldr	r5, [pc, #40]	; (8004870 <__libc_init_array+0x40>)
+ 8004848:	4c0a      	ldr	r4, [pc, #40]	; (8004874 <__libc_init_array+0x44>)
+ 800484a:	1b64      	subs	r4, r4, r5
+ 800484c:	10a4      	asrs	r4, r4, #2
+ 800484e:	42a6      	cmp	r6, r4
+ 8004850:	d105      	bne.n	800485e <__libc_init_array+0x2e>
+ 8004852:	bd70      	pop	{r4, r5, r6, pc}
+ 8004854:	00b3      	lsls	r3, r6, #2
+ 8004856:	58eb      	ldr	r3, [r5, r3]
+ 8004858:	4798      	blx	r3
+ 800485a:	3601      	adds	r6, #1
+ 800485c:	e7ee      	b.n	800483c <__libc_init_array+0xc>
+ 800485e:	00b3      	lsls	r3, r6, #2
+ 8004860:	58eb      	ldr	r3, [r5, r3]
+ 8004862:	4798      	blx	r3
+ 8004864:	3601      	adds	r6, #1
+ 8004866:	e7f2      	b.n	800484e <__libc_init_array+0x1e>
+ 8004868:	08004908 	.word	0x08004908
+ 800486c:	08004908 	.word	0x08004908
+ 8004870:	08004908 	.word	0x08004908
  8004874:	0800490c 	.word	0x0800490c
- 8004878:	08004910 	.word	0x08004910
 
-0800487c <memcpy>:
- 800487c:	2300      	movs	r3, #0
- 800487e:	b510      	push	{r4, lr}
- 8004880:	429a      	cmp	r2, r3
- 8004882:	d100      	bne.n	8004886 <memcpy+0xa>
- 8004884:	bd10      	pop	{r4, pc}
- 8004886:	5ccc      	ldrb	r4, [r1, r3]
- 8004888:	54c4      	strb	r4, [r0, r3]
- 800488a:	3301      	adds	r3, #1
- 800488c:	e7f8      	b.n	8004880 <memcpy+0x4>
+08004878 <memcpy>:
+ 8004878:	2300      	movs	r3, #0
+ 800487a:	b510      	push	{r4, lr}
+ 800487c:	429a      	cmp	r2, r3
+ 800487e:	d100      	bne.n	8004882 <memcpy+0xa>
+ 8004880:	bd10      	pop	{r4, pc}
+ 8004882:	5ccc      	ldrb	r4, [r1, r3]
+ 8004884:	54c4      	strb	r4, [r0, r3]
+ 8004886:	3301      	adds	r3, #1
+ 8004888:	e7f8      	b.n	800487c <memcpy+0x4>
 
-0800488e <memset>:
- 800488e:	0003      	movs	r3, r0
- 8004890:	1812      	adds	r2, r2, r0
- 8004892:	4293      	cmp	r3, r2
- 8004894:	d100      	bne.n	8004898 <memset+0xa>
- 8004896:	4770      	bx	lr
- 8004898:	7019      	strb	r1, [r3, #0]
- 800489a:	3301      	adds	r3, #1
- 800489c:	e7f9      	b.n	8004892 <memset+0x4>
+0800488a <memset>:
+ 800488a:	0003      	movs	r3, r0
+ 800488c:	1812      	adds	r2, r2, r0
+ 800488e:	4293      	cmp	r3, r2
+ 8004890:	d100      	bne.n	8004894 <memset+0xa>
+ 8004892:	4770      	bx	lr
+ 8004894:	7019      	strb	r1, [r3, #0]
+ 8004896:	3301      	adds	r3, #1
+ 8004898:	e7f9      	b.n	800488e <memset+0x4>
 	...
 
-080048a0 <_init>:
- 80048a0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 80048a2:	46c0      	nop			; (mov r8, r8)
- 80048a4:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 80048a6:	bc08      	pop	{r3}
- 80048a8:	469e      	mov	lr, r3
- 80048aa:	4770      	bx	lr
+0800489c <_init>:
+ 800489c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800489e:	46c0      	nop			; (mov r8, r8)
+ 80048a0:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 80048a2:	bc08      	pop	{r3}
+ 80048a4:	469e      	mov	lr, r3
+ 80048a6:	4770      	bx	lr
 
-080048ac <_fini>:
- 80048ac:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 80048ae:	46c0      	nop			; (mov r8, r8)
- 80048b0:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 80048b2:	bc08      	pop	{r3}
- 80048b4:	469e      	mov	lr, r3
- 80048b6:	4770      	bx	lr
+080048a8 <_fini>:
+ 80048a8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 80048aa:	46c0      	nop			; (mov r8, r8)
+ 80048ac:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 80048ae:	bc08      	pop	{r3}
+ 80048b0:	469e      	mov	lr, r3
+ 80048b2:	4770      	bx	lr
