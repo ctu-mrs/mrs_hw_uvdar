@@ -1,3 +1,0 @@
-MY_FLASH.c:43:6:MY_FLASH_SetSectorAddrs	0	static
-MY_FLASH.c:50:6:MY_FLASH_WriteN	24	static
-MY_FLASH.c:90:6:MY_FLASH_ReadN	8	static
